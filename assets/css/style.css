@@ -523,3 +523,26 @@ section { padding: 88px 0; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .quote-form { padding: 24px; }
 }
+
+/* Homepage hero with quote form */
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-grid .hero-content { max-width: none; }
+.hero-form .quote-form { padding: 28px; }
+.hero-form .quote-form .form-note { margin-bottom: 0; }
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+.hero-home .hero-bg { background-position: center 40%; }
+.hero-home .hero-bg::after {
+  background: linear-gradient(90deg, rgba(16,22,29,0.86) 0%, rgba(16,22,29,0.6) 50%, rgba(16,22,29,0.35) 100%);
+}
+@media (max-width: 980px) {
+  .hero-home .hero-bg::after { background: rgba(16,22,29,0.72); }
+}
