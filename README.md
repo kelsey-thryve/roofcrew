@@ -15,7 +15,7 @@ Static multi-page site for The Roof Crew (Auckland roofing). Plain HTML/CSS/JS, 
 
 ## v2: combined design (staging)
 
-`v2/` is the new build the client approved: Design A's look (dark photo hero with the quote form, overlapping stat tiles, "Why Auckland chooses us") on the combined wireframe structure, reroofing-first throughout.
+`v2/` is the new build from the client's final wireframe: its structure and its styling (navy and white, Inter, white header, dark hero with the quote form, overlapping stat tiles), reroofing-first throughout.
 
 Live preview: https://kelsey-thryve.github.io/roofcrew/v2/
 

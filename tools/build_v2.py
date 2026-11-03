@@ -68,7 +68,7 @@ ICONS = {
     "google": '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1C42.6 36.8 45 31.2 45 24.5z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.7-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2 20.4 2 24s1 7 2.5 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>',
 }
 SVC_ICON = {"reroofing": "home", "new-roof-installation": "build", "roof-repairs": "wrench", "guttering-and-downpipes": "drop", "roof-inspections": "search"}
-LOGO = '<svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path d="M3 15L16 4l13 11" stroke="#d65a28" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13v14h18V13" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>'
+LOGO = '<svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M7 16l9-8 9 8M10 14v10h12V14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 
 class Page:
@@ -96,7 +96,7 @@ def header(pg, current):
     return f'''<div class="staging" role="note"><div class="wrap"><span><b>Staging preview, not live.</b> <mark>Yellow</mark> = content to supply or confirm.</span><button type="button">Hide highlights</button></div></div>
 <div class="topbar"><div class="wrap"><span>Free reroof quotes right across Auckland</span><span>Call or text Mike: <a href="tel:{TEL}">{PHONE}</a></span></div></div>
 <header class="site-header"><div class="wrap">
-  <a class="logo" href="{pg.u("")}" aria-label="The Roof Crew home">{LOGO}THE ROOF <span>CREW</span></a>
+  <a class="logo" href="{pg.u("")}" aria-label="The Roof Crew home">{LOGO}The Roof Crew</a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="nav" id="nav" aria-label="Main">
     <div class="dd"><button aria-expanded="false"{cur("services")}>Services <span aria-hidden="true">▾</span></button>
@@ -108,7 +108,7 @@ def header(pg, current):
       <div class="dd-menu"><a class="first" href="{pg.u("locations/")}">All areas we cover</a>{reg_items}</div></div>
   </nav>
   <div class="header-actions">
-    <a class="btn btn-outline-light" href="tel:{TEL}">{ICONS["phone"]}{PHONE}</a>
+    <a class="btn btn-outline" href="tel:{TEL}">{ICONS["phone"]}{PHONE}</a>
     <a class="btn btn-primary" href="#get-quote"><span class="lg">Get my free quote</span><span class="sm">Free quote</span></a>
   </div>
 </div></header>'''
@@ -120,7 +120,7 @@ def footer(pg):
     reg = "".join(f'<li><a {pg.region_link(s, b)}>{n}</a></li>' for s, n, _, b in REGIONS)
     return f'''<footer class="site-footer"><div class="wrap">
   <div class="cols">
-    <div><a class="logo" href="{pg.u("")}">{LOGO}THE ROOF <span>CREW</span></a>
+    <div><a class="logo" href="{pg.u("")}">{LOGO}The Roof Crew</a>
       <p style="margin-top:14px">{P("Family-owned Auckland roofers. Reroofing, new roofs, repairs, spouting and inspections.")}</p>
       <p class="trust">{P("RANZ member")} · Fully guaranteed · Finance available</p></div>
     <div><h4>Services</h4><ul>{svc}</ul></div>
@@ -262,7 +262,7 @@ def page(pg, title, desc, current, body, schema=None):
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="{pg.r}assets/css/site.css">
 {ld}
 </head>
