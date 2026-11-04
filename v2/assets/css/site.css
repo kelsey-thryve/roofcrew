@@ -333,3 +333,41 @@ section:not(.dark) .map { border-color: var(--gray-200); }
 /* Review cards fill their column; the rating card sizes to its content */
 figure.review { margin: 0; }
 .reviews { align-items: start; }
+
+/* ---------- Motion ---------- */
+/* Hero: background eases in, text and form rise in sequence */
+@keyframes rc-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes rc-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.hero-bg { animation: rc-zoom 1.8s cubic-bezier(.2,.7,.2,1) both; will-change: transform; }
+.hero .wrap > div:not(.quote-card) > * { animation: rc-rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.hero .wrap > div:not(.quote-card) > *:nth-child(2) { animation-delay: .1s; }
+.hero .wrap > div:not(.quote-card) > *:nth-child(3) { animation-delay: .2s; }
+.hero .wrap > div:not(.quote-card) > *:nth-child(4) { animation-delay: .3s; }
+.hero .wrap > div:not(.quote-card) > *:nth-child(5) { animation-delay: .4s; }
+.hero .quote-card { animation: rc-rise .9s .25s cubic-bezier(.2,.7,.2,1) both; }
+
+/* Scroll reveal (site.js adds .rv only to content below the fold) */
+.rv { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.rv.in { opacity: 1; transform: none; }
+.rv.rv-img { transform: scale(.96); }
+.rv.rv-img.in { transform: none; }
+
+/* Header gains depth once the page scrolls */
+.site-header { transition: box-shadow .3s, border-color .3s; }
+.site-header.scrolled { box-shadow: 0 8px 24px rgba(28,36,51,.08); border-color: transparent; }
+
+/* Cards lift, photos ease in on hover */
+.card, .stat { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .2s; }
+@media (hover: hover) {
+  .card:not(.prices):not(.unsure):not(.rating-card):hover, .stat:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(28,36,51,.12); }
+  .btn-primary:hover, .btn-white:hover { transform: translateY(-1px); }
+}
+.system .img img, .feature-img img, .photo img { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.system:hover .img img, .feature:hover .feature-img img, .photo:hover img { transform: scale(1.04); }
+.system .img, .feature-img, .photo { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg, .hero .wrap > div > *, .hero .quote-card { animation: none; }
+  .rv { opacity: 1; transform: none; transition: none; }
+  .card, .stat, .system .img img, .feature-img img, .photo img { transition: none; }
+}

@@ -62,6 +62,39 @@
     counters.forEach(function (el) { io.observe(el); });
   }
 
+  // Scroll motion: reveal content as it comes into view, header shadow, gentle hero parallax
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var header = document.querySelector('.site-header');
+  var heroBg = document.querySelector('.hero-bg');
+  var onScroll = function () {
+    var y = window.scrollY;
+    if (header) header.classList.toggle('scrolled', y > 8);
+    if (heroBg && !calm && y < 900) heroBg.style.translate = '0 ' + (y * 0.25) + 'px';
+  };
+  window.addEventListener('scroll', function () { requestAnimationFrame(onScroll); }, { passive: true });
+  onScroll();
+  if (!calm && 'IntersectionObserver' in window) {
+    var sel = 'main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .lede, .card, .stat, .photo, .ba, .map, .faqs details, .steps li, .band-cta .inner, .contact-box, .region-links a, .ph-box, .crew, .ticks li, .checks li';
+    var fold = window.innerHeight;
+    var items = [].filter.call(document.querySelectorAll(sel), function (el) {
+      return !el.closest('.hero') && !el.parentElement.closest('.rv-skip') && el.getBoundingClientRect().top > fold * 0.95;
+    });
+    var seen = new Set();
+    items.forEach(function (el) {
+      if ([].some.call(items, function (o) { return o !== el && o.contains(el); })) return; // animate the outer box only
+      var sibs = [].filter.call(el.parentElement.children, function (c) { return items.indexOf(c) > -1; });
+      var i = sibs.indexOf(el);
+      el.style.setProperty('--d', Math.min(i, 5) * 0.08 + 's');
+      el.classList.add('rv');
+      if (el.matches('.photo, .ba, .map')) el.classList.add('rv-img');
+      seen.add(el);
+    });
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rio.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    seen.forEach(function (el) { rio.observe(el); });
+  }
+
   // Before / after slider (keyboard friendly: it is a range input)
   document.querySelectorAll('.ba').forEach(function (ba) {
     var range = ba.querySelector('input[type=range]');
