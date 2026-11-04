@@ -49,7 +49,7 @@ PRICES = {  # whole-home ranges; None = no published range yet (shows "Fixed quo
 }
 PROJECTS = {
     "p1": ("concrete-before.jpg", "concrete-after.jpg", "Concrete tile to new roof", "Concrete tile reroof"),
-    "p2": ("colorsteel-before.jpg", "colorsteel-after.jpg", "Tired roof to COLORSTEEL long-run", "COLORSTEEL® long-run reroof"),
+    "p2": ("colorsteel-reroof-before.jpg", "colorsteel-reroof-after.jpg", "Tired roof to COLORSTEEL long-run", "COLORSTEEL® long-run reroof"),
     "p3": ("metaltile-before.jpg", "metaltile-after.jpg", "Old roof to pressed metal tile", "Pressed metal tile reroof"),
 }
 EAST_SUBURBS = ["Howick", "Botany", "Pakuranga", "Half Moon Bay", "Bucklands Beach", "Cockle Bay", "Dannemora",
@@ -361,7 +361,7 @@ def build_home():
   <div class="ba-side">
     <div><span class="eyebrow">See the difference</span><h2>The upgrade your whole street notices.</h2><p class="lede">Drag the slider to see a real Auckland reroof, start to finish.</p></div>
     <div><span class="filter-label">Filter: choose a project</span>
-      <div class="track" data-track="projects"><button type="button" data-value="p1" aria-pressed="true">Concrete tile</button><button type="button" data-value="p2" aria-pressed="false">Long-run</button><button type="button" data-value="p3" aria-pressed="false">Metal tile</button></div></div>
+      <div class="track" data-track="projects"><button type="button" data-value="p1" aria-pressed="true">Concrete tile</button><button type="button" data-value="p2" aria-pressed="false">COLORSTEEL</button><button type="button" data-value="p3" aria-pressed="false">Metal tile</button></div></div>
     <p data-project-caption style="font-size:15px;color:var(--gray-500)">{p1[3]}</p>
     <hr>
     <a class="btn btn-primary" href="#get-quote">Get my free quote →</a>
