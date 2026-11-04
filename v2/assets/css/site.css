@@ -409,3 +409,10 @@ body { font-size: 18px; }
   .why-list li { grid-template-columns: 60px 1fr; }
   .why-list .num { font-size: 38px; }
 }
+
+/* White cards and FAQ items inside black sections keep their light styling */
+.dark .card, .dark .faqs details { color: var(--ink); }
+.dark .card h2, .dark .card h3 { color: var(--ink); }
+.dark .card .link { color: var(--ink); }
+.dark .card mark.ph { background: #fff1a8; color: inherit; }
+.dark .faqs details { border-color: transparent; }

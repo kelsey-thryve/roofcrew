@@ -350,7 +350,7 @@ def build_home():
   {services_grid(pg)}
 </div></section>
 
-<section id="options"><div class="wrap">
+<section class="dark" id="options"><div class="wrap">
   <div class="head-split"><div><span class="eyebrow">Roofing options</span><h2>Three roofing systems,<br>made for Auckland weather.</h2></div>
     <p class="lede">Not sure which suits your home? We'll bring real samples and help you choose at your free site visit.</p></div>
   {systems_cards(pg)}
@@ -427,7 +427,7 @@ def build_home():
   <a class="btn btn-white" href="#get-quote">Get my free quote →</a>
 </div></div></section>
 
-<section class="alt"><div class="wrap"><h2 style="margin-bottom:30px">Questions people ask us</h2>{faq_block(faqs)}</div></section>
+<section class="dark"><div class="wrap"><h2 style="margin-bottom:30px">Questions people ask us</h2>{faq_block(faqs)}</div></section>
 {closing(pg).replace('id="get-quote"', 'id="quote-bottom"')}'''
     # header and CTA buttons on the home page go to the hero form
     body = body.replace('id="hero-quote"', 'id="get-quote"')
