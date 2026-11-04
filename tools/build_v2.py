@@ -107,8 +107,6 @@ def header(pg, current):
   <nav class="nav" id="nav" aria-label="Main">
     <div class="dd"><button aria-expanded="false"{cur("services")}>Services <span aria-hidden="true">▾</span></button>
       <div class="dd-menu"><a class="first" href="{pg.u("services/")}">All services</a>{svc_items}</div></div>
-    <a href="{pg.u("#options")}">Roofing options</a>
-    <a href="{pg.u("#work")}">Our work</a>
     <a href="{pg.u("about/")}"{cur("about")}>About</a>
     <div class="dd"><button aria-expanded="false"{cur("locations")}>Locations <span aria-hidden="true">▾</span></button>
       <div class="dd-menu"><a class="first" href="{pg.u("locations/")}">All areas we cover</a>{reg_items}</div></div>
@@ -184,7 +182,12 @@ def signs_list():
     return '<ul class="checks">' + "".join(f"<li>{i}</li>" for i in items) + "</ul>"
 
 
+COLOURS = [("Titania", "#e4e1d6"), ("Gull Grey", "#a4a9a7"), ("Desert Sand", "#c8b58f"), ("Sandstone Grey", "#8a897f"),
+           ("Thunder Grey", "#5d605f"), ("Karaka", "#3a4a3e"), ("Grey Friars", "#4a4c4f"), ("Ironsand", "#3a3631")]  # approximate screen shades
+
+
 def pricing_panel(pg, heading="What a whole reroof roughly costs"):
+    swatches = "".join(f'<li><span class="sw" style="--c:{c}"></span>{n}</li>' for n, c in COLOURS)
     groups = ""
     labels = [("Small home", "Roof area under 100m²"), ("Standard home", "Roof 100 to 180m²"), ("Large or complex", "Roof 180m²+")]
     for key, vals in PRICES.items():
@@ -194,7 +197,9 @@ def pricing_panel(pg, heading="What a whole reroof roughly costs"):
   <div class="prices-head"><div><h3>{heading}</h3><p style="color:var(--gray-500);font-size:15px;margin-top:4px">Indicative 2026 Auckland ranges, not a fixed quote.</p></div>
     <div><span class="filter-label">Filter: roof type</span><div class="track" data-track="prices"><button type="button" data-value="longrun" aria-pressed="true">Long-run</button><button type="button" data-value="metal" aria-pressed="false">Metal tile</button><button type="button" data-value="concrete" aria-pressed="false">Concrete tile</button></div></div></div>
   {groups}
-  <div class="prices-foot"><span>12 COLORSTEEL® colours available · <a class="link soon" href="#">See the colour range</a></span><a class="btn btn-primary" href="#get-quote">Get my exact price →</a></div>
+  <div class="colours"><div><h3>Pick your colour</h3><p>A few popular COLORSTEEL® colours. Shades are approximate on screen, we'll bring real samples to your quote.</p></div>
+    <ul class="swatches">{swatches}</ul></div>
+  <div class="prices-foot"><span>12 COLORSTEEL® colours available</span><a class="btn btn-primary" href="#get-quote">Get my exact price →</a></div>
 </div>'''
 
 
@@ -270,7 +275,7 @@ def page(pg, title, desc, current, body, schema=None):
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{pg.r}assets/css/site.css">
 <link rel="icon" href="{pg.r}assets/icons/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="{pg.r}assets/icons/favicon-32.png">
@@ -340,48 +345,19 @@ def build_home():
 </div></section>
 
 <section class="alt" style="margin-top:-60px;padding-top:140px"><div class="wrap">
-  <h2>Signs it's time for a new roof</h2>
-  <p class="lede">If two or more of these sound familiar, another patch is likely money down the drain.</p>
-  <div class="signs" style="margin-top:32px">
-    <div class="card">{signs_list()}</div>
-    <div class="photo"><img src="assets/img/colorsteel-before.jpg" alt="An old, tired roof ready for replacement" loading="lazy"></div>
-  </div>
-  <div class="card unsure"><p><b>Not sure?</b> Mike will check your roof and tell you straight whether it's time.</p>
-    <div class="acts"><a class="btn btn-primary" href="#get-quote">Get my free reroof or repair quote</a></div></div>
-</div></section>
-
-<section><div class="wrap">
   <div class="head-split"><div><span class="eyebrow">What we do</span><h2>Solution Focused Roofing Specialists</h2></div>
     <p class="lede">Not sure which one you need? Give Mike a call and he'll talk you through it. No jargon.</p></div>
   {services_grid(pg)}
 </div></section>
 
-<section class="alt"><div class="wrap center">
-  <span class="eyebrow">The Roof Crew difference</span>
-  <h2>Why Auckland chooses us</h2>
-  <p class="lede">There's a reason we have a 4.7 star rating.</p>
-  <div class="grid-4" style="margin-top:36px;text-align:left">
-    <div class="card"><div class="icon">{ICONS["family"]}</div><h3>Family-owned</h3><p>Three decades in the trade, still run by the same crew that picks up the phone.</p></div>
-    <div class="card"><div class="icon">{ICONS["clock"]}</div><h3>Fast, free quotes</h3><p>No call centres. You deal with Mike from the first call to the final check.</p></div>
-    <div class="card"><div class="icon">{ICONS["shield"]}</div><h3>Fully guaranteed</h3><p>Workmanship and product are both covered, so there are no fine-print surprises.</p></div>
-    <div class="card"><div class="icon">{ICONS["card"]}</div><h3>Finance available</h3><p>Spread the cost of a reroof with flexible payment options.</p></div>
-  </div>
-  <p style="margin-top:30px"><a class="link" href="about/">Meet the crew →</a></p>
-</div></section>
-
-<section><div class="wrap">
-  <span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What Auckland homeowners say</h2>
-  {reviews_row(pg)}
-</div></section>
-
-<section class="alt" id="options"><div class="wrap">
+<section id="options"><div class="wrap">
   <div class="head-split"><div><span class="eyebrow">Roofing options</span><h2>Three roofing systems,<br>made for Auckland weather.</h2></div>
     <p class="lede">Not sure which suits your home? We'll bring real samples and help you choose at your free site visit.</p></div>
   {systems_cards(pg)}
   {pricing_panel(pg)}
 </div></section>
 
-<section id="work"><div class="wrap ba-wrap">
+<section class="alt" id="work"><div class="wrap ba-wrap">
   <div class="ba-side">
     <div><span class="eyebrow">See the difference</span><h2>The upgrade your whole street notices.</h2><p class="lede">Drag the slider to see a real Auckland reroof, start to finish.</p></div>
     <div><span class="filter-label">Filter: choose a project</span>
@@ -409,6 +385,41 @@ def build_home():
     <p style="margin-top:14px"><a class="link" href="locations/">See all areas we cover →</a></p>
   </div>
   <div class="map"><iframe title="Map of the areas The Roof Crew covers" src="{MAP_AUCKLAND}" loading="lazy"></iframe></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Signs it's time for a new roof</h2>
+  <p class="lede">If two or more of these sound familiar, another patch is likely money down the drain.</p>
+  <div class="signs" style="margin-top:32px">
+    <div class="card">{signs_list()}</div>
+    <div class="photo"><img src="assets/img/colorsteel-before.jpg" alt="An old, tired roof ready for replacement" loading="lazy"></div>
+  </div>
+  <div class="card unsure"><p><b>Not sure?</b> Mike will check your roof and tell you straight whether it's time.</p>
+    <div class="acts"><a class="btn btn-primary" href="#get-quote">Get my free reroof or repair quote</a></div></div>
+</div></section>
+
+<section class="dark why"><div class="wrap">
+  <span class="eyebrow">The Roof Crew difference</span>
+  <h2>Why Auckland chooses us</h2>
+  <hr class="rule">
+  <div class="why-grid">
+    <div class="why-photo"><img src="assets/img/photo-sunset-roof.jpg" alt="A new roof finished by The Roof Crew at sunset" loading="lazy"><div class="why-badge"><b>30+</b><span>Years on Auckland roofs</span></div></div>
+    <div>
+      <p class="lede">There's a reason we have a 4.7 star rating.</p>
+      <ol class="why-list">
+        <li><span class="num">01</span><div><h3>Family-owned</h3><p>Three decades in the trade, still run by the same crew that picks up the phone.</p></div></li>
+        <li><span class="num">02</span><div><h3>Fast, free quotes</h3><p>No call centres. You deal with Mike from the first call to the final check.</p></div></li>
+        <li><span class="num">03</span><div><h3>Fully guaranteed</h3><p>Workmanship and product are both covered, so there are no fine-print surprises.</p></div></li>
+        <li><span class="num">04</span><div><h3>Finance available</h3><p>Spread the cost of a reroof with flexible payment options.</p></div></li>
+      </ol>
+      <p style="margin-top:26px"><a class="link" href="about/">Meet the crew →</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What Auckland homeowners say</h2>
+  {reviews_row(pg)}
 </div></section>
 
 <section class="band-cta"><div class="wrap"><div class="inner">
