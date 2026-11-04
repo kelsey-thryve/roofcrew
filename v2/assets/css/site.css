@@ -323,3 +323,13 @@ section:not(.dark) .map { border-color: var(--gray-200); }
 /* Footer logo: white tile, navy house */
 .site-footer .logo svg rect { fill: #fff; }
 .site-footer .logo svg path { stroke: var(--charcoal); }
+
+/* Price bands without a published range */
+.band b.ask { font-size: 20px; line-height: 1.3; margin: 12px 0 8px; color: var(--ink); }
+/* Count-up keeps its width while the digits change */
+.stat b[data-count] { font-variant-numeric: tabular-nums; }
+/* Footer quote button: white on the navy footer so it stays visible */
+.site-footer .btn-primary { background: #fff; color: var(--charcoal); border-color: #fff; }
+/* Review cards fill their column; the rating card sizes to its content */
+figure.review { margin: 0; }
+.reviews { align-items: start; }

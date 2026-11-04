@@ -41,6 +41,27 @@
     });
   }
 
+  // Count-up stats: 0 to the target in 2 seconds when they scroll into view
+  var counters = document.querySelectorAll('[data-count]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (counters.length && 'IntersectionObserver' in window && !reduce) {
+    var fmt = function (n) { return n.toLocaleString('en-NZ'); };
+    var run = function (el) {
+      var target = +el.dataset.count, suffix = el.dataset.suffix || '', start = null;
+      var step = function (t) {
+        if (start === null) start = t;
+        var p = Math.min((t - start) / 2000, 1), eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(Math.round(target * eased)) + (p === 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); run(en.target); } });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { io.observe(el); });
+  }
+
   // Before / after slider (keyboard friendly: it is a range input)
   document.querySelectorAll('.ba').forEach(function (ba) {
     var range = ba.querySelector('input[type=range]');
