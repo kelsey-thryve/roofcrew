@@ -195,7 +195,7 @@ def pricing_panel(pg, heading="What a whole reroof roughly costs"):
         groups += f'<div class="bands" data-prices="{key}"{"" if key == "longrun" else " hidden"}>{bands}</div>'
     return f'''<div class="card prices">
   <div class="prices-head"><div><h3>{heading}</h3><p style="color:var(--gray-500);font-size:15px;margin-top:4px">Indicative 2026 Auckland ranges, not a fixed quote.</p></div>
-    <div><span class="filter-label">Filter: roof type</span><div class="track" data-track="prices"><button type="button" data-value="longrun" aria-pressed="true">Long-run</button><button type="button" data-value="metal" aria-pressed="false">Metal tile</button><button type="button" data-value="concrete" aria-pressed="false">Concrete tile</button></div></div></div>
+    <div><span class="filter-label">Filter: roof type</span><div class="track" data-track="prices"><button type="button" data-value="longrun" aria-pressed="true">COLORSTEEL</button><button type="button" data-value="metal" aria-pressed="false">Metal tile</button><button type="button" data-value="concrete" aria-pressed="false">Concrete tile</button></div></div></div>
   {groups}
   <div class="colours"><div><h3>Pick your colour</h3><p>A few popular COLORSTEEL® colours. Shades are approximate on screen, we'll bring real samples to your quote.</p></div>
     <ul class="swatches">{swatches}</ul></div>
