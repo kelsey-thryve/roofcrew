@@ -40,7 +40,7 @@ REGIONS = [  # (slug, name, blurb, built)
 SYSTEMS = [
     ("COLORSTEEL® long-run", "colorsteel-installed.jpg", "COLORSTEEL long-run roof", ["40 to 60 year life", "Our most popular option"]),
     ("Pressed metal tile", "hero-metal-tile.jpg", "Pressed metal tile roof", ["The look of tile, the strength of steel", "Light, strong and durable"]),
-    ("Concrete tile", "concrete-after.jpg", "Concrete tile roof", ["Thermal and acoustic performance", "Heavier, may need a structural check"]),
+    ("Concrete tile", "concrete-tile.jpg", "Concrete tile roof", ["Thermal and acoustic performance", "Heavier, may need a structural check"]),
 ]
 PRICES = {  # whole-home ranges; None = no published range yet (shows "Fixed quote on site")
     "longrun": ("$12k to $18k", "$16k to $28k", "$25k to $40k+"),
