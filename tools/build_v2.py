@@ -48,9 +48,9 @@ PRICES = {  # whole-home ranges; None = no published range yet (shows "Fixed quo
     "concrete": (None, None, None),
 }
 PROJECTS = {
-    "p1": ("concrete-before.jpg", "concrete-after.jpg", "Concrete tile to new roof", "Concrete tile reroof"),
+    "p1": ("concretetile-reroof-before.jpg", "concretetile-reroof-after.jpg", "Concrete tile to new roof", "Concrete tile reroof"),
     "p2": ("colorsteel-reroof-before.jpg", "colorsteel-reroof-after.jpg", "Tired roof to COLORSTEEL long-run", "COLORSTEEL® long-run reroof"),
-    "p3": ("metaltile-reroof-before.jpg", "metaltile-reroof-after.jpg", "Old roof to pressed metal tile", "Pressed metal tile reroof"),
+    "p3": ("metaltile-before.jpg", "metaltile-after.jpg", "Old roof to pressed metal tile", "Pressed metal tile reroof"),
 }
 EAST_SUBURBS = ["Howick", "Botany", "Pakuranga", "Half Moon Bay", "Bucklands Beach", "Cockle Bay", "Dannemora",
                 "Flat Bush", "Highland Park", "Eastern Beach", "Shelly Park", "Mellons Bay", "Sunnyhills", "Farm Cove",
