@@ -546,10 +546,8 @@ def build_east():
   <div class="grid-3">{svc}</div>
 </div></section>
 <section><div class="wrap">
-  <span class="eyebrow">Local proof</span><h2 style="margin-bottom:32px">What East Auckland customers say</h2>
-  <div class="grid-2">
-    {reviews_row(pg, "east")}
-  </div>
+  <span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What Auckland homeowners say</h2>
+  {reviews_row(pg)}
 </div></section>
 <section class="alt"><div class="wrap areas" style="align-items:start">
   <div><span class="eyebrow">Suburbs we cover</span><h2>East Auckland suburbs</h2>
