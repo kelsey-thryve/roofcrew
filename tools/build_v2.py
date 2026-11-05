@@ -99,8 +99,7 @@ def header(pg, current):
     svc_items = "".join(f'<a {pg.svc_link(s, b)}>{n}</a>' for s, n, _, b in SERVICES)
     reg_items = "".join(f'<a {pg.region_link(s, b)}>{n}</a>' for s, n, _, b in REGIONS)
     cur = lambda k: ' aria-current="page"' if current == k else ""
-    return f'''<div class="staging" role="note" data-staging><div class="wrap"><span><b>Staging preview, not live.</b> <mark>Yellow</mark> = content to supply or confirm.</span><button type="button">Hide highlights</button></div></div>
-<div class="topbar"><div class="wrap"><span>Free reroof quotes right across Auckland</span><span>Call or text Mike: <a href="tel:{TEL}">{PHONE}</a></span></div></div>
+    return f'''<div class="topbar"><div class="wrap"><span>Free reroof quotes right across Auckland</span><span>Call or text Mike: <a href="tel:{TEL}">{PHONE}</a></span></div></div>
 <header class="site-header"><div class="wrap">
   <a class="logo" href="{pg.u("")}" aria-label="The Roof Crew home">{LOGO}The Roof Crew</a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
