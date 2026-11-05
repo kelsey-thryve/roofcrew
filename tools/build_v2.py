@@ -538,7 +538,6 @@ def build_east():
     body += f'''
 <section><div class="wrap split">
   <div class="prose"><span class="eyebrow">Roofing in East Auckland</span><h2 style="margin-bottom:18px">Your local reroofing crew.</h2>
-    <p>{P("[2 to 3 sentences of genuine local detail from Mike: the homes and roofs he sees most in East Auckland, coastal wind and salt near the beaches, recent jobs nearby.]")}</p>
     <p>From Howick to Beachlands, the same family crew quotes, builds and guarantees every roof.</p></div>
   <div class="photo" style="min-height:360px"><img src="{pg.r}assets/img/bg-sunset.jpg" alt="{''}Roof in East Auckland" loading="lazy"></div>
 </div></section>
@@ -547,10 +546,8 @@ def build_east():
   <div class="grid-3">{svc}</div>
 </div></section>
 <section><div class="wrap">
-  <span class="eyebrow">Local proof</span><h2 style="margin-bottom:32px">Recent East Auckland roofs</h2>
-  <div class="grid-3">
-    <div class="ph-box" style="min-height:240px">{P("[Job photo: East Auckland reroof]")}</div>
-    <div class="ph-box" style="min-height:240px">{P("[Job photo: East Auckland reroof]")}</div>
+  <span class="eyebrow">Local proof</span><h2 style="margin-bottom:32px">What East Auckland customers say</h2>
+  <div class="grid-2">
     {reviews_row(pg, "east")}
   </div>
 </div></section>
