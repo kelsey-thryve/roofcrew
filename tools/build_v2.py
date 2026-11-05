@@ -38,7 +38,7 @@ REGIONS = [  # (slug, name, blurb, built)
     ("west-auckland", "West Auckland", "Henderson, Te Atatū, Titirangi, Kumeū and nearby", False),
 ]
 SYSTEMS = [
-    ("COLORSTEEL® long-run", "colorsteel-installed.jpg", "COLORSTEEL long-run roof", ["40 to 60 year life", "Our most popular option"]),
+    ("COLORSTEEL® long-run", "colorsteel-installed.jpg", "COLORSTEEL long-run roof", ["A huge range of colours and profiles", "Our most popular option"]),
     ("Pressed metal tile", "hero-metal-tile.jpg", "Pressed metal tile roof", ["The look of tile, the strength of steel", "Light, strong and durable"]),
     ("Concrete tile", "concrete-tile.jpg", "Concrete tile roof", ["Thermal and acoustic performance", "Heavier, may need a structural check"]),
 ]
@@ -199,7 +199,7 @@ def pricing_panel(pg, heading="What a whole reroof roughly costs"):
   {groups}
   <div class="colours"><div><h3>Pick your colour</h3><p>A few popular COLORSTEEL® colours. Shades are approximate on screen, we'll bring real samples to your quote.</p></div>
     <ul class="swatches">{swatches}</ul></div>
-  <div class="prices-foot"><span>12 COLORSTEEL® colours available</span><a class="btn btn-primary" href="#get-quote">Get my exact price →</a></div>
+  <div class="prices-foot"><span>A huge range of COLORSTEEL® colours and profiles</span><a class="btn btn-primary" href="#get-quote">Get my exact price →</a></div>
 </div>'''
 
 
@@ -230,7 +230,7 @@ def reviews_row(pg, which="home"):
     elif which == "reroof":
         reviews = REAL_REVIEWS[2:]
     else:
-        reviews = [(P("[Real review from an East Auckland customer]"), P("[Name]") + " · " + P("[Suburb]"))]
+        reviews = [("Excellent job done! The roof looks great, also the new cladding to the gables and the new spouting is fantastic.", "Anne and Richard · Mellons Bay")]
     cards = "".join(f'<figure class="card review"><div class="stars">★★★★★</div><blockquote>{t}</blockquote><cite>{n}</cite></figure>' for t, n in reviews)
     if which in ("reroof", "east"):
         return cards
@@ -319,7 +319,7 @@ def build_home():
         ("How do I know if my roof needs replacing?", "If leaks keep coming back after repairs, the roof is 30 or more years old, or you can see rust, lifting sheets, cracked tiles or water stains on your ceilings, it is usually time to look at a new roof. Mike will check it on a free site visit and tell you straight whether a repair will do."),
         ("How much does a reroof cost in Auckland?", f"It depends on the size and shape of your roof, access, and the material you choose. The ranges above are a rough guide for small, standard and large homes. After a free site visit you get a fixed, itemised price, so there are no surprises."),
         ("Is it worth repairing my roof, or should I replace it?", "A repair makes sense for a one-off problem on a roof that is otherwise sound. If you are patching the same roof every winter, the money usually goes further on a new roof with a fresh guarantee. We will tell you honestly which one you need."),
-        ("How long does a reroof take, and can we stay home?", "It depends on the size of your roof, access and the weather. Mike gives you a timeframe with your fixed quote, so you know what to expect before we start. You can usually stay home while we work, and we tidy the site at the end of every day."),
+        ("How long does a reroof take, and can we stay home?", "An average 3-bedroom house takes about 3 to 4 days, weather pending. Mike gives you a timeframe with your fixed quote, so you know what to expect before we start. You can usually stay home while we work, and we tidy the site at the end of every day."),
         ("Do you offer finance?", "Yes. Finance is available so you can spread the cost of a new roof. Just ask when you book your free quote."),
         ("Which roofing material is best for Auckland homes?", "For most Auckland homes, COLORSTEEL® long-run is the popular choice: it's light, handles coastal wind and rain well, and comes in a wide range of colours. Pressed metal tile gives the look of tile with the strength of steel, while concrete tile offers good thermal and acoustic performance but is heavier. Mike brings samples to your free site visit."),
     ]
@@ -464,7 +464,7 @@ def build_reroofing():
     faqs = [
         ("Do I need building consent to reroof?", P("[Mike to confirm wording: when a like-for-like reroof does and does not need building consent, and who sorts it.]")),
         ("What if my roof has asbestos?", P("[Mike to confirm: how asbestos is identified and removed, and by whom.]")),
-        ("How long does a reroof take?", f"Most homes take {P('[X to Y working days, from Mike]')}, depending on size, access and weather. You can usually stay home while we work."),
+        ("How long does a reroof take?", "An average 3-bedroom house takes about 3 to 4 days, weather pending. You can usually stay home while we work."),
         ("Can I change from tiles to long-run?", "Usually, yes. It is one of the most common upgrades. Mike checks the roof framing at your site visit and explains anything that needs to change."),
     ]
     included = ["Old roof stripped and disposed of responsibly", "New underlay, flashings and ridge capping", "Rotten battens or purlins found and replaced",
@@ -574,20 +574,20 @@ def build_about():
                    for n, r in [("Mike", "Owner"), ("[Name]", "[Role]"), ("[Name]", "[Role]"), ("[Name]", "[Role]")])
     body = f'''<section class="hero page-hero"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/bg-crew.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">About us</span><h1>A family crew that turns up.</h1>
-<p class="lede">{P("[One line from Mike about the business]")}</p>
+<p class="lede">Family-owned, with over 30 years' experience in the building industry.</p>
 <div class="hero-actions"><a class="btn btn-primary" href="#get-quote">Get my free quote →</a></div></div></div></section>
 <section><div class="wrap split">
   <div class="prose"><span class="eyebrow">Our story</span><h2 style="margin-bottom:18px">Family-owned, three decades in.</h2>
-    <p>{P("[Mike's story in his own words: how The Roof Crew started, the family behind it, and why the same crew still answers the phone.]")}</p>
-    <p>{P("[What a customer can expect: straight prices, tidy sites, turning up when we say we will.]")}</p></div>
+    <p>The Roof Crew is a family-owned business with over 30 years' experience in the building industry. We know what it's like to have that awful feeling of seeing a leak on your ceiling, and we pride ourselves on making sure you get a roof that's built to last and looks amazing.</p>
+    <p>Our crew are clean-cut, professional and extremely knowledgeable. We remove your old roof and dispose of it responsibly, work with safety netting and edge protection, and we're fully insured for your protection. We're also distributors and installers for Metrotile NZ, part of the RossRoof Group.</p></div>
   <div class="photo" style="min-height:400px"><img src="{pg.r}assets/img/bg-crew.jpg" alt="The Roof Crew team on site" loading="lazy"></div>
 </div></section>
 <section class="alt"><div class="wrap"><span class="eyebrow">Meet the crew</span><h2 style="margin-bottom:32px">The people on your roof.</h2><div class="grid-4">{crew}</div></div></section>
 <section><div class="wrap"><span class="eyebrow">Accreditations and warranty</span><h2 style="margin-bottom:32px">What's backed, in writing.</h2>
   <div class="grid-3">
-    <div class="card"><div class="icon">{ICONS["shield"]}</div><h3>{P("RANZ member")}</h3><p>{P("[Confirm membership]")}</p></div>
-    <div class="card"><div class="icon">{ICONS["home"]}</div><h3>Workmanship guarantee</h3><p>{P("[Length and terms, from Mike]")}</p></div>
-    <div class="card"><div class="icon">{ICONS["build"]}</div><h3>Product warranty</h3><p>{P("[Manufacturer warranty terms, e.g. COLORSTEEL®]")}</p></div>
+    <div class="card"><div class="icon">{ICONS["shield"]}</div><h3>RANZ member</h3><p>A member of the Roofing Association of New Zealand.</p></div>
+    <div class="card"><div class="icon">{ICONS["home"]}</div><h3>Workmanship guarantee</h3><p>Every project comes with a 5-year workmanship warranty.</p></div>
+    <div class="card"><div class="icon">{ICONS["build"]}</div><h3>Product warranty</h3><p>On top of our guarantee, every product is covered by the manufacturer's own warranty.</p></div>
   </div>
   <p style="margin-top:18px;font-size:14px;color:var(--gray-500)">Only confirmed accreditations go live.</p>
 </div></section>
@@ -617,7 +617,7 @@ def build_quote():
 def build_contact():
     pg = Page("contact/")
     faqs = [
-        ("What happens after I get in touch?", f"Mike calls you back, {P('[usually the same or next working day]')}, asks a few questions and books a free site visit."),
+        ("What happens after I get in touch?", "Mike calls you back personally, asks a few questions and books a free site visit, usually within three working days."),
         ("Is the quote really free?", "Yes. The site visit and quote are free, with no obligation and no sales pressure."),
         ("Do you cover my area?", "We cover East Auckland, the North Shore, South Auckland and West Auckland. If you're not sure, just ask."),
     ]
