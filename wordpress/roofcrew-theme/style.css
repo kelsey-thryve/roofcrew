@@ -1,0 +1,11 @@
+/*
+Theme Name: The Roof Crew
+Theme URI: https://theroofcrew.co.nz
+Author: Thryve Growth
+Description: Custom theme for The Roof Crew. Services and Locations are ordinary WordPress pages (children of the Services and Locations pages) using the "Service page" and "Location page" templates, so new ones can be added or duplicated in wp-admin. After activating, run Settings → The Roof Crew → Import starter content.
+Version: 1.0.0
+Requires at least: 6.2
+Requires PHP: 7.4
+Text Domain: roofcrew
+*/
+/* Styles live in assets/css/site.css (generated from the v2 design) and wp.css (WordPress-only extras). */

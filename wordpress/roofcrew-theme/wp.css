@@ -1,0 +1,16 @@
+/* WordPress-only extras on top of assets/css/site.css */
+.quote-card.is-sent form { display: none; }
+.quote-card.is-sent .form-done { display: block; }
+.form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Content typed in the WordPress editor (Service and Location pages, other pages) */
+.entry > * + * { margin-top: 14px; }
+.entry h2 { font-size: clamp(26px, 3vw, 34px); margin-top: 28px; }
+.entry h3 { font-size: 22px; margin-top: 22px; }
+.entry ul, .entry ol { padding-left: 1.2em; color: var(--gray-700); }
+.entry li + li { margin-top: 6px; }
+.entry img, .entry figure { max-width: 100%; height: auto; border-radius: var(--radius); }
+.entry a { color: var(--ink); }
+.entry blockquote { border-left: 3px solid var(--ink); padding-left: 16px; color: var(--gray-700); }
+.page-content { max-width: 760px; }
+.alignwide, .alignfull { max-width: 100%; }
