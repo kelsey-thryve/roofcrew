@@ -471,7 +471,6 @@ def build_reroofing():
                 "Full scaffolding and edge protection", "Fully guaranteed workmanship and product", "Finance available"]
     p1 = PROJECTS["p2"]
     other = "".join(f'<li><a class="link" {pg.svc_link(s, b)}>{n}</a></li>' for s, n, _, b in SERVICES[1:])
-    areas = "".join(f'<li><a class="link" {pg.region_link(s, b)}>Reroofing in {n}</a></li>' for s, n, _, b in REGIONS)
     body = hero_page(pg, "hero-metal-tile.jpg", f'<a href="{pg.u("services/")}" style="color:inherit">Services</a> / Reroofing', "Reroofing in Auckland",
                      "Old roof leaking, rusting or just tired? A new roof is the biggest upgrade you can make to your home, and the first thing a buyer notices.")
     body += f'''
@@ -505,9 +504,8 @@ def build_reroofing():
     <span class="lbl l">Before</span><span class="lbl r">After</span><div class="handle"></div><div class="knob">‹›</div><input type="range" min="0" max="100" value="50" aria-label="Compare before and after"></div>
 </div></section>
 <section class="alt"><div class="wrap"><h2 style="margin-bottom:30px">Reroofing questions</h2>{faq_block(faqs)}</div></section>
-<section><div class="wrap grid-2">
+<section><div class="wrap">
   <div class="card"><h3>Other services</h3><ul class="ticks">{other}</ul></div>
-  <div class="card"><h3>Reroofing near you</h3><ul class="ticks">{areas}</ul></div>
 </div></section>
 {closing(pg, "New roof (reroof)", "Get a fixed price for your new roof.")}'''
     page(pg, "Reroofing in Auckland | The Roof Crew", "Full roof replacement across Auckland: old roof stripped and removed, new underlay, flashings and roofing, fully guaranteed. Free quotes.", "services", body, [faq_schema(faqs)])
