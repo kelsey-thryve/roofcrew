@@ -311,17 +311,20 @@ def hero_page(pg, img, eyebrow, h1, lede, extra=""):
 </div></div></section>'''
 
 
+HOME_FAQS = [
+    ("How do I know if my roof needs replacing?", "If leaks keep coming back after repairs, the roof is 30 or more years old, or you can see rust, lifting sheets, cracked tiles or water stains on your ceilings, it is usually time to look at a new roof. Mike will check it on a free site visit and tell you straight whether a repair will do."),
+    ("How much does a reroof cost in Auckland?", f"It depends on the size and shape of your roof, access, and the material you choose. The ranges above are a rough guide for small, standard and large homes. After a free site visit you get a fixed, itemised price, so there are no surprises."),
+    ("Is it worth repairing my roof, or should I replace it?", "A repair makes sense for a one-off problem on a roof that is otherwise sound. If you are patching the same roof every winter, the money usually goes further on a new roof with a fresh guarantee. We will tell you honestly which one you need."),
+    ("How long does a reroof take, and can we stay home?", "An average 3-bedroom house takes about 3 to 4 days, weather pending. Mike gives you a timeframe with your fixed quote, so you know what to expect before we start. You can usually stay home while we work, and we tidy the site at the end of every day."),
+    ("Do you offer finance?", "Yes. Finance is available so you can spread the cost of a new roof. Just ask when you book your free quote."),
+    ("Which roofing material is best for Auckland homes?", "For most Auckland homes, COLORSTEEL® long-run is the popular choice: it's light, handles coastal wind and rain well, and comes in a wide range of colours. Pressed metal tile gives the look of tile with the strength of steel, while concrete tile offers good thermal and acoustic performance but is heavier. Mike brings samples to your free site visit."),
+]
+
+
 # ------------------------------------------------------------------ HOME
 def build_home():
     pg = Page("")
-    faqs = [
-        ("How do I know if my roof needs replacing?", "If leaks keep coming back after repairs, the roof is 30 or more years old, or you can see rust, lifting sheets, cracked tiles or water stains on your ceilings, it is usually time to look at a new roof. Mike will check it on a free site visit and tell you straight whether a repair will do."),
-        ("How much does a reroof cost in Auckland?", f"It depends on the size and shape of your roof, access, and the material you choose. The ranges above are a rough guide for small, standard and large homes. After a free site visit you get a fixed, itemised price, so there are no surprises."),
-        ("Is it worth repairing my roof, or should I replace it?", "A repair makes sense for a one-off problem on a roof that is otherwise sound. If you are patching the same roof every winter, the money usually goes further on a new roof with a fresh guarantee. We will tell you honestly which one you need."),
-        ("How long does a reroof take, and can we stay home?", "An average 3-bedroom house takes about 3 to 4 days, weather pending. Mike gives you a timeframe with your fixed quote, so you know what to expect before we start. You can usually stay home while we work, and we tidy the site at the end of every day."),
-        ("Do you offer finance?", "Yes. Finance is available so you can spread the cost of a new roof. Just ask when you book your free quote."),
-        ("Which roofing material is best for Auckland homes?", "For most Auckland homes, COLORSTEEL® long-run is the popular choice: it's light, handles coastal wind and rain well, and comes in a wide range of colours. Pressed metal tile gives the look of tile with the strength of steel, while concrete tile offers good thermal and acoustic performance but is heavier. Mike brings samples to your free site visit."),
-    ]
+    faqs = HOME_FAQS
     projects_js = "window.RC_PROJECTS=" + json.dumps({k: {"before": f"assets/img/{b}", "after": f"assets/img/{a}", "alt": alt, "caption": cap} for k, (b, a, alt, cap) in PROJECTS.items()}) + ";"
     p1 = PROJECTS["p1"]
     regions = "".join(f'<a {pg.region_link(s, b)}>{n} <span aria-hidden="true">→</span></a>' for s, n, _, b in REGIONS)
@@ -460,12 +463,7 @@ def build_services():
 # ------------------------------------------------------------------ REROOFING
 def build_reroofing():
     pg = Page("services/reroofing/")
-    faqs = [
-        ("Do I need building consent to reroof?", P("[Mike to confirm wording: when a like-for-like reroof does and does not need building consent, and who sorts it.]")),
-        ("What if my roof has asbestos?", P("[Mike to confirm: how asbestos is identified and removed, and by whom.]")),
-        ("How long does a reroof take?", "An average 3-bedroom house takes about 3 to 4 days, weather pending. You can usually stay home while we work."),
-        ("Can I change from tiles to long-run?", "Usually, yes. It is one of the most common upgrades. Mike checks the roof framing at your site visit and explains anything that needs to change."),
-    ]
+    faqs = HOME_FAQS
     included = ["Old roof stripped and disposed of responsibly", "New underlay, flashings and ridge capping", "Rotten battens or purlins found and replaced",
                 "Full scaffolding and edge protection", "Fully guaranteed workmanship and product", "Finance available"]
     p1 = PROJECTS["p2"]
@@ -569,8 +567,6 @@ def build_east():
 # ------------------------------------------------------------------ ABOUT
 def build_about():
     pg = Page("about/")
-    crew = "".join(f'<div class="crew"><div class="ph-box">{P("[Photo]")}</div><h3>{P(n)}</h3><p style="color:var(--gray-500)">{P(r)}</p></div>'
-                   for n, r in [("Mike", "Owner"), ("[Name]", "[Role]"), ("[Name]", "[Role]"), ("[Name]", "[Role]")])
     body = f'''<section class="hero page-hero"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/bg-crew.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">About us</span><h1>A family crew that turns up.</h1>
 <p class="lede">Family-owned, with over 30 years' experience in the building industry.</p>
@@ -581,8 +577,7 @@ def build_about():
     <p>Our crew are clean-cut, professional and extremely knowledgeable. We remove your old roof and dispose of it responsibly, work with safety netting and edge protection, and we're fully insured for your protection. We're also distributors and installers for Metrotile NZ, part of the RossRoof Group.</p></div>
   <div class="photo" style="min-height:400px"><img src="{pg.r}assets/img/bg-crew.jpg" alt="The Roof Crew team on site" loading="lazy"></div>
 </div></section>
-<section class="alt"><div class="wrap"><span class="eyebrow">Meet the crew</span><h2 style="margin-bottom:32px">The people on your roof.</h2><div class="grid-4">{crew}</div></div></section>
-<section><div class="wrap"><span class="eyebrow">Accreditations and warranty</span><h2 style="margin-bottom:32px">What's backed, in writing.</h2>
+<section class="alt"><div class="wrap"><span class="eyebrow">Accreditations and warranty</span><h2 style="margin-bottom:32px">What's backed, in writing.</h2>
   <div class="grid-3">
     <div class="card"><div class="icon">{ICONS["shield"]}</div><h3>RANZ member</h3><p>A member of the Roofing Association of New Zealand.</p></div>
     <div class="card"><div class="icon">{ICONS["home"]}</div><h3>Workmanship guarantee</h3><p>Every project comes with a 5-year workmanship warranty.</p></div>
@@ -590,8 +585,8 @@ def build_about():
   </div>
   <p style="margin-top:18px;font-size:14px;color:var(--gray-500)">Only confirmed accreditations go live.</p>
 </div></section>
-<section class="alt"><div class="wrap"><span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What our customers say</h2>{reviews_row(pg, "about")}</div></section>
-{closing(pg)}'''
+<section><div class="wrap"><span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What our customers say</h2>{reviews_row(pg, "about")}</div></section>
+{closing(pg).replace('<section id="request">', '<section class="alt" id="request">', 1)}'''
     page(pg, "About The Roof Crew | Family-owned Auckland roofers", "Meet Mike and the family crew behind The Roof Crew, Auckland's reroofing specialists.", "about", body)
 
 
@@ -625,7 +620,7 @@ def build_contact():
 <div class="wrap"><div><span class="eyebrow">Contact</span><h1>Talk to Mike.</h1><p class="lede">Call, text or send your details and Mike will get back to you personally.</p></div></div></section>
 <section><div class="wrap closing">
   <div><h2>Get in touch</h2>
-    <div class="contact-box" style="margin-top:24px"><a href="tel:{TEL}">{ICONS["phone"]} {PHONE}</a><a href="mailto:{EMAIL}">{ICONS["mail"]} {EMAIL}</a><span>Hours: {P("[Hours, from Mike]")}</span></div>
+    <div class="contact-box" style="margin-top:24px"><a href="tel:{TEL}">{ICONS["phone"]} {PHONE}</a><a href="mailto:{EMAIL}">{ICONS["mail"]} {EMAIL}</a><span>Hours: Mon to Fri 8am to 6pm, Sat 9am to 1pm, Sun closed</span></div>
     <h3 style="margin-top:36px">Areas we cover</h3>
     <div class="suburbs">{regs}</div>
     <p style="margin-top:14px;font-size:15px;color:var(--gray-500)">We come to you. No street address is listed because the crew works on site across Auckland.</p>
