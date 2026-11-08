@@ -110,7 +110,7 @@ get_header(); ?>
         <li><span class="num">03</span><div><h3>Fully guaranteed</h3><p>Workmanship and product are both covered, so there are no fine-print surprises.</p></div></li>
         <li><span class="num">04</span><div><h3>Finance available</h3><p>Spread the cost of a reroof with flexible payment options.</p></div></li>
       </ol>
-      <p style="margin-top:26px"><a class="link" href="about/">Meet the crew →</a></p>
+      <p style="margin-top:26px"><a class="link" href="about/">About us →</a></p>
     </div>
   </div>
 </div></section>
