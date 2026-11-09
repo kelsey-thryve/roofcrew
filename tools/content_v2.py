@@ -36,7 +36,7 @@ Q_INSURED = "Can we say you're fully insured (public liability)?"
 Q_GERARD = ("How should we describe your Gerard relationship? Your email signature says 'Licenced Resellers & Installers of "
             "Gerard Products'. The site says 'resellers and installers of Gerard products' (we don't use 'licensed', "
             "so it doesn't read like an LBP claim).")
-Q_GERARD_HOME = "OK to call the metal tile option 'Gerard metal tile' on the homepage? (Gerard wording)"
+Q_GERARD_HOME = "OK to call the metal tile option 'Gerard metal tile' on the roofing options cards? (Gerard wording)"
 Q_GERARD_CARD = "Gerard wording: is this the right description of the metal tile roofs you install?"
 Q_CONCRETE = ("Do you still offer concrete tile roofs? If yes, the concrete tile page stays. If not, it comes down "
               "(with a redirect to keep its Google traffic) and concrete tile is removed from the other pages.")
