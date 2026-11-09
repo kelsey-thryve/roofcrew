@@ -17,7 +17,8 @@
       <div class="dd-menu"><a class="first" href="<?php echo rc_url('services'); ?>">All services</a><?php rc_menu( 'services' ); ?></div></div>
     <a href="<?php echo rc_url('about'); ?>"<?php echo rc_current( 'about' ); ?>>About</a>
     <div class="dd"><button aria-expanded="false"<?php echo rc_current( 'locations' ); ?>>Locations <span aria-hidden="true">▾</span></button>
-      <div class="dd-menu"><a class="first" href="<?php echo rc_url('locations'); ?>">All areas we cover</a><?php rc_menu( 'locations' ); ?></div></div>
+      <div class="dd-menu"><a class="first" href="<?php echo rc_url('locations'); ?>">All areas we cover</a><?php rc_menu( 'locations', false, 'region' ); ?></div></div>
+    <a href="<?php echo rc_url('blog'); ?>"<?php echo rc_current( 'blog' ); ?>>Blog</a>
   </nav>
   <div class="header-actions">
     <a class="btn btn-outline" href="tel:+6421903822"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>021 903 822</a>

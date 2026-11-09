@@ -2,71 +2,61 @@
 /**
  * Template Name: Service page
  *
- * For pages under Services. Text comes from the editor and the "Page details" box,
- * the hero photo from the Featured image, the card text from the Excerpt.
+ * For service and roofing material pages (children of Services, or top-level pages in the Services
+ * group such as /colour-steel-roofing/). Text comes from the editor and the "Page details" box: the
+ * editor text before the first H2 sits beside the photo, and each H2 starts its own section.
+ * The hero photo is the Featured image, the card text is the Excerpt.
  */
 
 the_post();
 $title  = get_the_title();
 $h1     = rc_field( 'rc_h1' ) ? rc_field( 'rc_h1' ) : $title . ' in Auckland';
 $reroof = '1' === rc_field( 'rc_reroof' );
-rc_meta( $h1 . ' | The Roof Crew', wp_strip_all_tags( get_the_excerpt() ) );
+rc_meta( rc_field( 'rc_meta_title' ) ? rc_field( 'rc_meta_title' ) : wp_strip_all_tags( $h1 ) . ' | The Roof Crew', rc_field( 'rc_meta_desc' ) ? rc_field( 'rc_meta_desc' ) : wp_strip_all_tags( get_the_excerpt() ) );
 get_header();
 
-$parent = wp_get_post_parent_id( get_the_ID() );
-$crumb  = $parent ? '<a href="' . esc_url( get_permalink( $parent ) ) . '" style="color:inherit">' . esc_html( get_the_title( $parent ) ) . '</a> / ' . esc_html( $title ) : esc_html( $title );
+$group = rc_group_page();
+$crumb = $group ? '<a href="' . esc_url( get_permalink( $group ) ) . '" style="color:inherit">' . esc_html( get_the_title( $group ) ) . '</a> / ' . esc_html( $title ) : esc_html( $title );
 rc_hero( rc_image( 'hero-metal-tile.jpg' ), $crumb, $h1, rc_field( 'rc_lede' ) );
+if ( rc_field( 'rc_hold' ) ) {
+	echo '<div class="hold-note"><div class="wrap">' . wp_kses_post( rc_field( 'rc_hold' ) ) . '</div></div>';
+}
 
+list( $intro, $sections ) = rc_sections( apply_filters( 'the_content', get_the_content() ) );
 $included = rc_lines( 'rc_included' );
-?>
+$alt      = false;
+if ( trim( wp_strip_all_tags( $intro ) ) || $included || rc_field( 'rc_intro_heading' ) ) :
+	$alt = true;
+	?>
 <section><div class="wrap split">
   <div>
-    <span class="eyebrow"><?php echo $reroof ? "What's included" : esc_html( $title ); ?></span>
-    <?php if ( rc_field( 'rc_intro_heading' ) ) : ?><h2 style="margin-bottom:18px"><?php echo esc_html( rc_field( 'rc_intro_heading' ) ); ?></h2><?php endif; ?>
-    <div class="prose entry"><?php the_content(); ?></div>
-    <?php if ( $included ) : ?><ul class="ticks"><?php foreach ( $included as $i ) : ?><li><?php echo esc_html( $i ); ?></li><?php endforeach; ?></ul><?php endif; ?>
+    <span class="eyebrow"><?php echo esc_html( $title ); ?></span>
+	<?php if ( rc_field( 'rc_intro_heading' ) ) : ?><h2 style="margin-bottom:18px"><?php echo wp_kses_post( rc_field( 'rc_intro_heading' ) ); ?></h2><?php endif; ?>
+    <div class="prose entry"><?php echo $intro; // phpcs:ignore WordPress.Security.EscapeOutput ?></div>
+	<?php if ( $included ) : ?><ul class="ticks"><?php foreach ( $included as $i ) : ?><li><?php echo esc_html( $i ); ?></li><?php endforeach; ?></ul><?php endif; ?>
   </div>
-  <div class="photo" style="min-height:420px"><img src="<?php echo esc_url( rc_image( 'colorsteel-installed.jpg' ) ); ?>" alt="<?php echo esc_attr( $title ); ?> by The Roof Crew" loading="lazy"></div>
+  <div class="photo" style="min-height:420px"><img src="<?php echo esc_url( rc_photo( 'colorsteel-installed.jpg' ) ); ?>" alt="<?php echo esc_attr( $title ); ?> by The Roof Crew" loading="lazy"></div>
 </div></section>
+	<?php
+endif;
 
-<?php if ( $reroof ) : ?>
-<section class="alt"><div class="wrap">
-  <span class="eyebrow">When you need it</span><h2>Signs it's time for a new roof</h2>
-  <div class="card" style="margin-top:28px"><?php get_template_part( 'parts/signs' ); ?></div>
-</div></section>
-<section><div class="wrap">
-  <span class="eyebrow">How it works</span><h2 style="margin-bottom:32px">How a reroof works</h2>
-  <div class="grid-3">
-    <div class="card"><div class="icon"><?php echo rc_icon( 'search' ); // phpcs:ignore ?></div><h3>1. Free site visit</h3><p>We measure up and check what's underneath, usually within 3 working days.</p></div>
-    <div class="card"><div class="icon"><?php echo rc_icon( 'build' ); // phpcs:ignore ?></div><h3>2. Clean install</h3><p>Scaffold up, old roof off, new roof on, with a tidy site at the end of every day.</p></div>
-    <div class="card"><div class="icon"><?php echo rc_icon( 'shield' ); // phpcs:ignore ?></div><h3>3. Sign-off and guarantee</h3><p>A final check together, then your workmanship and product guarantees.</p></div>
-  </div>
-</div></section>
-<section class="alt" id="options"><div class="wrap">
-  <span class="eyebrow">Options and price ranges</span><h2 style="margin-bottom:32px">Choose your roof.</h2>
-  <?php get_template_part( 'parts/systems' ); ?>
-  <?php get_template_part( 'parts/pricing' ); ?>
-</div></section>
-<section id="work"><div class="wrap ba-wrap">
-  <div class="ba-side"><div><span class="eyebrow">Project photos</span><h2>A real Auckland reroof.</h2><p class="lede">Drag the slider to compare.</p></div>
-    <?php get_template_part( 'parts/review-one' ); ?></div>
-  <?php get_template_part( 'parts/before-after' ); ?>
-</div></section>
-<section class="alt"><div class="wrap"><h2 style="margin-bottom:30px">Questions people ask us</h2><?php get_template_part( 'parts/faqs' ); ?></div></section>
-<?php get_template_part( 'parts/faq-schema' ); ?>
-<?php endif; ?>
+if ( $reroof ) {
+	get_template_part( 'parts/reroof-extra' );
+	$alt = false;
+}
+$alt = rc_print_sections( $sections, esc_html( $title ), $alt );
+$alt = rc_faq_section( rc_field( 'rc_faq_title' ) ? rc_field( 'rc_faq_title' ) : 'Questions people ask us', $alt );
 
-<?php
 $others = array_filter( rc_children( 'services' ), function ( $p ) {
-	return $p->ID !== get_the_ID();
+	return get_the_ID() !== $p->ID;
 } );
 if ( $others ) :
 	?>
-<section<?php echo $reroof ? '' : ' class="alt"'; ?>><div class="wrap">
-  <div class="card"><h3>Other services</h3><ul class="ticks"><?php foreach ( $others as $p ) : ?><li><a <?php echo rc_link_post( $p, 'link' ); // phpcs:ignore ?>><?php echo esc_html( get_the_title( $p ) ); ?></a></li><?php endforeach; ?></ul></div>
+<section<?php echo $alt ? ' class="alt"' : ''; ?>><div class="wrap">
+  <div class="card"><h3>Other services</h3><ul class="ticks cols-2"><?php foreach ( $others as $p ) : ?><li><a <?php echo rc_link_post( $p, 'link' ); // phpcs:ignore ?>><?php echo esc_html( get_the_title( $p ) ); ?></a></li><?php endforeach; ?></ul></div>
 </div></section>
 <?php endif; ?>
 
-<?php get_template_part( 'parts/closing', null, array( 'heading' => $reroof ? 'Get a fixed price for your new roof.' : 'Get your free quote.' ) ); ?>
+<?php get_template_part( 'parts/closing', null, array( 'heading' => rc_field( 'rc_closing' ) ? rc_field( 'rc_closing' ) : 'Get your free quote.' ) ); ?>
 <?php
 get_footer();

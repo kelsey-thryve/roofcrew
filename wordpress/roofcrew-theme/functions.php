@@ -127,33 +127,70 @@ function rc_link_post( $p, $class = '' ) {
 }
 
 /**
- * Child pages of Services or Locations, in menu order. Drafts are included so they show as
- * "coming soon" (disabled) until they are published; private and binned pages are not.
+ * Pages in the Services or Locations group, in menu order: the child pages, plus top-level pages
+ * that keep an old address but belong to the group (meta _rc_group, e.g. /colour-steel-roofing/ and
+ * /roofers-in-pukekohe/). Drafts are included so they show as "coming soon" (disabled) until they
+ * are published; private and binned pages are not.
+ * $kind narrows the list: services are "service" or "material", locations "region" or "area".
  */
-function rc_children( $parent_path ) {
-	$parent = rc_page( $parent_path );
-	if ( ! $parent ) {
-		return array();
-	}
-	return get_posts( array(
+function rc_children( $parent_path, $kind = '' ) {
+	$parent_path = trim( $parent_path, '/' );
+	$args        = array(
 		'post_type'      => 'page',
-		'post_parent'    => $parent->ID,
 		'post_status'    => array( 'publish', 'draft' ),
 		'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
 		'posts_per_page' => -1,
-	) );
+	);
+	$parent = rc_page( $parent_path );
+	$pages  = $parent ? get_posts( $args + array( 'post_parent' => $parent->ID ) ) : array();
+	$pages  = array_merge( $pages, get_posts( $args + array( 'meta_key' => '_rc_group', 'meta_value' => $parent_path ) ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
+	$out    = array();
+	foreach ( $pages as $p ) {
+		if ( isset( $out[ $p->ID ] ) || ( $kind && rc_kind( $p, $parent_path ) !== $kind ) ) {
+			continue;
+		}
+		$out[ $p->ID ] = $p;
+	}
+	$out = array_values( $out );
+	usort( $out, function ( $a, $b ) {
+		return ( $a->menu_order - $b->menu_order ) ? $a->menu_order - $b->menu_order : strcmp( $a->post_title, $b->post_title );
+	} );
+	return $out;
+}
+
+/** Kind of a Services or Locations page: service, material, region or area. */
+function rc_kind( $p, $group = '' ) {
+	$k = rc_field( 'rc_kind', $p );
+	if ( $k ) {
+		return $k;
+	}
+	return 'locations' === $group ? 'region' : 'service';
+}
+
+/** The Services or Locations page a page belongs to (its parent, or its group for top-level pages). */
+function rc_group_page( $id = null ) {
+	$id     = $id ? $id : get_the_ID();
+	$parent = wp_get_post_parent_id( $id );
+	if ( $parent ) {
+		return get_post( $parent );
+	}
+	$group = (string) get_post_meta( $id, '_rc_group', true );
+	return $group ? rc_page( $group ) : null;
 }
 
 /** Menu links for the header dropdowns ($li = false) or the footer lists ($li = true). */
-function rc_menu( $parent_path, $li = false ) {
-	foreach ( rc_children( $parent_path ) as $p ) {
+function rc_menu( $parent_path, $li = false, $kind = '' ) {
+	foreach ( rc_children( $parent_path, $kind ) as $p ) {
 		$a = '<a ' . rc_link_post( $p ) . '>' . esc_html( get_the_title( $p ) ) . '</a>';
 		echo $li ? '<li>' . $a . '</li>' : $a; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
 
-/** aria-current for the nav: the page itself, or any page under it. */
+/** aria-current for the nav: the page itself, any page under it or in its group, or the blog. */
 function rc_current( $path ) {
+	if ( 'blog' === $path ) {
+		return ( is_home() || is_singular( 'post' ) ) ? ' aria-current="page"' : '';
+	}
 	if ( ! is_page() ) {
 		return '';
 	}
@@ -161,8 +198,9 @@ function rc_current( $path ) {
 	if ( ! $p ) {
 		return '';
 	}
-	$id = get_queried_object_id();
-	return ( $id === $p->ID || in_array( $p->ID, get_post_ancestors( $id ), true ) ) ? ' aria-current="page"' : '';
+	$id    = get_queried_object_id();
+	$group = rc_group_page( $id );
+	return ( $id === $p->ID || in_array( $p->ID, get_post_ancestors( $id ), true ) || ( $group && $group->ID === $p->ID ) ) ? ' aria-current="page"' : '';
 }
 
 /** SVG icon by name (home, build, wrench, drop, search, shield, ...). */
@@ -191,7 +229,7 @@ function rc_blurb( $p ) {
 
 /** The services grid (home page and Services page), built from the Services child pages. */
 function rc_services_grid( $wide = false ) {
-	$all = rc_children( 'services' );
+	$all = rc_children( 'services', 'service' );
 	if ( ! $all ) {
 		return;
 	}
@@ -206,11 +244,11 @@ function rc_services_grid( $wide = false ) {
 		if ( $p->ID === $feature->ID ) {
 			continue;
 		}
-		$others .= '<article class="card"><div class="icon">' . rc_icon( rc_field( 'rc_icon', $p ) ) . '</div><h3>' . esc_html( get_the_title( $p ) ) . '</h3><p>' . esc_html( rc_blurb( $p ) ) . '</p><a ' . rc_link_post( $p, 'link' ) . '>Learn more →</a></article>';
+		$others .= '<article class="card"><div class="icon">' . rc_icon( rc_field( 'rc_icon', $p ) ) . '</div><h3>' . esc_html( get_the_title( $p ) ) . '</h3><p>' . wp_kses_post( rc_blurb( $p ) ) . '</p><a ' . rc_link_post( $p, 'link' ) . '>Learn more →</a></article>';
 	}
 	$img = has_post_thumbnail( $feature ) ? get_the_post_thumbnail_url( $feature, 'large' ) : rc_theme_uri() . '/assets/img/colorsteel-installed.jpg';
 	$f   = '<article class="card feature"><div class="feature-img"><img src="' . esc_url( $img ) . '" alt="' . esc_attr( get_the_title( $feature ) ) . ' by The Roof Crew" loading="lazy"></div>'
-		. '<div class="body"><span class="badge">Most requested</span><h3 style="font-size:26px">' . esc_html( get_the_title( $feature ) ) . '</h3><p>' . esc_html( rc_blurb( $feature ) ) . '</p>'
+		. '<div class="body"><span class="badge">Most requested</span><h3 style="font-size:26px">' . esc_html( get_the_title( $feature ) ) . '</h3><p>' . wp_kses_post( rc_blurb( $feature ) ) . '</p>'
 		. '<a ' . rc_link_post( $feature, 'btn btn-primary' ) . '>See ' . esc_html( strtolower( get_the_title( $feature ) ) ) . ' →</a></div></article>';
 	if ( $wide ) {
 		echo '<div class="services services-wide">' . $f . '</div>' . ( $others ? '<div class="grid-4" style="margin-top:20px">' . $others . '</div>' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput
@@ -221,16 +259,17 @@ function rc_services_grid( $wide = false ) {
 
 /** Region buttons on the home page. */
 function rc_region_links() {
-	foreach ( rc_children( 'locations' ) as $p ) {
+	foreach ( rc_children( 'locations', 'region' ) as $p ) {
 		echo '<a ' . rc_link_post( $p ) . '>' . esc_html( get_the_title( $p ) ) . ' <span aria-hidden="true">→</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
 
-/** Region cards on the Locations page. */
-function rc_region_cards() {
-	foreach ( rc_children( 'locations' ) as $p ) {
-		$live = 'publish' === $p->post_status;
-		echo '<a class="card region-card" ' . preg_replace( '/^href="#" class="soon"$/', 'href="#"', rc_link_post( $p ) ) . ( $live ? '' : ' data-soon' ) . '><h3>' . esc_html( get_the_title( $p ) ) . '</h3><small>' . esc_html( rc_blurb( $p ) ) . '</small><span class="link" style="margin-top:8px">' . ( $live ? 'See ' . esc_html( get_the_title( $p ) ) : 'Page coming' ) . ' →</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput
+/** Region cards ($kind = region) or popular area cards ($kind = area) on the Locations page. */
+function rc_region_cards( $kind = 'region' ) {
+	foreach ( rc_children( 'locations', $kind ) as $p ) {
+		$live  = 'publish' === $p->post_status;
+		$small = 'area' === $kind && rc_field( 'rc_region', $p ) ? rc_field( 'rc_region', $p ) : rc_blurb( $p );
+		echo '<a class="card region-card" ' . preg_replace( '/^href="#" class="soon"$/', 'href="#"', rc_link_post( $p ) ) . ( $live ? '' : ' data-soon' ) . '><h3>' . esc_html( get_the_title( $p ) ) . '</h3><small>' . wp_kses_post( $small ) . '</small><span class="link" style="margin-top:8px">' . ( $live ? 'See ' . esc_html( get_the_title( $p ) ) : 'Page coming' ) . ' →</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 }
 
@@ -239,7 +278,7 @@ function rc_hero( $img, $eyebrow, $h1, $lede, $actions = true ) {
 	?>
 <section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo esc_url( $img ); ?>')"></div>
 <div class="wrap"><div>
-  <span class="eyebrow"><?php echo wp_kses_post( $eyebrow ); ?></span><h1><?php echo esc_html( $h1 ); ?></h1><?php if ( $lede ) : ?><p class="lede"><?php echo esc_html( $lede ); ?></p><?php endif; ?>
+  <span class="eyebrow"><?php echo wp_kses_post( $eyebrow ); ?></span><h1><?php echo wp_kses_post( $h1 ); ?></h1><?php if ( $lede ) : ?><p class="lede"><?php echo wp_kses_post( $lede ); ?></p><?php endif; ?>
   <?php if ( $actions ) : ?><div class="hero-actions"><a class="btn btn-primary" href="<?php echo rc_url( 'quote' ); ?>">Get my free quote →</a><a class="btn btn-outline-light" href="tel:<?php echo esc_attr( RC_TEL ); ?>">Call or text Mike · <?php echo esc_html( RC_PHONE ); ?></a></div><?php endif; ?>
 </div></div></section>
 	<?php
@@ -248,6 +287,106 @@ function rc_hero( $img, $eyebrow, $h1, $lede, $actions = true ) {
 /** Featured image URL of the current page, or a default image from the theme. */
 function rc_image( $default ) {
 	return has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'full' ) : rc_theme_uri() . '/assets/img/' . $default;
+}
+
+/* ---------- Service and Location page parts ---------- */
+
+/** Theme image (file name) or a full URL from the page's Photo field, else the default theme image. */
+function rc_photo( $default ) {
+	$v = rc_field( 'rc_photo' );
+	if ( $v ) {
+		return preg_match( '#^https?://#', $v ) ? $v : rc_theme_uri() . '/assets/img/' . $v;
+	}
+	return rc_image( $default );
+}
+
+/**
+ * Split page content at its H2 headings: array( intro html, array( array( heading, html ), ... ) ).
+ * The intro sits beside the photo; each H2 becomes its own section, like the static site.
+ */
+function rc_sections( $html ) {
+	$parts = preg_split( '/(?=<h2[\s>])/i', (string) $html );
+	$intro = array_shift( $parts );
+	$out   = array();
+	foreach ( $parts as $p ) {
+		if ( preg_match( '/^<h2[^>]*>(.*?)<\/h2>(.*)$/is', $p, $m ) ) {
+			$out[] = array( $m[1], $m[2] );
+		}
+	}
+	return array( $intro, $out );
+}
+
+/** Print the H2 sections of a page with alternating backgrounds. Returns the next background. */
+function rc_print_sections( $sections, $eyebrow, $alt ) {
+	foreach ( $sections as $s ) {
+		echo '<section' . ( $alt ? ' class="alt"' : '' ) . '><div class="wrap narrow"><span class="eyebrow">' . wp_kses_post( $eyebrow ) . '</span><h2 style="margin-bottom:22px">' . wp_kses_post( $s[0] ) . '</h2><div class="prose entry">' . $s[1] . '</div></div></section>'; // phpcs:ignore WordPress.Security.EscapeOutput
+		$alt = ! $alt;
+	}
+	return $alt;
+}
+
+/** FAQs from the Questions field: blocks separated by a blank line, the question on the first line. */
+function rc_faq_items( $post = null ) {
+	$items = array();
+	foreach ( preg_split( '/\R\s*\R/', trim( rc_field( 'rc_faqs', $post ) ) ) as $block ) {
+		$lines = preg_split( '/\R/', trim( $block ), 2 );
+		if ( 2 === count( $lines ) && '' !== trim( $lines[0] ) ) {
+			$items[] = array( trim( $lines[0] ), trim( $lines[1] ) );
+		}
+	}
+	return $items;
+}
+
+/** FAQ section and its FAQPage schema. Returns the next background. */
+function rc_faq_section( $title, $alt ) {
+	$items = rc_faq_items();
+	if ( ! $items ) {
+		return $alt;
+	}
+	echo '<section' . ( $alt ? ' class="alt"' : '' ) . '><div class="wrap"><h2 style="margin-bottom:30px">' . wp_kses_post( $title ) . '</h2><div class="faqs">';
+	$schema = array();
+	foreach ( $items as $i => $qa ) {
+		echo '<details' . ( 0 === $i ? ' open' : '' ) . '><summary>' . wp_kses_post( $qa[0] ) . '</summary><p>' . wp_kses_post( $qa[1] ) . '</p></details>';
+		$a = trim( wp_strip_all_tags( $qa[1] ) );
+		if ( '[' !== substr( $a, 0, 1 ) ) { // answers still waiting on Mike stay out of the schema
+			$schema[] = array( '@type' => 'Question', 'name' => wp_strip_all_tags( $qa[0] ), 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $a ) );
+		}
+	}
+	echo '</div></div></section>';
+	if ( $schema ) {
+		echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $schema ) ) . '</script>';
+	}
+	return ! $alt;
+}
+
+/** The page's own review card: two lines, the quote then the name. One line is a placeholder. */
+function rc_local_review() {
+	$lines = rc_lines( 'rc_review' );
+	if ( ! $lines ) {
+		return;
+	}
+	echo '<figure class="card review"><div class="stars">★★★★★</div><blockquote>' . wp_kses_post( $lines[0] ) . '</blockquote>' . ( isset( $lines[1] ) ? '<cite>' . wp_kses_post( $lines[1] ) . '</cite>' : '' ) . '</figure>';
+}
+
+/** Suburb chips: a suburb with its own published Location page links to it. Returns array( html, any linked ). */
+function rc_suburb_chips() {
+	$pages = array();
+	foreach ( rc_children( 'locations' ) as $p ) {
+		$pages[ strtolower( get_the_title( $p ) ) ] = $p;
+	}
+	$out    = '';
+	$linked = false;
+	foreach ( rc_lines( 'rc_suburbs' ) as $s ) {
+		$key = strtolower( trim( wp_strip_all_tags( $s ) ) );
+		$p   = isset( $pages[ $key ] ) ? $pages[ $key ] : null;
+		if ( $p && get_the_ID() !== $p->ID && 'publish' === $p->post_status ) {
+			$out   .= '<a href="' . esc_url( get_permalink( $p ) ) . '">' . wp_kses_post( $s ) . '</a>';
+			$linked = true;
+		} else {
+			$out .= '<span>' . wp_kses_post( $s ) . '</span>';
+		}
+	}
+	return array( $out, $linked );
 }
 
 /* ---------- Quote forms ---------- */
@@ -275,23 +414,18 @@ function rc_form_open( $form_id ) {
 
 /* ---------- Old addresses from the current theroofcrew.co.nz site ---------- */
 
+/** Old address => new page path (both without slashes). Generated from tools/content_v2.py. */
+function rc_redirects() {
+	return require get_theme_file_path( 'inc/redirects.php' );
+}
+
 add_action( 'template_redirect', function () {
 	if ( ! is_404() ) {
 		return;
 	}
-	$map  = array(
-		'replacement-roofs'      => 'services/reroofing',
-		'new-build-roofing'      => 'services/new-roof-installation',
-		'fascia-spouting-safety' => 'services/guttering-and-downpipes',
-		'contact-us'             => 'contact',
-		'roofing-faqs'           => 'services/reroofing',
-		'products'               => '#options',
-		'metal-tile-roofing'     => '#options',
-		'concrete-tile-roofing'  => '#options',
-		'colour-steel-roofing'   => '#options',
-	);
+	$map  = rc_redirects();
 	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-	$slug = basename( $path );
+	$slug = isset( $map[ $path ] ) ? $path : basename( $path );
 	if ( isset( $map[ $slug ] ) ) {
 		$to = $map[ $slug ];
 		$p  = '#' === $to[0] ? null : rc_page( $to );
