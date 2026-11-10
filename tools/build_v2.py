@@ -238,7 +238,11 @@ def reviews_row(pg, which="home", local=None):
     """home/about: the three real reviews. With local: the page's own review first, then two of the real ones."""
     if which == "reroof":
         return "".join(review_card(r) for r in REAL_REVIEWS[2:])
-    reviews = [local] + REAL_REVIEWS[:2] if local else REAL_REVIEWS
+    if local:
+        locals_ = (local if isinstance(local, list) else [local])[:3]
+        reviews = locals_ + REAL_REVIEWS[:3 - len(locals_)]
+    else:
+        reviews = REAL_REVIEWS
     return f'<div class="reviews">\n  {rating_card()}\n  {"".join(review_card(r) for r in reviews)}</div>'
 
 

@@ -319,6 +319,21 @@ def pick_review(who, area):
     return P(f"[Mike or Josh: pick a Google review from {area}]", Q_PICK_REVIEW.format(who=who))
 
 
+# Real Google reviews from Mike, matched to the customer's suburb.
+REVIEWS = {
+    'james': ('Mike and his team did a very professional job replacing my roof back in June, just before the rainy season. They did a great job of working around the weather and choosing a suitable dry spell between rainy days. The whole job went very smoothly. Highly recommended!', 'James, Māngere'),
+    'blair': ('Mike and The Roof Crew team did an absolutely superb job. Great comms, all done on time (quickly) and left the site spotless. Super easy for an out of town owner. Passed an external QC check without a single issue. Could not recommend more highly.', 'Blair, Māngere'),
+    'jessica': ('Highly recommend Mike and The Roof Crew. Great communication, no surprises on price, and the quoted amount was honoured exactly. The new roof was completed quickly and looks excellent. Easy to deal with from start to finish. Thanks, Mike and team!', 'Jessica, Hillcrest'),
+    'kin': ('All his workers are very professional and very well manners too. When the are here to start their work , they always come and let me know. when they finished for the day , they also let me know. I am very happy with his reroof work. they done a very clean work. I would highly recommend Mike team for any roofing works you needed for your roof.', 'Kin, Blockhouse Bay'),
+    'linda': ('I was extremely impressed with the professionalism of Mike and his team. Their work and work ethic was second to none. I was kept well informed of the process, and provided with sound advice. The quality of product and work conducted surpassed my expectations. Mike is dedicated to providing the best for his clients, and I would highly recommend him, and his team.', 'Linda, Howick'),
+    'jo': ('We had a leak in our tiled roof and due to the age of the roof needed to get a new one. Mike came out and was super helpful, helped with requirements were needed with Coloursteel vs replacing the metal tiled roof. His communication was excellent and the team that replaced the roof were fantastic. I would highly recommend Mike and his team.', 'Jo, North Shore'),
+    'eroni': ('I have recently had a complete roof change by The roof crew. They have done an amazing job, really easy to communicate with the team, very efficient and professional. I highly recommend their exceptional service!', 'Eroni, Ōtāhuhu'),
+    'urs': ('I had the flat iron roof of a two-bedroom unit re-roofed. This involved removing the old iron, installing insulation, fitting netting and vapor barrier and supply and fitting of a new sky light plus fitting a membrane over a bay window. Mike organized it all and it came together in a very short time. They left the site spotless. I certainly would recommend them to my friends.', 'Urs, Saint Heliers'),
+    'mayce': ('I highly recommend you guys to family or friends who needs a new roof.They did a fantastic job on my new roof I’m very happy with the result, affordable pricing fast and reliable Thanks Guys', 'Mayce, Ōtara'),
+    'sarah': ("I highly recommend The Roof Crew for your next roof project. Mike and the 3 guys that came to help me were very professional, on time and on promise. Mike's comms was clear and open - there were no surprises. The 3 guys that did the work were fantastic too! I am so impressed with the result - I would book The Roof Crew again in a heart-beat. Thanks guys!!", 'Sarah, Howick'),
+    'marietta': ('We had such a great experience working with Mike and his team! Quick contact and great communication. The team worked effortlessly during the poor weather conditions. We are so pleased with the quality of work! A++', 'Marietta, Māngere Bridge'),
+}
+
 LOCATION_PAGES = [
     dict(slug="east-auckland", path="locations/east-auckland/", kind="region", name="East Auckland",
          blurb="Howick, Botany, Pakuranga, Flat Bush, Beachlands and nearby.",
@@ -326,7 +341,7 @@ LOCATION_PAGES = [
          desc="Reroofing and roofing services in Howick, Botany, Pakuranga, Flat Bush and across East Auckland. Free, no-pressure quotes.",
          h1="Reroofing in East Auckland", lede="Free, no-pressure reroof quotes from Howick and Pakuranga to Flat Bush and Beachlands.",
          local_h="Your local reroofing crew.", local=paras("From Howick to Beachlands, the same family crew quotes, builds and guarantees every roof."),
-         hero="bg-sunset.jpg", photo="bg-sunset.jpg", reviews="home", faqs=[], suburbs=EAST_SUBURBS,
+         hero="bg-sunset.jpg", photo="bg-sunset.jpg", review=[REVIEWS["linda"], REVIEWS["urs"]], faqs=[], suburbs=EAST_SUBURBS,
          map=osm(174.83, -36.99, 175.06, -36.84)),
     dict(slug="north-shore", path="locations/north-shore/", kind="region", name="North Shore",
          blurb="Glenfield, Albany, Takapuna, Devonport and nearby.",
@@ -337,7 +352,7 @@ LOCATION_PAGES = [
          local=paras("From Albany to Devonport and up to Whangaparāoa, the same family crew quotes, builds and guarantees every roof. Many Shore homes still have their original roof, so if yours is getting on, it's worth a check before it starts leaking."),
          cost=("What does a new roof cost on the North Shore?", paras("A COLORSTEEL® reroof on a standard North Shore home usually costs about " + PH_PRICE_STD() + ". Steep sections, access and what we find under the old roof all affect the price, which is why you get a fixed, itemised quote after a free site visit.")),
          hero="bg-local-street.jpg", photo="colorsteel-after.jpg",
-         review=pick_review("North Shore (not the one used on the Glenfield page)", "a North Shore customer"), faqs=[],
+         review=[REVIEWS["jo"], REVIEWS["jessica"]], faqs=[],
          suburbs=["Glenfield", "Albany", "Takapuna", "Devonport", "Birkenhead", "Northcote", "Milford", "Browns Bay", "Mairangi Bay", "Torbay", "Hillcrest", "Beach Haven", "Sunnynook", "Forrest Hill", "Castor Bay", "Greenhithe", "Whangaparāoa"],
          map=osm(174.62, -36.87, 174.84, -36.58)),
     dict(slug="south-auckland", path="locations/south-auckland/", kind="region", name="South Auckland",
@@ -349,7 +364,7 @@ LOCATION_PAGES = [
          local=paras("From Papatoetoe to Pukekohe, the same family crew quotes, builds and guarantees every roof. South Auckland has plenty of older homes due for a new roof, "
                      + "as well as new builds around Takanini and Drury, and we look after both."),
          hero="bg-sunset.jpg", photo="colorsteel-reroof-after.jpg",
-         review=pick_review("South Auckland (not one used on the Papakura or Pukekohe pages)", "a South Auckland customer"), faqs=[],
+         review=[REVIEWS["james"], REVIEWS["blair"], REVIEWS["eroni"]], faqs=[],
          suburbs=["Manukau", "Manurewa", "Papakura", "Pukekohe", "Papatoetoe", "Ōtāhuhu", "Māngere", "Ōtara", "Takanini", "Wattle Downs", "Clendon Park", "Weymouth", "Drury", "Karaka"],
          map=osm(174.74, -37.26, 175.02, -36.92)),
     dict(slug="west-auckland", path="locations/west-auckland/", kind="region", name="West Auckland",
@@ -360,7 +375,7 @@ LOCATION_PAGES = [
          local_h="Your West Auckland roofing crew",
          local=paras("From Te Atatū to Titirangi, the same family crew quotes, builds and guarantees every roof. Plenty of West Auckland homes sit among trees or on steep sections, where leaves block spouting and moss builds up, so we check the roof, spouting and access and recommend what suits your site."),
          hero="bg-local-street.jpg", photo="photo-sunset-roof.jpg",
-         review=pick_review("West Auckland (if there is one)", "a West Auckland customer"), faqs=[],
+         review=[REVIEWS["kin"]], faqs=[],
          suburbs=["Henderson", "Massey", "Te Atatū", "Titirangi", "Kumeū", "Huapai", "Glen Eden", "New Lynn", "Kelston", "Swanson", "Ranui", "Hobsonville", "West Harbour", "Green Bay", "Laingholm"],
          map=osm(174.45, -36.98, 174.72, -36.74)),
     dict(slug="pukekohe", path="roofers-in-pukekohe/", kind="area", region="South Auckland", name="Pukekohe",
@@ -399,7 +414,7 @@ LOCATION_PAGES = [
          local_h="Reroofing homes across Glenfield",
          local=paras("If your Glenfield home still has its original roof, it's worth getting it checked before it starts leaking. We'll look at the roof, tell you honestly how long it's got, and give you a fixed price if it's time for a new one. Many people replace the spouting at the same time, as the scaffolding is already up."),
          job=local_job("Glenfield"), hero="bg-colorsteel.jpg",
-         review=("Great job guys! I shall certainly recommend you when I can.", "Nancy, Glenfield"),
+         review=[("Great job guys! I shall certainly recommend you when I can.", "Nancy, Glenfield"), REVIEWS["jessica"]],
          faq_h="Glenfield questions",
          faqs=[("How do I know if my roof needs replacing?", "Look for leaks that keep coming back, rust, lifting sheets or cracked tiles. If it's the original roof, it's usually near the end of its life."),
                ("Do you cover the rest of the North Shore?", "Yes. We work right across the Shore, from Albany to Devonport.")],
@@ -413,7 +428,7 @@ LOCATION_PAGES = [
          local=paras("A roof is a big expense, so you should know exactly what you're paying for. We'll come out, check the roof and give you an itemised, fixed price. "
                      + "There's finance available if you'd rather spread the cost."),
          job=local_job("Manukau"), hero="bg-sunset.jpg",
-         review=pick_review("Manukau", "a South Auckland customer"),
+         review=[REVIEWS["mayce"], REVIEWS["marietta"]],
          faq_h="Manukau questions",
          faqs=[("Do you work on rental properties?", "Yes, we work with landlords and property managers too."),
                ("Can I spread the cost of a new roof?", "Yes, finance is available. Talk to Mike about the options.")],
@@ -426,7 +441,7 @@ LOCATION_PAGES = [
          local_h="Leak keep coming back?",
          local=paras("When a leak keeps coming back, the problem usually isn't where the water is showing. We'll find out what's actually going on and tell you whether a repair will last. If the roof is done, we'll give you a fixed price to replace it."),
          job=local_job("Manurewa"), hero="bg-local-street.jpg",
-         review=pick_review("Manurewa", "a South Auckland customer"),
+         review=P("[Review from RE, Manurewa: text still to come]", "Mike: send the text of RE's Google review (Manurewa) to show here."),
          faq_h="Manurewa questions",
          faqs=[("How long does a new roof last?", "It depends on the product and location. As a guide, COLORSTEEL® typically lasts " + "around 30 years before perforation" + "."),
                ("Is there a good time of year to reroof?", "Not really. We can replace roofs all year in Auckland, and it's better not to wait until it's leaking.")],
@@ -439,7 +454,7 @@ LOCATION_PAGES = [
          local_h="Roofs that suit a coastal home",
          local=paras("Salt in the air is hard on a roof, so what works inland may not be right near the water. If you're close to the coast around Howick, we'll check your site and recommend a product suited to it, such as COLORSTEEL® Endura® or Maxx®. We've also replaced roofs in nearby Mellons Bay."),
          job=local_job("Howick"), hero="bg-sunset.jpg",
-         review=("Excellent job done! The roof looks great, also the new cladding to the gables and the new spouting is fantastic. Highly recommend.", "Anne and Richard, Mellons Bay"),
+         review=[("Excellent job done! The roof looks great, also the new cladding to the gables and the new spouting is fantastic. Highly recommend.", "Anne and Richard, Mellons Bay"), REVIEWS["linda"], REVIEWS["sarah"]],
          faq_h="Howick questions",
          faqs=[("Which roof is best near the sea?", "It depends how exposed your home is. COLORSTEEL® Maxx® is made for rugged coastlines, and Mike will recommend what suits your site."),
                ("Can you replace the spouting too?", "Yes. It makes sense to do it with a reroof, as the scaffolding is already up.")],

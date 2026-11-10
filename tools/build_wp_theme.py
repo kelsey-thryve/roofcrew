@@ -138,7 +138,8 @@ def seed_locations():
     for l in sorted(C.LOCATION_PAGES, key=lambda l: order.index(l["slug"])):
         content = l["local"] + (f"<h2>{l['cost'][0]}</h2>{l['cost'][1]}" if l.get("cost") else "")
         review = l.get("review")
-        review = "" if not review else (review if isinstance(review, str) else f"{review[0]}\n{review[1]}")
+        reviews = [] if not review else (review if isinstance(review, list) else [review])
+        review = "\n".join(r if isinstance(r, str) else f"{r[0]}\n{r[1]}" for r in reviews)
         subs = [bv.P(s, l["suburbs_q"]) if l.get("suburbs_q") else s for s in l["suburbs"]]
         out.append(dict(slug=l["slug"], title=l["name"], root=not l["path"].startswith("locations/"), publish=True,
                         excerpt=l.get("blurb", l["lede"]), image=l["hero"], content=block_html(content),
@@ -204,6 +205,11 @@ def main():
     local = bv.reviews_row(pg, local=("__LOCAL__", "__CITE__"))
     local = re.sub(r'<figure class="card review"><div class="stars">★★★★★</div><blockquote>__LOCAL__</blockquote><cite>__CITE__</cite></figure>', "<?php rc_local_review(); ?>", local)
     assert "rc_local_review" in local
+    # The shared reviews only top the row up to three: the first shows with up to 2 local reviews, the second with 1.
+    cards = re.findall(r'<figure class="card review">.*?</figure>', local.split("rc_local_review(); ?>", 1)[1])
+    assert len(cards) == 2
+    local = local.replace(cards[0], "<?php if ( rc_local_review_count() < 3 ) : ?>" + cards[0] + "<?php endif; ?>", 1)
+    local = local.replace(cards[1], "<?php if ( rc_local_review_count() < 2 ) : ?>" + cards[1] + "<?php endif; ?>", 1)
     write("parts/reviews-local.php", GEN + local)
     closing = bv.closing(pg, "New roof (reroof)", "__HEADING__")
     closing = closing.replace("__HEADING__", "<?php echo esc_html( isset( $args['heading'] ) ? $args['heading'] : 'Your roof, your real number.' ); ?>")

@@ -361,11 +361,15 @@ function rc_faq_section( $title, $alt ) {
 
 /** The page's own review card: two lines, the quote then the name. One line is a placeholder. */
 function rc_local_review() {
-	$lines = rc_lines( 'rc_review' );
-	if ( ! $lines ) {
-		return;
+	// rc_review holds up to three reviews, as alternating lines: review text, then who wrote it.
+	foreach ( array_slice( array_chunk( rc_lines( 'rc_review' ), 2 ), 0, 3 ) as $r ) {
+		echo '<figure class="card review"><div class="stars">★★★★★</div><blockquote>' . wp_kses_post( $r[0] ) . '</blockquote>' . ( isset( $r[1] ) ? '<cite>' . wp_kses_post( $r[1] ) . '</cite>' : '' ) . '</figure>';
 	}
-	echo '<figure class="card review"><div class="stars">★★★★★</div><blockquote>' . wp_kses_post( $lines[0] ) . '</blockquote>' . ( isset( $lines[1] ) ? '<cite>' . wp_kses_post( $lines[1] ) . '</cite>' : '' ) . '</figure>';
+}
+
+/** How many local reviews this page has, so the shared reviews only top the row up to three. */
+function rc_local_review_count() {
+	return min( 3, (int) ceil( count( rc_lines( 'rc_review' ) ) / 2 ) );
 }
 
 /** Suburb chips: a suburb with its own published Location page links to it. Returns array( html, any linked ). */
