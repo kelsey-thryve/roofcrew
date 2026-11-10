@@ -32,12 +32,11 @@ NAV_SERVICES = [(s["path"], s["name"]) for s in C.SERVICE_PAGES]
 NAV_REGIONS = [(r["path"], r["name"]) for r in C.REGIONS]
 FOOT_SERVICES = [(s["path"], s["name"]) for s in C.SERVICES_ONLY]
 PRICES = {  # whole-home ranges; None = no published range yet (shows "Fixed quote on site")
-    "longrun": (P("$12k to $18k", C.Q_PRICES), P("$16k to $28k", C.Q_PRICES), P("$25k to $40k+", C.Q_PRICES)),
+    "longrun": ("$12k to $18k", "$16k to $28k", "$25k to $40k+"),
     "metal": (None, None, None),
-    "concrete": (None, None, None),
 }
 PROJECTS = {
-    "p1": ("concretetile-reroof-before.jpg", "concretetile-reroof-after.jpg", "Concrete tile to new roof", "Concrete tile reroof"),
+    "p1": ("concretetile-reroof-before.jpg", "concretetile-reroof-after.jpg", "Concrete tile roof replaced with a new roof", "Concrete tile roof replacement"),
     "p2": ("colorsteel-reroof-before.jpg", "colorsteel-reroof-after.jpg", "Tired roof to COLORSTEEL long-run", "COLORSTEEL® long-run reroof"),
     "p3": ("metaltile-before.jpg", "metaltile-after.jpg", "Old roof to pressed metal tile", "Pressed metal tile reroof"),
 }
@@ -118,7 +117,7 @@ def footer(pg):
   <div class="cols">
     <div><a class="logo" href="{pg.u("")}">{LOGO}The Roof Crew</a>
       <p style="margin-top:14px">Family-owned Auckland roofers. Reroofing, new roofs, repairs, spouting and inspections.</p>
-      <p class="trust">{P("RANZ member", C.Q_RANZ)} · Fully guaranteed · {P("Finance available", C.Q_FINANCE)}</p></div>
+      <p class="trust">RANZ member · Fully guaranteed · Finance available</p></div>
     <div><h4>Services</h4><ul>{svc}</ul></div>
     <div><h4>Roofing options</h4><ul>{sysl}</ul></div>
     <div><h4>Locations</h4><ul><li><a href="{pg.u("locations/")}">All areas</a></li>{reg}</ul></div>
@@ -131,7 +130,7 @@ def footer(pg):
 
 
 OPTIONS = ["New roof (reroof)", "Leaks keep coming back", "Not sure, please check it", "Roof repair", "Spouting or downpipes", "Inspection or report", "New build roof"]
-VISIT_SUB = "Free, no pressure. We usually visit " + P("within 3 working days", C.Q_VISIT) + "."
+VISIT_SUB = "Free, no pressure. " + C.RESPOND
 
 
 def quote_form(pg, fid, title="Get a free quote", sub=VISIT_SUB, pre="New roof (reroof)", tag="h2"):
@@ -153,7 +152,6 @@ def quote_form(pg, fid, title="Get a free quote", sub=VISIT_SUB, pre="New roof (
 
 
 def closing(pg, pre="New roof (reroof)", heading="Your roof, your real number.", lede="Tell us a bit about your property and Mike will get back to you personally."):
-    visit = P("within 3 working days", C.Q_VISIT)
     return f'''<section id="request"><div class="wrap closing">
   <div>
     <span class="eyebrow">Request a quote</span>
@@ -161,7 +159,7 @@ def closing(pg, pre="New roof (reroof)", heading="Your roof, your real number.",
     <p class="lede">{lede}</p>
     <ol class="steps">
       <li><span class="n">1</span><div><b>Send your details</b><span>Takes about a minute, or just call or text.</span></div></li>
-      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>Usually with a site visit {visit}.</span></div></li>
+      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>We aim to respond within 3 hours, and usually visit within the next working day.</span></div></li>
       <li><span class="n">3</span><div><b>A clear, itemised quote</b><span>Fixed, transparent and no pressure.</span></div></li>
     </ol>
     <div class="contact-box"><a href="tel:{TEL}">{ICONS["phone"]} {PHONE}</a><a href="mailto:{EMAIL}">{ICONS["mail"]} {EMAIL}</a></div>
@@ -185,13 +183,13 @@ def swatches():
 def pricing_panel(pg, heading, intro):
     groups = ""
     labels = [("Small home", "Roof area under 100m²"), ("Standard home", "Roof 100 to 180m²"), ("Large or complex", "Roof 180m²+")]
-    ask = P("Fixed quote on site", C.Q_PRICES_OTHER)
+    ask = "Fixed quote on site"
     for key, vals in PRICES.items():
         bands = "".join(f'<div class="band"><small>{l}</small>' + (f'<b>{v}</b>' if v else f'<b class="ask">{ask}</b>') + f'<span>{s}</span></div>' for (l, s), v in zip(labels, vals))
         groups += f'<div class="bands" data-prices="{key}"{"" if key == "longrun" else " hidden"}>{bands}</div>'
     return f'''<div class="card prices">
   <div class="prices-head"><div><h3>{heading}</h3><div class="prices-intro">{intro}</div></div>
-    <div><span class="filter-label">Filter: roof type</span><div class="track" data-track="prices"><button type="button" data-value="longrun" aria-pressed="true">COLORSTEEL</button><button type="button" data-value="metal" aria-pressed="false">Metal tile</button><button type="button" data-value="concrete" aria-pressed="false">Concrete tile</button></div></div></div>
+    <div><span class="filter-label">Filter: roof type</span><div class="track" data-track="prices"><button type="button" data-value="longrun" aria-pressed="true">COLORSTEEL</button><button type="button" data-value="metal" aria-pressed="false">Metal tile</button></div></div></div>
   {groups}
   <div class="colours"><div><h3>Pick your colour</h3><p>A few popular COLORSTEEL® colours. Shades are approximate on screen, we'll bring real samples to your quote.</p></div>
     {swatches()}</div>
@@ -200,7 +198,7 @@ def pricing_panel(pg, heading, intro):
 
 
 def material_card(pg, m, title, text, more):
-    alt = _html.escape(strip_tags(m["system"])) + " roof"
+    alt = _html.escape(m.get("system_alt") or strip_tags(m["system"]) + " roof")
     return (f'<article class="card system"><div class="img"><img src="{pg.r}assets/img/{m["system_img"]}" alt="{alt}" loading="lazy"></div>'
             f'<div class="body"><h3>{title}</h3><p>{text}</p><a {pg.link(m["path"], "link")}>{more}</a></div></article>')
 
@@ -360,9 +358,9 @@ def build_home():
 </div></section>
 
 <section class="stats"><div class="wrap grid">
-  <div class="stat"><b>{P("1,000+", C.Q_ROOFS)}</b><span>Auckland roofs completed</span></div>
-  <div class="stat"><b>{P("30+", C.Q_YEARS)}</b><span>Years roofing Auckland</span></div>
-  <div class="stat"><b>{P("RANZ", C.Q_RANZ)}</b><span>Roofing Association of NZ member</span></div>
+  <div class="stat"><b>1,000+</b><span>Auckland roofs completed</span></div>
+  <div class="stat"><b>35+</b><span>Years in the building industry</span></div>
+  <div class="stat"><b>RANZ</b><span>Roofing Association of NZ member</span></div>
 </div></section>
 
 <section class="alt" style="margin-top:-60px;padding-top:140px"><div class="wrap">
@@ -400,7 +398,7 @@ def build_home():
 <section class="dark" id="areas"><div class="wrap areas">
   <div>
     <span class="eyebrow">Where we work</span><h2>Reroofing right across Auckland.</h2>
-    <p class="lede">From the North Shore to Pukekohe. Find your area.</p>
+    <p class="lede">From Warkworth in the north to Franklin and south of the Bombay Hills. Find your area.</p>
     <div class="region-links">{regions}<a class="ask" href="tel:{TEL}">Not sure? Ask Mike <span aria-hidden="true">→</span></a></div>
     <p class="popular">Popular areas: {popular}</p>
     <p style="margin-top:14px"><a class="link" href="locations/">See all areas we cover →</a></p>
@@ -423,7 +421,7 @@ def build_home():
   <h2>{H["why_h2"]}</h2>
   <hr class="rule">
   <div class="why-grid">
-    <div class="why-photo"><img src="assets/img/photo-sunset-roof.jpg" alt="A new roof finished by The Roof Crew at sunset" loading="lazy"><div class="why-badge"><b>{P("30+", C.Q_YEARS)}</b><span>Years on Auckland roofs</span></div></div>
+    <div class="why-photo"><img src="assets/img/photo-sunset-roof.jpg" alt="A new roof finished by The Roof Crew at sunset" loading="lazy"><div class="why-badge"><b>Since 2014</b><span>Roofing Auckland homes</span></div></div>
     <div>
       <p class="lede">There's a reason we have a 4.7 star rating.</p>
       <ol class="why-list">{why}</ol>
@@ -566,6 +564,9 @@ def build_locations():
 def suburb_chips(pg, l):
     out = ""
     for s in l["suburbs"]:
+        if s.startswith("# "):  # a group heading, e.g. "South of the Bombay Hills"
+            out += f'</div><h3 style="margin-top:28px">{s[2:]}</h3><div class="suburbs">'
+            continue
         other = C.LOC_BY_NAME.get(s)
         label = P(s, l["suburbs_q"]) if l.get("suburbs_q") else s
         out += f'<a {pg.link(other["path"])}>{label}</a>' if other and other is not l else f"<span>{label}</span>"
@@ -636,7 +637,6 @@ def build_about():
 </div></section>
 <section><div class="wrap"><span class="eyebrow">Accreditations and warranty</span><h2 style="margin-bottom:32px">{A["backed_h"]}</h2>
   <div class="grid-3">{cards}</div>
-  <p style="margin-top:18px;font-size:14px;color:var(--gray-500)">Only confirmed accreditations go live.</p>
 </div></section>
 <section class="alt"><div class="wrap"><span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">{A["reviews_h"]}</h2>{reviews_row(pg, "about")}</div></section>
 {closing(pg)}'''
@@ -647,14 +647,14 @@ def build_about():
 def build_quote():
     pg = Page("quote/")
     faqs = [
-        ("What happens after I send my details?", "Mike calls you back personally, asks a few questions about your roof and books a free site visit."),
+        ("What happens after I send my details?", "We aim to respond within 3 hours. Mike calls you back personally, asks a few questions about your roof and books a free site visit, usually within the next working day."),
         ("Is the quote really free?", "Yes. The site visit and quote are free, with no obligation and no sales pressure."),
         ("Will the price change later?", "No. After the site visit you get a fixed, itemised price, so there are no surprises."),
         ("Do you do repairs as well as reroofs?", "Yes. Whether it's one leak or a whole new roof, use the same form and tell us what's going on."),
     ]
     body = f'''<section class="hero page-hero" style="padding-block:56px 64px"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/hero-metal-tile.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">Free quote</span><h1>Get your free roof quote.</h1><p class="lede">Reroof or repair, tell us about your roof and Mike will get back to you personally with a fixed price.</p>
-<div class="chips" style="margin-top:22px"><span class="chip rating">{ICONS["google"]} {RATING} <span class="stars">★★★★★</span> Google rating</span><span class="chip">{P("30+ years", C.Q_YEARS)} roofing Auckland</span></div></div></div></section>
+<div class="chips" style="margin-top:22px"><span class="chip rating">{ICONS["google"]} {RATING} <span class="stars">★★★★★</span> Google rating</span><span class="chip">Roofing Auckland since 2014</span></div></div></div></section>
 {closing(pg, "New roof (reroof)", "Your roof, your real number.")}
 <section class="alt"><div class="wrap"><h2 style="margin-bottom:30px">What happens next</h2>{faq_block(faqs)}</div></section>'''
     page(pg, "Get a free roof quote | The Roof Crew", "Free, no-pressure reroof and repair quotes across Auckland. Send your details and Mike gets back to you with a fixed price.", "quote", body, [faq_schema(faqs)])
@@ -664,9 +664,9 @@ def build_quote():
 def build_contact():
     pg = Page("contact/")
     faqs = [
-        ("What happens after I get in touch?", "Mike calls you back personally, asks a few questions and books a free site visit, usually " + P("within three working days", C.Q_VISIT) + "."),
+        ("What happens after I get in touch?", "We aim to respond within 3 hours. Mike calls you back personally, asks a few questions and books a free site visit, usually within the next working day."),
         ("Is the quote really free?", "Yes. The site visit and quote are free, with no obligation and no sales pressure."),
-        ("Do you cover my area?", "We cover East Auckland, the North Shore, South Auckland and West Auckland. If you're not sure, just ask."),
+        ("Do you cover my area?", "We cover the wider Auckland region, " + C.AREA_LINE + ". If you're not sure, just ask."),
     ]
     regs = "".join(f'<a {pg.link(r["path"])}>{r["name"]}</a>' for r in C.REGIONS)
     body = f'''<section class="hero page-hero" style="padding-block:56px 64px"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/bg-local-street.jpg')"></div>

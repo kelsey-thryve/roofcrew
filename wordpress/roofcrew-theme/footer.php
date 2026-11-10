@@ -4,9 +4,9 @@
   <div class="cols">
     <div><a class="logo" href="<?php echo rc_url(''); ?>"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M7 16l9-8 9 8M10 14v10h12V14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>The Roof Crew</a>
       <p style="margin-top:14px">Family-owned Auckland roofers. Reroofing, new roofs, repairs, spouting and inspections.</p>
-      <p class="trust"><mark class="ph" title="Question for Mike: Are you a current RANZ (Roofing Association of NZ) member? If not, RANZ comes off everywhere.">RANZ member</mark> · Fully guaranteed · <mark class="ph" title="Question for Mike: Is finance still available? Which provider, and do the terms still apply?">Finance available</mark></p></div>
+      <p class="trust">RANZ member · Fully guaranteed · Finance available</p></div>
     <div><h4>Services</h4><ul><?php rc_menu( 'services', true, 'service' ); ?></ul></div>
-    <div><h4>Roofing options</h4><ul><li><a <?php echo rc_link('colour-steel-roofing'); ?>>COLORSTEEL® roofing</a></li><li><a <?php echo rc_link('metal-tile-roofing'); ?>>Metal tile roofing</a></li><li><a <?php echo rc_link('concrete-tile-roofing'); ?>>Concrete tile roofing</a></li></ul></div>
+    <div><h4>Roofing options</h4><ul><li><a <?php echo rc_link('colour-steel-roofing'); ?>>COLORSTEEL® roofing</a></li><li><a <?php echo rc_link('metal-tile-roofing'); ?>>Metal tile roofing</a></li><li><a <?php echo rc_link('concrete-tile-roofing'); ?>>Concrete tile replacement</a></li></ul></div>
     <div><h4>Locations</h4><ul><li><a href="<?php echo rc_url('locations'); ?>">All areas</a></li><?php rc_menu( 'locations', true, 'region' ); ?></ul></div>
     <div><h4>Talk to Mike</h4><ul><li><a href="tel:+6421903822">021 903 822</a></li><li><a href="mailto:mike@theroofcrew.co.nz">mike@theroofcrew.co.nz</a></li><li><a href="<?php echo rc_url('about'); ?>">About us</a></li><li><a href="<?php echo rc_url('blog'); ?>">Blog</a></li><li><a href="<?php echo rc_url('contact'); ?>">Contact</a></li></ul>
       <a class="btn btn-primary" style="margin-top:18px" href="<?php echo rc_url('quote'); ?>">Get my free quote</a></div>

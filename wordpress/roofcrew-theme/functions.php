@@ -377,6 +377,10 @@ function rc_suburb_chips() {
 	$out    = '';
 	$linked = false;
 	foreach ( rc_lines( 'rc_suburbs' ) as $s ) {
+		if ( 0 === strpos( $s, '# ' ) ) { // A group heading, e.g. "# South of the Bombay Hills".
+			$out .= '</div><h3 style="margin-top:28px">' . esc_html( substr( $s, 2 ) ) . '</h3><div class="suburbs">';
+			continue;
+		}
 		$key = strtolower( trim( wp_strip_all_tags( $s ) ) );
 		$p   = isset( $pages[ $key ] ) ? $pages[ $key ] : null;
 		if ( $p && get_the_ID() !== $p->ID && 'publish' === $p->post_status ) {

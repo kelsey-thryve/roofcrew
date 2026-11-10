@@ -46,7 +46,7 @@ function rc_field_defs() {
 			'rc_photo'         => array( 'Photo beside the local section (optional)', 'text', 'A theme image file name or an image URL. Defaults to the Featured image.' ),
 			'rc_review'        => array( 'Review to show', 'html', 'Two lines: the review, then the name and suburb. Leave empty to show the usual three reviews.' ),
 		), $faqs, array(
-			'rc_suburbs'       => array( 'Suburbs (one per line)', 'html', 'Shown in the "Suburbs we cover" section. A suburb with its own Location page links to it.' ),
+			'rc_suburbs'       => array( 'Suburbs (one per line)', 'html', 'Shown in the "Suburbs we cover" section. A suburb with its own Location page links to it. A line starting with "# " starts a new group with that heading.' ),
 			'rc_map'           => array( 'Map link (optional)', 'url', 'An OpenStreetMap "Share → HTML" embed link. Leave empty for the Auckland map.' ),
 		), $seo ),
 	);
