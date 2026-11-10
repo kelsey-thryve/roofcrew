@@ -10,7 +10,7 @@ return json_decode( <<<'JSON'
    "publish": true,
    "excerpt": "If your roof keeps leaking or has simply had its day, we'll take it off and start again. We strip the old roof, replace any rotten timber we find, and fit new underlay, flashings and your choice of roofing. It's all done under full scaffolding, and we take the old roof away.",
    "image": "hero-metal-tile.jpg",
-   "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li>Scaffolding and edge protection</li><li>Stripping and disposing of the old roof</li><li>Replacing rotten battens or purlins we find</li><li>New underlay, flashings and ridge capping</li><li>Your choice of COLORSTEEL® or Gerard metal tile</li><li>A workmanship warranty, plus the manufacturer's product warranty</li></ul>\n<!-- /wp:html -->",
+   "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li>Scaffolding and edge protection</li><li>Stripping and disposing of the old roof</li><li>Replacing rotten battens or purlins we find</li><li>New underlay, flashings and ridge capping</li><li>Your choice of COLORSTEEL® or metal tile</li><li>A workmanship warranty, plus the manufacturer's product warranty</li></ul>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "service",
     "rc_h1": "Reroofing in Auckland",
@@ -22,7 +22,7 @@ return json_decode( <<<'JSON'
     "rc_icon": "home",
     "rc_reroof": "1",
     "rc_faq_title": "Reroofing questions",
-    "rc_faqs": "Do I need to move out during a reroof?\nNo, you don't need to move out, though it can be noisy.\n\nCan you replace a concrete tile roof?\nYes. We specialise in replacing concrete tile roofs with long-run COLORSTEEL® or metal tile. Mike will explain what's involved at your site visit.\n\nWhat if you find rot under the old roof?\nWe'll show you what we've found and explain your options before going further. If it needs structural timber work, we'll bring in a builder we trust.",
+    "rc_faqs": "Do I need to move out during a reroof?\nNo, most people stay home, though it can be noisy.\n\nCan you replace a tile roof with steel?\nYes. Plenty of people switch to a lighter roof. Mike will explain what's involved at your site visit.\n\nWhat if you find rot under the old roof?\nWe'll show you what we've found and explain your options before going further. If it needs structural timber work, we'll bring in a builder we trust.",
     "rc_closing": "Get a fixed price for your new roof.",
     "rc_meta_title": "Reroofing Auckland | Roof Replacement | The Roof Crew",
     "rc_meta_desc": "Need a new roof? We strip the old one, fix what's underneath and install a new roof, with a fixed price after a free site visit."
@@ -35,7 +35,7 @@ return json_decode( <<<'JSON'
    "publish": true,
    "excerpt": "Building a new home or adding an extension? We work with homeowners, builders and developers, and help you choose the roof, fascia and spouting to suit the job.",
    "image": "bg-colorsteel.jpg",
-   "content": "<!-- wp:html -->\n<p>Start with the roof type: COLORSTEEL® long-run or Gerard metal tile. Then choose your colour. We have samples, so you can see how it'll look before you commit.</p>\n<!-- /wp:html -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Working with builders and developers</h2>\n<!-- /wp:heading -->\n\n<!-- wp:html -->\n<p>We roof new residential homes, specialising in long-run COLORSTEEL® and Gerard metal tile roofing systems. We fit in with the other trades on site and take site safety seriously, with safety netting and edge protection.</p><p>We cover the wider Auckland region, from Warkworth in the north to East and West Auckland, Franklin, Pukekohe and south of the Bombay Hills.</p>\n<!-- /wp:html -->",
+   "content": "<!-- wp:html -->\n<p>Start with the roof type: COLORSTEEL® long-run or metal tile. Then choose your colour. We have samples, so you can see how it'll look before you commit.</p>\n<!-- /wp:html -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Working with builders and developers</h2>\n<!-- /wp:heading -->\n\n<!-- wp:html -->\n<p>We fit in with the other trades on site and take site safety seriously, with safety netting and edge protection. We provide roofing for new residential homes, specialising in long-run COLORSTEEL® and Gerard metal tile roofing systems. We service the wider Auckland region, including Franklin, Pukekohe, areas south of the Bombay Hills, East and West Auckland and as far north as Warkworth.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "service",
     "rc_h1": "New roof installation in Auckland",
@@ -97,7 +97,7 @@ return json_decode( <<<'JSON'
     "rc_icon": "layers",
     "rc_reroof": "",
     "rc_faq_title": "Metal tile questions",
-    "rc_faqs": "Do you work on older Metrotile roofs?\nYes. We work on all types of older metal tile roofs, as well as new ones.\n\nCan metal tiles replace concrete tiles?\nYes, it's a common swap. Mike will check the roof and talk you through it.\n\nAre metal tile roofs noisy in the rain?\nMetal tile roofs are generally no noisier than a standard long-run COLORSTEEL® roof in the rain. Textured metal tiles can be slightly quieter, as their textured coating helps reduce the sound of rainfall.",
+    "rc_faqs": "Do you work on older Metrotile roofs?\nYes, we work on all types of older metal tile roofs as well as new.\n\nCan metal tiles replace concrete tiles?\nYes, it's a common swap. Mike will check the roof and talk you through it.\n\nAre metal tile roofs noisy in the rain?\nMetal tile roofs are generally no noisier than a standard long-run COLORSTEEL® roof during rain. However, textured metal tiles can be slightly quieter, as their textured coating helps reduce the sound of rainfall.",
     "rc_closing": "Get a price for your metal tile roof.",
     "rc_meta_title": "Metal Tile Roofing Auckland | Gerard Roofs | The Roof Crew",
     "rc_meta_desc": "Gerard metal tile roofs for Auckland homes. Get the look of a tiled roof with a lighter, more durable roof. Reroofs and new builds."
@@ -108,24 +108,24 @@ return json_decode( <<<'JSON'
    "title": "Concrete tile replacement",
    "root": true,
    "publish": true,
-   "excerpt": "We specialise in replacing old concrete tile roofs with long-run COLORSTEEL® or metal tile. It takes weight off the house and gives you a modern roof.",
+   "excerpt": "We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile.",
    "image": "concrete-tile.jpg",
-   "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li><b>It's lighter:</b> Steel and metal tile roofs are a fraction of the weight of concrete tiles, which takes weight off the house.</li><li><b>It's modern:</b> Choose long-run COLORSTEEL® for a clean, modern finish, or metal tile to keep the look of a tiled roof.</li><li><b>There's plenty of choice:</b> A huge range of COLORSTEEL® colours and profiles, and Gerard metal tile profiles and colours.</li><li><b>It's backed in writing:</b> A 5-year workmanship warranty (conditions apply), plus the manufacturer's product warranty.</li></ul>\n<!-- /wp:html -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">What's involved</h2>\n<!-- /wp:heading -->\n\n<!-- wp:html -->\n<p>We put up scaffolding, strip the old concrete tiles and take them away. We replace any rotten battens we find, then fit new underlay, flashings and your new roof. An average three-bedroom house takes about 3 to 4 days, depending on the weather, and you don't need to move out.</p>\n<!-- /wp:html -->",
+   "content": "",
    "fields": {
     "rc_kind": "material",
     "rc_h1": "Concrete tile roof replacement in Auckland",
-    "rc_lede": "Got an old concrete tile roof? We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile roofing systems. You get a lighter roof, and we handle the whole job.",
+    "rc_lede": "Concrete tiles are strong, but they're also heavy. We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile roofing systems, which takes weight off the house.",
     "rc_hold": "",
-    "rc_intro_heading": "Why switch from concrete tile?",
+    "rc_intro_heading": "",
     "rc_included": "",
     "rc_photo": "concretetile-reroof-after.jpg",
     "rc_icon": "layers",
     "rc_reroof": "",
-    "rc_faq_title": "Concrete tile replacement questions",
-    "rc_faqs": "Do you install new concrete tile roofs?\nNo. We specialise in replacing concrete tile roofs with long-run COLORSTEEL® or metal tile roofing systems.\n\nShould I choose COLORSTEEL® or metal tile?\nIt depends on your house and the look you want. Metal tile keeps the look of a tiled roof, and COLORSTEEL® long-run gives a clean, modern finish. Mike will talk you through both at your site visit.\n\nCan you repair a few cracked tiles?\nYes. If the rest of the roof is sound, a repair may be all you need. Mike will tell you straight.",
+    "rc_faq_title": "Concrete tile questions",
+    "rc_faqs": "Should I switch to COLORSTEEL® or metal tile?\nIt depends on the condition of your roof and the look you want. Mike will give you the pros and cons of each.\n\nCan you repair a few cracked tiles?\nYes. If the rest of the roof is sound, a repair may be all you need.",
     "rc_closing": "Get a price to replace your concrete tile roof.",
     "rc_meta_title": "Concrete Tile Roof Replacement Auckland | The Roof Crew",
-    "rc_meta_desc": "Replace your old concrete tile roof with long-run COLORSTEEL® or metal tile. Lighter, modern roofs for Auckland homes, with a free site visit and a fixed quote."
+    "rc_meta_desc": "Concrete tile roof replacement for Auckland homes. We convert old concrete tile roofs to long-run COLORSTEEL® or metal tile. Talk to Mike about a free site visit."
    }
   },
   {
@@ -133,13 +133,13 @@ return json_decode( <<<'JSON'
    "title": "Roof repairs",
    "root": false,
    "publish": true,
-   "excerpt": "We fix leaks and damaged, slipped or cracked tiles. If a repair won't solve the problem, we'll tell you before you spend money on it.",
+   "excerpt": "We fix leaks, storm damage and slipped or cracked tiles. If a repair won't solve the problem, we'll tell you before you spend money on it.",
    "image": "bg-local-street.jpg",
    "content": "<!-- wp:html -->\n<p>A repair usually makes sense when the damage is in one spot and the roof has years left in it. If leaks are showing up in different places, or it's the home's original roof, a reroof may be better value.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "service",
     "rc_h1": "Roof repairs in Auckland",
-    "rc_lede": "We fix leaks and damaged, slipped or cracked tiles across Auckland. We find out why the roof is leaking first, so you're not paying for the same fix twice.",
+    "rc_lede": "We fix leaks, storm damage and slipped or cracked tiles across Auckland. We find out why the roof is leaking first, so you're not paying for the same fix twice.",
     "rc_hold": "",
     "rc_intro_heading": "Repair or replace?",
     "rc_included": "",
@@ -147,10 +147,10 @@ return json_decode( <<<'JSON'
     "rc_icon": "wrench",
     "rc_reroof": "",
     "rc_faq_title": "Roof repair questions",
-    "rc_faqs": "Can you come out urgently?\nWe don't take on urgent leak or storm callouts, but we can usually visit within the next working day.\n\nWhat should I do if my roof is leaking?\nPut a bucket under the drip and move anything valuable out of the way. Don't get on the roof yourself, then call or text Mike on 021 903 822.",
+    "rc_faqs": "Can you come out urgently?\nNo, we don't take on urgent leak or storm jobs, but we can usually visit within the next working day.\n\nWhat should I do if my roof is leaking?\nPut a bucket under the drip and move anything valuable out of the way. Don't get on the roof yourself, then call or text Mike on 021 903 822.",
     "rc_closing": "Get your roof repair sorted.",
-    "rc_meta_title": "Roof Repairs Auckland | Leaks & Damaged Tiles | The Roof Crew",
-    "rc_meta_desc": "Roof leaking in Auckland? We fix leaks and damaged, slipped or cracked tiles, and we'll tell you straight if a repair won't solve it."
+    "rc_meta_title": "Roof Repairs Auckland | Leaks & Storm Damage | The Roof Crew",
+    "rc_meta_desc": "Roof leaking in Auckland? We fix leaks, storm damage and slipped or cracked tiles, and we'll tell you straight if a repair won't solve it."
    }
   },
   {
@@ -185,7 +185,7 @@ return json_decode( <<<'JSON'
    "publish": true,
    "excerpt": "Not sure what shape your roof is in? We'll check it and give you a written report with photos, which is handy before buying or selling.",
    "image": "bg-local-street.jpg",
-   "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li>You're buying or selling a home</li><li>You've got a leak you can't track down</li><li>Your roof is 30 or more years old</li><li>You want it checked after a big storm</li></ul>\n<!-- /wp:html -->\n\n<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">What it costs and what you get</h2>\n<!-- /wp:heading -->\n\n<!-- wp:html -->\n<p>A roof assessment costs $200 + GST. It covers a full on-site inspection, photos, an honest report on your roof's condition, and quotes for the most cost-effective way forward.</p>\n<!-- /wp:html -->",
+   "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li>You're buying or selling a home</li><li>You've got a leak you can't track down</li><li>Your roof is 30 or more years old</li><li>There's been storm damage</li></ul><p>An inspection costs $200 + GST and covers a full on-site inspection, photos, an honest report on your roof's condition, and quotes for the most cost-effective way forward.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "service",
     "rc_h1": "Roof inspections and reports in Auckland",
@@ -312,7 +312,7 @@ return json_decode( <<<'JSON'
    "publish": true,
    "excerpt": "Free, no-pressure roof quotes across Pukekohe and the wider Franklin area.",
    "image": "bg-sunset.jpg",
-   "content": "<!-- wp:html -->\n<p>We make the trip down to Pukekohe for reroofs, new roofs and repairs, and we cover the rest of Franklin and south of the Bombay Hills too. Whether you're in town or out on a lifestyle block, you'll get the same fixed quote and deal with Mike the whole way through.</p>\n<!-- /wp:html -->",
+   "content": "<!-- wp:html -->\n<p>We make the trip down to Pukekohe for reroofs, new roofs and repairs. Whether you're in town or out on a lifestyle block, you'll get the same fixed quote and deal with Mike the whole way through.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "area",
     "rc_region": "South Auckland",
@@ -323,7 +323,7 @@ return json_decode( <<<'JSON'
     "rc_photo": "",
     "rc_review": "Thanks for the awesome roof!!! Excellent experience all around.\nJulie and Trev, Tuakau",
     "rc_faq_title": "Pukekohe questions",
-    "rc_faqs": "Do you really come out to Pukekohe?\nYes. We work right across Auckland, and Pukekohe is well within our area. We also cover the rest of Franklin and towns south of the Bombay Hills, like Pokeno and Tuakau.\n\nHow long does a reroof take in Pukekohe?\nAn average three-bedroom house takes about 3 to 4 days, depending on the weather.",
+    "rc_faqs": "Do you really come out to Pukekohe?\nYes. We work right across Auckland, and Pukekohe is well within our area.\n\nHow long does a reroof take in Pukekohe?\nAn average three-bedroom house takes about 3 to 4 days, depending on the weather.",
     "rc_suburbs": "Pukekohe\nPukekohe East\nPukekohe West\nBuckland\nPaerata\nDrury\nRamarama\nBombay\nPatumāhoe\nMauku\nWaiuku\nGlenbrook\nKaraka\nKingseat\nClarks Beach\nAwhitu\nPollok\nWaiau Pa\nArarimu\nHunua\n# South of the Bombay Hills\nPokeno\nTuakau\nHarrisville\nPukekawa\nMercer\nMaramarua",
     "rc_map": "https://www.openstreetmap.org/export/embed.html?bbox=174.8%2C-37.27%2C175.02%2C-37.13&layer=mapnik",
     "rc_meta_title": "Roofers in Pukekohe | Reroofing & Repairs | The Roof Crew",
@@ -387,7 +387,7 @@ return json_decode( <<<'JSON'
    "publish": true,
    "excerpt": "Free, no-pressure roof quotes across Manukau and Papatoetoe.",
    "image": "bg-sunset.jpg",
-   "content": "<!-- wp:html -->\n<p>A roof is a big expense, so you should know exactly what you're paying for. We'll come out, check the roof and give you an itemised, fixed price. There's finance available through QBE if you'd rather spread the cost.</p>\n<!-- /wp:html -->",
+   "content": "<!-- wp:html -->\n<p>A roof is a big expense, so you should know exactly what you're paying for. We'll come out, check the roof and give you an itemised, fixed price. There's finance available if you'd rather spread the cost.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "area",
     "rc_region": "South Auckland",
@@ -398,7 +398,7 @@ return json_decode( <<<'JSON'
     "rc_photo": "",
     "rc_review": "<mark class=\"ph\" title=\"Question for Mike: Manukau: pick a Google review to show on this page.\">[Mike or Josh: pick a Google review from a South Auckland customer]</mark>",
     "rc_faq_title": "Manukau questions",
-    "rc_faqs": "Do you work on rental properties?\nYes, we work with landlords and property managers too.\n\nCan I spread the cost of a new roof?\nYes, finance is available through QBE. Talk to Mike about the options.",
+    "rc_faqs": "Do you work on rental properties?\nYes, we work with landlords and property managers too.\n\nCan I spread the cost of a new roof?\nYes, finance is available. Talk to Mike about the options.",
     "rc_suburbs": "Manukau\nPapatoetoe\nWiri\nGoodwood Heights\nTotara Heights\nClover Park\nŌtara",
     "rc_map": "https://www.openstreetmap.org/export/embed.html?bbox=174.82%2C-37.03%2C174.94%2C-36.93&layer=mapnik",
     "rc_meta_title": "Roofers in Manukau | Reroofing & Repairs | The Roof Crew",

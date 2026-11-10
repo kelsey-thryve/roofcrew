@@ -1,11 +1,11 @@
 <?php
 /* Locations (all areas). Generated from the v2 design by tools/build_wp_theme.py: edit the generator, not this file. */
-rc_meta( "Roofers Across Auckland | Areas We Cover | The Roof Crew", "The Roof Crew covers the wider Auckland region, from Warkworth in the north to Franklin and south of the Bombay Hills. Free site visits." );
+rc_meta( "Roofers Across Auckland | Areas We Cover | The Roof Crew", "The Roof Crew covers all of Auckland, from Whangapar\u0101oa and the North Shore to East, West and South Auckland and Pukekohe. Free site visits." );
 get_header(); ?>
 
 <section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo rc_theme_uri(); ?>/assets/img/bg-local-street.jpg')"></div>
 <div class="wrap"><div>
-  <span class="eyebrow">Locations</span><h1>Roofers right across Auckland</h1><p class="lede">We work right across Auckland, from Warkworth in the north to Franklin and south of the Bombay Hills. Wherever you are, it's the same family crew, the same quote process and the same warranty.</p>
+  <span class="eyebrow">Locations</span><h1>Roofers right across Auckland</h1><p class="lede">We work all over Auckland, from Whangaparāoa and the North Shore down to Pukekohe. Wherever you are, it's the same family crew, the same quote process and the same warranty.</p>
   <div class="hero-actions"><a class="btn btn-primary" href="<?php echo rc_url('quote'); ?>">Get my free quote →</a><a class="btn btn-outline-light" href="tel:+6421903822">Call or text Mike · 021 903 822</a></div>
 </div></div></section>
 <section><div class="wrap">
@@ -28,7 +28,7 @@ get_header(); ?>
     <p class="lede">Tell us a bit about your property and Mike will get back to you personally.</p>
     <ol class="steps">
       <li><span class="n">1</span><div><b>Send your details</b><span>Takes about a minute, or just call or text.</span></div></li>
-      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>We aim to respond within 3 hours, and usually visit within the next working day.</span></div></li>
+      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>We aim to respond within 3 hours and usually visit within the next working day.</span></div></li>
       <li><span class="n">3</span><div><b>A clear, itemised quote</b><span>Fixed, transparent and no pressure.</span></div></li>
     </ol>
     <div class="contact-box"><a href="tel:+6421903822"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg> 021 903 822</a><a href="mailto:mike@theroofcrew.co.nz"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> mike@theroofcrew.co.nz</a></div>

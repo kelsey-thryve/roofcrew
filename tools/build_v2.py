@@ -159,7 +159,7 @@ def closing(pg, pre="New roof (reroof)", heading="Your roof, your real number.",
     <p class="lede">{lede}</p>
     <ol class="steps">
       <li><span class="n">1</span><div><b>Send your details</b><span>Takes about a minute, or just call or text.</span></div></li>
-      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>We aim to respond within 3 hours, and usually visit within the next working day.</span></div></li>
+      <li><span class="n">2</span><div><b>Mike gets in touch</b><span>{C.RESPOND}</span></div></li>
       <li><span class="n">3</span><div><b>A clear, itemised quote</b><span>Fixed, transparent and no pressure.</span></div></li>
     </ol>
     <div class="contact-box"><a href="tel:{TEL}">{ICONS["phone"]} {PHONE}</a><a href="mailto:{EMAIL}">{ICONS["mail"]} {EMAIL}</a></div>
@@ -359,7 +359,7 @@ def build_home():
 
 <section class="stats"><div class="wrap grid">
   <div class="stat"><b>1,000+</b><span>Auckland roofs completed</span></div>
-  <div class="stat"><b>35+</b><span>Years in the building industry</span></div>
+  <div class="stat"><b>30+</b><span>Years roofing Auckland</span></div>
   <div class="stat"><b>RANZ</b><span>Roofing Association of NZ member</span></div>
 </div></section>
 
@@ -398,7 +398,7 @@ def build_home():
 <section class="dark" id="areas"><div class="wrap areas">
   <div>
     <span class="eyebrow">Where we work</span><h2>Reroofing right across Auckland.</h2>
-    <p class="lede">From Warkworth in the north to Franklin and south of the Bombay Hills. Find your area.</p>
+    <p class="lede">From the North Shore to Pukekohe. Find your area.</p>
     <div class="region-links">{regions}<a class="ask" href="tel:{TEL}">Not sure? Ask Mike <span aria-hidden="true">→</span></a></div>
     <p class="popular">Popular areas: {popular}</p>
     <p style="margin-top:14px"><a class="link" href="locations/">See all areas we cover →</a></p>
@@ -421,7 +421,7 @@ def build_home():
   <h2>{H["why_h2"]}</h2>
   <hr class="rule">
   <div class="why-grid">
-    <div class="why-photo"><img src="assets/img/photo-sunset-roof.jpg" alt="A new roof finished by The Roof Crew at sunset" loading="lazy"><div class="why-badge"><b>Since 2014</b><span>Roofing Auckland homes</span></div></div>
+    <div class="why-photo"><img src="assets/img/photo-sunset-roof.jpg" alt="A new roof finished by The Roof Crew at sunset" loading="lazy"><div class="why-badge"><b>30+</b><span>Years on Auckland roofs</span></div></div>
     <div>
       <p class="lede">There's a reason we have a 4.7 star rating.</p>
       <ol class="why-list">{why}</ol>
@@ -654,7 +654,7 @@ def build_quote():
     ]
     body = f'''<section class="hero page-hero" style="padding-block:56px 64px"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/hero-metal-tile.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">Free quote</span><h1>Get your free roof quote.</h1><p class="lede">Reroof or repair, tell us about your roof and Mike will get back to you personally with a fixed price.</p>
-<div class="chips" style="margin-top:22px"><span class="chip rating">{ICONS["google"]} {RATING} <span class="stars">★★★★★</span> Google rating</span><span class="chip">Roofing Auckland since 2014</span></div></div></div></section>
+<div class="chips" style="margin-top:22px"><span class="chip rating">{ICONS["google"]} {RATING} <span class="stars">★★★★★</span> Google rating</span><span class="chip">30+ years roofing Auckland</span></div></div></div></section>
 {closing(pg, "New roof (reroof)", "Your roof, your real number.")}
 <section class="alt"><div class="wrap"><h2 style="margin-bottom:30px">What happens next</h2>{faq_block(faqs)}</div></section>'''
     page(pg, "Get a free roof quote | The Roof Crew", "Free, no-pressure reroof and repair quotes across Auckland. Send your details and Mike gets back to you with a fixed price.", "quote", body, [faq_schema(faqs)])

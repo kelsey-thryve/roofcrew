@@ -62,7 +62,7 @@ Q_RENTALS = "Do you work on rental properties, with landlords and property manag
 
 PH_PRICE_STD = lambda: "$16,000 to $28,000"
 RESPOND = "We aim to respond within 3 hours and usually visit within the next working day."
-AREA_LINE = "from Warkworth in the north to Franklin and south of the Bombay Hills"
+AREA_LINE = "from Whangaparāoa and the North Shore to West, East and South Auckland, and down to Pukekohe, Franklin and south of the Bombay Hills"
 
 
 def ticks(items, cls="ticks"):
@@ -76,11 +76,11 @@ def paras(*ps):
 # ---------------------------------------------------------------- HOME
 HOME = dict(
     title="Roofing Auckland | Reroofing & New Roofs | The Roof Crew",
-    desc="Family-owned Auckland roofers, roofing since 2014 with 35+ years in building. Reroofs, new roofs and repairs, with a free site visit and a fixed quote.",
-    h1="Roofing Auckland homes since 2014",
+    desc="Family-owned Auckland roofers with 30+ years' experience. Reroofs, new roofs and repairs, with a free site visit and a fixed quote.",
+    h1="Roofing Auckland homes for over 30 years",
     intro="The Roof Crew is a family-owned Auckland roofing company. We replace old roofs, install new ones and fix the ones that won't stop leaking. You'll deal with Mike from the first call to the final check, and you'll get a fixed price after a free site visit.",
     what_we_do="Most of our work is full roof replacement. Whatever the job, the same crew quotes it, does it and stands behind it.",
-    options_h2="Roofing options for Auckland homes",
+    options_h2="Three roofing systems for Auckland homes",
     options_lede="The right roof depends on your house, your budget and how close you are to the sea. Mike will talk you through it at your site visit.",
     cost_h="How much does a new roof cost in Auckland?",
     cost_html=paras(
@@ -118,34 +118,33 @@ SERVICES_PAGE = dict(
 # ---------------------------------------------------------------- ABOUT
 ABOUT = dict(
     title="About The Roof Crew | Family-Owned Auckland Roofers",
-    desc="The Roof Crew is a family-owned Auckland roofing company, roofing since 2014 with 35+ years in the building industry. Meet Mike and find out how we work.",
+    desc="The Roof Crew is a family-owned Auckland roofing company with over 30 years in the building industry. Meet Mike and find out how we work.",
     h1="A family roofing crew that turns up",
-    intro="The Roof Crew is a family-owned Auckland roofing company. Mike has 35+ years in the building industry and has been roofing Auckland homes since 2014. When you call us, you get Mike, and he stays with your job until it's finished.",
+    intro="The Roof Crew is a family-owned Auckland roofing company with over 30 years in the building industry. When you call us, you get Mike, and he stays with your job until it's finished.",
     why_h="Why we do it this way",
     why=["We know that sinking feeling when a stain appears on the ceiling. You start wondering how bad it is, how much it'll cost, and who you can trust to tell you the truth. We meet people feeling exactly that every week.",
          "So we keep it simple. Mike comes out, looks at the roof and tells you what it needs. If a repair will do, he'll say so. If it's time for a new roof, you'll get a fixed, itemised price and no pressure to go ahead.",
-         "In Mike's words: \u201cI started The Roof Crew back in 2014, supplying and installing Metrotile roofing systems and longrun COLORSTEEL® roofing systems. "
+         "In Mike's words: \u201cI started The Roof Crew back in 2014, supplying and installing Metrotile roofing systems and long-run COLORSTEEL® roofing systems. "
          "I've always believed in providing good workmanship, honest advice and reliable service. We're a family-owned Auckland business, and I'm still personally "
          "involved in every job, working alongside a trusted team of experienced roofers to make sure the work is done properly and to a high standard.\u201d"],
     care_h="How we look after your home",
     care=["A roof job puts a crew on top of your house for days, so how we work matters. We set up scaffolding and edge protection, meet our health and safety obligations, and leave the site tidy at the end of each day. We take the old roof away and dispose of it responsibly.",
           "Sometimes we find problems we couldn't see until the roof came off, especially on older villas. When that happens, we'll show you, explain the options and bring in a builder we trust if timber work is needed."],
     backed_h="What's backed in writing",
-    backed=[("shield", "Workmanship", "Every job comes with a 5-year workmanship warranty, provided the building meets the warranty requirements."),
+    backed=[("shield", "Workmanship", "Every job comes with a 5-year workmanship warranty (conditions apply)."),
             ("build", "Products", "The manufacturer's warranty covers the products on top of that."),
-            ("home", "Insurance", "We're fully insured, including public liability."),
+            ("home", "Insurance", "We're fully insured."),
             ("layers", "Gerard", "We're resellers and installers of Gerard products."),
-            ("search", "RANZ", "We're a member of RANZ, the Roofing Association of New Zealand."),
-            ("card", "Finance", "Finance is available through QBE, so you can spread the cost of your new roof.")],
+            ("search", "RANZ", "We're a member of RANZ, the Roofing Association of New Zealand.")],
     reviews_h="Rated 4.7 stars on Google",
 )
 
 # ---------------------------------------------------------------- LOCATIONS COLLECTION
 LOCATIONS_PAGE = dict(
     title="Roofers Across Auckland | Areas We Cover | The Roof Crew",
-    desc="The Roof Crew covers the wider Auckland region, " + AREA_LINE + ". Free site visits.",
+    desc="The Roof Crew covers all of Auckland, from Whangaparāoa and the North Shore to East, West and South Auckland and Pukekohe. Free site visits.",
     h1="Roofers right across Auckland",
-    intro="We work right across Auckland, " + AREA_LINE + ". Wherever you are, it's the same family crew, the same quote process and the same warranty.",
+    intro="We work all over Auckland, from Whangaparāoa and the North Shore down to Pukekohe. Wherever you are, it's the same family crew, the same quote process and the same warranty.",
     find_h="Find your area",
     popular_h="Popular areas",
     popular=["pukekohe", "papakura", "glenfield", "manukau", "manurewa", "howick"],
@@ -156,7 +155,7 @@ LOCATIONS_PAGE = dict(
 # ---------------------------------------------------------------- SERVICE AND MATERIAL PAGES
 # kind: "service" (child of /services/) or "material" (keeps its old root URL).
 # sections: [(heading, html)]. The first one sits beside the photo, the rest are full sections.
-REROOF_STEPS = [("Free site visit", "We aim to respond within 3 hours, and Mike usually visits within the next working day to measure up and check the roof."),
+REROOF_STEPS = [("Free site visit", "Mike measures up and checks the roof. " + RESPOND),
                 ("Fixed quote", "You get an itemised price, with no pressure to go ahead."),
                 ("Scaffolding goes up", "We book it in and work around the weather."),
                 ("Old roof off, new roof on", "An average three-bedroom house takes about 3 to 4 days."),
@@ -187,11 +186,11 @@ SERVICE_PAGES = [
          card="If your roof keeps leaking or has simply had its day, we'll take it off and start again. We strip the old roof, replace any rotten timber we find, and fit new underlay, flashings and your choice of roofing. It's all done under full scaffolding, and we take the old roof away.",
          hero="hero-metal-tile.jpg", photo="colorsteel-installed.jpg", reroof=True,
          sections=[("What's included", ticks(["Scaffolding and edge protection", "Stripping and disposing of the old roof", "Replacing rotten battens or purlins we find",
-                                              "New underlay, flashings and ridge capping", "Your choice of COLORSTEEL® or Gerard metal tile",
+                                              "New underlay, flashings and ridge capping", "Your choice of COLORSTEEL® or metal tile",
                                               "A workmanship warranty, plus the manufacturer's product warranty"]))],
          faq_h="Reroofing questions",
-         faqs=[("Do I need to move out during a reroof?", "No, you don't need to move out, though it can be noisy."),
-               ("Can you replace a concrete tile roof?", "Yes. We specialise in replacing concrete tile roofs with long-run COLORSTEEL® or metal tile. Mike will explain what's involved at your site visit."),
+         faqs=[("Do I need to move out during a reroof?", "No, most people stay home, though it can be noisy."),
+               ("Can you replace a tile roof with steel?", "Yes. Plenty of people switch to a lighter roof. Mike will explain what's involved at your site visit."),
                ("What if you find rot under the old roof?", "We'll show you what we've found and explain your options before going further. If it needs structural timber work, we'll bring in a builder we trust.")],
          closing="Get a fixed price for your new roof.", pre="New roof (reroof)"),
     dict(slug="new-roof-installation", path="services/new-roof-installation/", kind="service", name="New roof installation", icon="build",
@@ -202,10 +201,10 @@ SERVICE_PAGES = [
          home_card="Roofs for new builds and extensions, for homeowners, builders and developers.",
          card="Building a new home or adding an extension? We work with homeowners, builders and developers, and help you choose the roof, fascia and spouting to suit the job.",
          hero="bg-colorsteel.jpg", photo="photo-sunset-roof.jpg",
-         sections=[("Choosing your roof", paras("Start with the roof type: COLORSTEEL® long-run or Gerard metal tile. Then choose your colour. We have samples, so you can see how it'll look before you commit.")),
-                   ("Working with builders and developers", paras("We roof new residential homes, specialising in long-run COLORSTEEL® and Gerard metal tile roofing systems. "
-                                                                  "We fit in with the other trades on site and take site safety seriously, with safety netting and edge protection.",
-                                                                  "We cover the wider Auckland region, from Warkworth in the north to East and West Auckland, Franklin, Pukekohe and south of the Bombay Hills."))],
+         sections=[("Choosing your roof", paras("Start with the roof type: COLORSTEEL® long-run or metal tile. Then choose your colour. We have samples, so you can see how it'll look before you commit.")),
+                   ("Working with builders and developers", paras("We fit in with the other trades on site and take site safety seriously, with safety netting and edge protection. "
+                                                                  "We provide roofing for new residential homes, specialising in long-run COLORSTEEL® and Gerard metal tile roofing systems. "
+                                                                  "We service the wider Auckland region, including Franklin, Pukekohe, areas south of the Bombay Hills, East and West Auckland and as far north as Warkworth."))],
          faq_h="New build questions",
          faqs=[("When should I talk to you about a new build roof?", "As early as you can, ideally when you have plans. That gives us time to advise on materials and fit your build schedule."),
                ("Can you roof an unusual design?", "Yes. We just need to make sure it's done to the Building Code.")],
@@ -240,41 +239,37 @@ SERVICE_PAGES = [
                    ("Popular colours", paras("Smooth colours include Ebony, Windsor Grey, Flax, Ironsands, Sandstone Grey and Grey Friars. Textured colours include Ashwood, Charcoal, Eclipse, Onyx, Teak and Midnight.")
                     + '<ul class="downloads">' + "".join(f'<li><a href="{GERARD_PDF_BASE}{f}" target="_blank" rel="noopener">{n} (PDF)</a></li>' for n, f in GERARD_PDFS) + "</ul>")],
          faq_h="Metal tile questions",
-         faqs=[("Do you work on older Metrotile roofs?", "Yes. We work on all types of older metal tile roofs, as well as new ones."),
+         faqs=[("Do you work on older Metrotile roofs?", "Yes, we work on all types of older metal tile roofs as well as new."),
                ("Can metal tiles replace concrete tiles?", "Yes, it's a common swap. Mike will check the roof and talk you through it."),
-               ("Are metal tile roofs noisy in the rain?", "Metal tile roofs are generally no noisier than a standard long-run COLORSTEEL® roof in the rain. Textured metal tiles can be slightly quieter, as their textured coating helps reduce the sound of rainfall.")],
+               ("Are metal tile roofs noisy in the rain?", "Metal tile roofs are generally no noisier than a standard long-run COLORSTEEL® roof during rain. However, textured metal tiles can be slightly quieter, as their textured coating helps reduce the sound of rainfall.")],
          closing="Get a price for your metal tile roof.", pre="New roof (reroof)"),
     dict(slug="concrete-tile-roofing", path="concrete-tile-roofing/", kind="material", name="Concrete tile replacement", icon="layers",
+         # Mike: we don't install concrete tile; we convert existing concrete tile roofs to COLORSTEEL or metal tile.
+         # The doc's concrete tile draft is adapted to that; the URL stays for its Google traffic.
          title="Concrete Tile Roof Replacement Auckland | The Roof Crew",
-         desc="Replace your old concrete tile roof with long-run COLORSTEEL® or metal tile. Lighter, modern roofs for Auckland homes, with a free site visit and a fixed quote.",
+         desc="Concrete tile roof replacement for Auckland homes. We convert old concrete tile roofs to long-run COLORSTEEL® or metal tile. Talk to Mike about a free site visit.",
          h1="Concrete tile roof replacement in Auckland",
-         lede="Got an old concrete tile roof? We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile roofing systems. You get a lighter roof, and we handle the whole job.",
-         system="Replacing a concrete tile roof", system_alt="Concrete tile roof",
-         system_text="We specialise in converting old concrete tile roofs to long-run COLORSTEEL® or metal tile.",
-         card="We specialise in replacing old concrete tile roofs with long-run COLORSTEEL® or metal tile. It takes weight off the house and gives you a modern roof.",
+         lede="Concrete tiles are strong, but they're also heavy. We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile roofing systems, which takes weight off the house.",
+         system="Concrete tile replacement", system_alt="Concrete tile roof",
+         system_text="We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile.",
+         card="We specialise in converting existing concrete tile roofs to modern long-run COLORSTEEL® or metal tile.",
          hero="concrete-tile.jpg", photo="concretetile-reroof-after.jpg", system_img="concrete-tile.jpg",
-         sections=[("Why switch from concrete tile?", ticks(["<b>It's lighter:</b> Steel and metal tile roofs are a fraction of the weight of concrete tiles, which takes weight off the house.",
-                                                             "<b>It's modern:</b> Choose long-run COLORSTEEL® for a clean, modern finish, or metal tile to keep the look of a tiled roof.",
-                                                             "<b>There's plenty of choice:</b> A huge range of COLORSTEEL® colours and profiles, and Gerard metal tile profiles and colours.",
-                                                             "<b>It's backed in writing:</b> A 5-year workmanship warranty (conditions apply), plus the manufacturer's product warranty."])),
-                   ("What's involved", paras("We put up scaffolding, strip the old concrete tiles and take them away. We replace any rotten battens we find, then fit new underlay, flashings and your new roof. "
-                                             "An average three-bedroom house takes about 3 to 4 days, depending on the weather, and you don't need to move out."))],
-         faq_h="Concrete tile replacement questions",
-         faqs=[("Do you install new concrete tile roofs?", "No. We specialise in replacing concrete tile roofs with long-run COLORSTEEL® or metal tile roofing systems."),
-               ("Should I choose COLORSTEEL® or metal tile?", "It depends on your house and the look you want. Metal tile keeps the look of a tiled roof, and COLORSTEEL® long-run gives a clean, modern finish. Mike will talk you through both at your site visit."),
-               ("Can you repair a few cracked tiles?", "Yes. If the rest of the roof is sound, a repair may be all you need. Mike will tell you straight.")],
+         sections=[],
+         faq_h="Concrete tile questions",
+         faqs=[("Should I switch to COLORSTEEL® or metal tile?", "It depends on the condition of your roof and the look you want. Mike will give you the pros and cons of each."),
+               ("Can you repair a few cracked tiles?", "Yes. If the rest of the roof is sound, a repair may be all you need.")],
          closing="Get a price to replace your concrete tile roof.", pre="New roof (reroof)"),
     dict(slug="roof-repairs", path="services/roof-repairs/", kind="service", name="Roof repairs", icon="wrench",
-         title="Roof Repairs Auckland | Leaks & Damaged Tiles | The Roof Crew",
-         desc="Roof leaking in Auckland? We fix leaks and damaged, slipped or cracked tiles, and we'll tell you straight if a repair won't solve it.",
+         title="Roof Repairs Auckland | Leaks & Storm Damage | The Roof Crew",
+         desc="Roof leaking in Auckland? We fix leaks, storm damage and slipped or cracked tiles, and we'll tell you straight if a repair won't solve it.",
          h1="Roof repairs in Auckland",
-         lede="We fix leaks and damaged, slipped or cracked tiles across Auckland. We find out why the roof is leaking first, so you're not paying for the same fix twice.",
-         home_card="Leaks and damaged, slipped or cracked tiles.",
-         card="We fix leaks and damaged, slipped or cracked tiles. If a repair won't solve the problem, we'll tell you before you spend money on it.",
+         lede="We fix leaks, storm damage and slipped or cracked tiles across Auckland. We find out why the roof is leaking first, so you're not paying for the same fix twice.",
+         home_card="Leaks, storm damage and slipped or cracked tiles.",
+         card="We fix leaks, storm damage and slipped or cracked tiles. If a repair won't solve the problem, we'll tell you before you spend money on it.",
          hero="bg-local-street.jpg", photo="colorsteel-before.jpg",
          sections=[("Repair or replace?", paras("A repair usually makes sense when the damage is in one spot and the roof has years left in it. If leaks are showing up in different places, or it's the home's original roof, a reroof may be better value."))],
          faq_h="Roof repair questions",
-         faqs=[("Can you come out urgently?", "We don't take on urgent leak or storm callouts, but we can usually visit within the next working day."),
+         faqs=[("Can you come out urgently?", "No, we don't take on urgent leak or storm jobs, but we can usually visit within the next working day."),
                ("What should I do if my roof is leaking?", f"Put a bucket under the drip and move anything valuable out of the way. Don't get on the roof yourself, then call or text Mike on {PHONE}.")],
          closing="Get your roof repair sorted.", pre="Roof repair"),
     dict(slug="guttering-downpipes", path="services/guttering-downpipes/", kind="service", name="Guttering and downpipes", icon="drop",
@@ -296,9 +291,8 @@ SERVICE_PAGES = [
          home_card="An honest look at your roof, with photos and a written report.",
          card="Not sure what shape your roof is in? We'll check it and give you a written report with photos, which is handy before buying or selling.",
          hero="bg-local-street.jpg", photo="concretetile-reroof-before.jpg",
-         sections=[("When an inspection is worth it", ticks(["You're buying or selling a home", "You've got a leak you can't track down", "Your roof is 30 or more years old", "You want it checked after a big storm"])),
-                   ("What it costs and what you get", paras("A roof assessment costs $200 + GST. It covers a full on-site inspection, photos, an honest report on your roof's condition, "
-                                                            "and quotes for the most cost-effective way forward."))],
+         sections=[("When an inspection is worth it", ticks(["You're buying or selling a home", "You've got a leak you can't track down", "Your roof is 30 or more years old", "There's been storm damage"])
+                    + paras("An inspection costs $200 + GST and covers a full on-site inspection, photos, an honest report on your roof's condition, and quotes for the most cost-effective way forward."))],
          faq_h="", faqs=[],
          closing="Book a roof inspection.", pre="Inspection or report"),
 ]
@@ -374,11 +368,11 @@ LOCATION_PAGES = [
          desc="Need a roofer in Pukekohe? We do reroofs, new roofs and repairs across Pukekohe and Franklin, with a free site visit and a fixed quote.",
          h1="Roofers in Pukekohe", lede="Free, no-pressure roof quotes across Pukekohe and the wider Franklin area.",
          local_h="Your roofing crew for Pukekohe and Franklin",
-         local=paras("We make the trip down to Pukekohe for reroofs, new roofs and repairs, and we cover the rest of Franklin and south of the Bombay Hills too. Whether you're in town or out on a lifestyle block, you'll get the same fixed quote and deal with Mike the whole way through."),
+         local=paras("We make the trip down to Pukekohe for reroofs, new roofs and repairs. Whether you're in town or out on a lifestyle block, you'll get the same fixed quote and deal with Mike the whole way through."),
          job=local_job("Pukekohe"), hero="bg-sunset.jpg",
          review=("Thanks for the awesome roof!!! Excellent experience all around.", "Julie and Trev, Tuakau"),
          faq_h="Pukekohe questions",
-         faqs=[("Do you really come out to Pukekohe?", "Yes. We work right across Auckland, and Pukekohe is well within our area. We also cover the rest of Franklin and towns south of the Bombay Hills, like Pokeno and Tuakau."),
+         faqs=[("Do you really come out to Pukekohe?", "Yes. We work right across Auckland, and Pukekohe is well within our area."),
                ("How long does a reroof take in Pukekohe?", "An average three-bedroom house takes about 3 to 4 days, depending on the weather.")],
          suburbs=["Pukekohe", "Pukekohe East", "Pukekohe West", "Buckland", "Paerata", "Drury", "Ramarama", "Bombay", "Patumāhoe", "Mauku", "Waiuku",
                   "Glenbrook", "Karaka", "Kingseat", "Clarks Beach", "Awhitu", "Pollok", "Waiau Pa", "Ararimu", "Hunua",
@@ -417,12 +411,12 @@ LOCATION_PAGES = [
          h1="Roofers in Manukau", lede="Free, no-pressure roof quotes across Manukau and Papatoetoe.",
          local_h="Straight answers on your Manukau roof",
          local=paras("A roof is a big expense, so you should know exactly what you're paying for. We'll come out, check the roof and give you an itemised, fixed price. "
-                     + "There's finance available through QBE if you'd rather spread the cost."),
+                     + "There's finance available if you'd rather spread the cost."),
          job=local_job("Manukau"), hero="bg-sunset.jpg",
          review=pick_review("Manukau", "a South Auckland customer"),
          faq_h="Manukau questions",
          faqs=[("Do you work on rental properties?", "Yes, we work with landlords and property managers too."),
-               ("Can I spread the cost of a new roof?", "Yes, finance is available through QBE. Talk to Mike about the options.")],
+               ("Can I spread the cost of a new roof?", "Yes, finance is available. Talk to Mike about the options.")],
          suburbs=["Manukau", "Papatoetoe", "Wiri", "Goodwood Heights", "Totara Heights", "Clover Park", "Ōtara"],
          map=osm(174.82, -37.03, 174.94, -36.93)),
     dict(slug="manurewa", path="locations/manurewa/", kind="area", region="South Auckland", name="Manurewa",
