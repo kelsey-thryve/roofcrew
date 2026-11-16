@@ -116,16 +116,28 @@ def faqs_field(items):
     return "\n\n".join(f"{q}\n{a}" for q, a in items)
 
 
+# Asset links inside editor content (e.g. the Gerard spec sheets): the theme's assets folder from the site root.
+WP_ASSETS = "/wp-content/themes/roofcrew-theme/assets/"
+
+
+def review_field(review):
+    """rc_review lines: review text, then who wrote it (a placeholder is a single line)."""
+    reviews = [] if not review else bv.review_list(review)
+    return "\n".join(r if isinstance(r, str) else f"{r[0]}\n{r[1]}" for r in reviews)
+
+
 def seed_services():
     out = []
     for i, s in enumerate(C.SERVICE_PAGES):
         secs = s["sections"]
-        first = secs[0][1] if secs else ""
-        content = bv.fill(first) + "".join(f"<h2>{h}</h2>{bv.fill(html)}" for h, html in secs[1:])
+        split = s.get("split", True)
+        first = secs[0][1] if secs and split else ""
+        content = bv.fill(first, WP_ASSETS) + "".join(f"<h2>{h}</h2>{bv.fill(html, WP_ASSETS)}" for h, html in (secs[1:] if split else secs))
         out.append(dict(slug=s["slug"], title=bv.strip_tags(s["name"]), root=s["kind"] == "material", publish=True,
                         excerpt=s["card"], image=s["hero"], content=block_html(content),
                         fields=dict(rc_kind=s["kind"], rc_h1=s["h1"], rc_lede=s["lede"], rc_hold=s.get("hold", ""),
-                                    rc_intro_heading=secs[0][0] if secs else "", rc_included="", rc_photo=s["photo"],
+                                    rc_intro_heading=secs[0][0] if secs and split else "", rc_included="", rc_photo=s["photo"],
+                                    rc_review="" if s.get("reroof") else review_field(s.get("reviews")),
                                     rc_icon=s["icon"], rc_reroof="1" if s.get("reroof") else "",
                                     rc_faq_title=s["faq_h"], rc_faqs=faqs_field(s["faqs"]), rc_closing=s["closing"],
                                     rc_meta_title=s["title"], rc_meta_desc=s["desc"])))
@@ -137,9 +149,7 @@ def seed_locations():
     order = [l["slug"] for l in C.REGIONS] + C.LOCATIONS_PAGE["popular"]
     for l in sorted(C.LOCATION_PAGES, key=lambda l: order.index(l["slug"])):
         content = l["local"] + (f"<h2>{l['cost'][0]}</h2>{l['cost'][1]}" if l.get("cost") else "")
-        review = l.get("review")
-        reviews = [] if not review else (review if isinstance(review, list) else [review])
-        review = "\n".join(r if isinstance(r, str) else f"{r[0]}\n{r[1]}" for r in reviews)
+        review = review_field(l.get("review"))
         subs = [bv.P(s, l["suburbs_q"]) if l.get("suburbs_q") else s for s in l["suburbs"]]
         out.append(dict(slug=l["slug"], title=l["name"], root=not l["path"].startswith("locations/"), publish=True,
                         excerpt=l.get("blurb", l["lede"]), image=l["hero"], content=block_html(content),
@@ -172,7 +182,7 @@ def main():
     home["body"] = re.sub(r'<div class="region-links">.*?<a class="ask"', '<div class="region-links"><?php rc_region_links(); ?><a class="ask"', home["body"], flags=re.S)
     # Locations index: region cards and popular area cards come from the pages.
     loc = captured["locations/"]
-    loc["body"] = re.sub(r'<div class="grid-4" data-regions>.*?</a></div>', "<div class=\"grid-4\" data-regions><?php rc_region_cards( 'region' ); ?></div>", loc["body"], flags=re.S)
+    loc["body"] = re.sub(r'<div class="grid-3" data-regions>.*?</a></div>', "<div class=\"grid-3\" data-regions><?php rc_region_cards( 'region' ); ?></div>", loc["body"], flags=re.S)
     loc["body"] = re.sub(r'<div class="grid-3" data-areas>.*?</a></div>', "<div class=\"grid-3\" data-areas><?php rc_region_cards( 'area' ); ?></div>", loc["body"], flags=re.S)
     # Blog index: the posts loop.
     blog = captured["blog/"]
@@ -277,7 +287,7 @@ def main():
 ''')
 
     # ---- assets (images, css, js, icons) from the static site
-    for sub in ("css", "js", "icons", "img"):
+    for sub in ("css", "js", "icons", "img", "docs"):
         src = os.path.join(bv.OUT, "assets", sub)
         dst = os.path.join(THEME, "assets", sub)
         if os.path.isdir(dst):

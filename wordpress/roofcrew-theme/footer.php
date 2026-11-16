@@ -2,7 +2,7 @@
 </main>
 <footer class="site-footer"><div class="wrap">
   <div class="cols">
-    <div><a class="logo" href="<?php echo rc_url(''); ?>"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M7 16l9-8 9 8M10 14v10h12V14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>The Roof Crew</a>
+    <div><a class="logo" href="<?php echo rc_url(''); ?>" aria-label="The Roof Crew home"><img src="<?php echo rc_theme_uri(); ?>/assets/icons/logo-trc.png" alt="The Roof Crew" width="600" height="274"></a>
       <p style="margin-top:14px">Family-owned Auckland roofers. Reroofing, new roofs, repairs, spouting and inspections.</p>
       <p class="trust">RANZ member · Fully guaranteed · Finance available</p></div>
     <div><h4>Services</h4><ul><?php rc_menu( 'services', true, 'service' ); ?></ul></div>

@@ -251,7 +251,7 @@ function rc_services_grid( $wide = false ) {
 		. '<div class="body"><span class="badge">Most requested</span><h3 style="font-size:26px">' . esc_html( get_the_title( $feature ) ) . '</h3><p>' . wp_kses_post( rc_blurb( $feature ) ) . '</p>'
 		. '<a ' . rc_link_post( $feature, 'btn btn-primary' ) . '>See ' . esc_html( strtolower( get_the_title( $feature ) ) ) . ' →</a></div></article>';
 	if ( $wide ) {
-		echo '<div class="services services-wide">' . $f . '</div>' . ( $others ? '<div class="grid-4" style="margin-top:20px">' . $others . '</div>' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput
+		echo '<div class="services services-wide">' . $f . '</div>' . ( $others ? '<div class="grid-3 fill-last" style="margin-top:20px">' . $others . '</div>' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput
 	} else {
 		echo '<div class="services">' . $others . $f . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}

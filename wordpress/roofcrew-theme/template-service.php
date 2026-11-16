@@ -45,6 +45,15 @@ if ( $reroof ) {
 	$alt = false;
 }
 $alt = rc_print_sections( $sections, esc_html( $title ), $alt );
+if ( rc_field( 'rc_review' ) && ! $reroof ) :
+	?>
+<section<?php echo $alt ? ' class="alt"' : ''; ?>><div class="wrap">
+  <span class="eyebrow">Reviews</span><h2 style="margin-bottom:32px">What our customers say</h2>
+  <?php get_template_part( 'parts/reviews-local' ); ?>
+</div></section>
+	<?php
+	$alt = ! $alt;
+endif;
 $alt = rc_faq_section( rc_field( 'rc_faq_title' ) ? rc_field( 'rc_faq_title' ) : 'Questions people ask us', $alt );
 
 $others = array_filter( rc_children( 'services' ), function ( $p ) {

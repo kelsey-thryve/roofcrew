@@ -33,6 +33,7 @@ function rc_field_defs() {
 			'rc_photo'         => array( 'Photo beside the intro (optional)', 'text', 'A theme image file name (e.g. colorsteel-installed.jpg) or an image URL. Defaults to the Featured image.' ),
 			'rc_icon'          => array( 'Card icon', 'icon', 'Icon on the service cards.' ),
 			'rc_reroof'        => array( 'Reroof sections', 'checkbox', 'Show "How a reroof works", roof options and prices, and the before/after slider.' ),
+			'rc_review'        => array( 'Reviews to show (optional)', 'html', 'Up to three reviews, two lines each: the review, then the name and suburb. Shown in a Reviews section, topped up with the usual reviews. Leave empty to hide the section.' ),
 		), $faqs, array(
 			'rc_closing'       => array( 'Quote section heading', 'text', 'Defaults to "Get your free quote."' ),
 		), $seo ),
@@ -86,7 +87,7 @@ function rc_fields_box( $post ) {
 			echo '</select>';
 		} elseif ( 'icon' === $type ) {
 			echo '<select id="' . esc_attr( $key ) . '" name="' . esc_attr( $key ) . '">';
-			foreach ( array( 'home' => 'House', 'build' => 'New build', 'wrench' => 'Repair', 'drop' => 'Water drop', 'search' => 'Inspection', 'layers' => 'Roofing material', 'shield' => 'Shield' ) as $k => $l ) {
+			foreach ( array( 'home' => 'House', 'build' => 'New build', 'wrench' => 'Repair', 'drop' => 'Water drop', 'search' => 'Inspection', 'layers' => 'Roofing material', 'commercial' => 'Commercial building', 'shield' => 'Shield' ) as $k => $l ) {
 				echo '<option value="' . esc_attr( $k ) . '" ' . selected( $v, $k, false ) . '>' . esc_html( $l ) . '</option>';
 			}
 			echo '</select>';

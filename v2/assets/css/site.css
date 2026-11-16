@@ -473,3 +473,52 @@ table.spec td:first-child { font-weight: 600; white-space: nowrap; }
 /* Highlights inside white boxes on dark sections stay solid yellow; on the dark footer, soft yellow */
 .hero .quote-card mark.ph, .dark .faqs mark.ph, .dark .card mark.ph, .hold-note mark.ph { background: #fff1a8; color: var(--ink); }
 .site-footer mark.ph { background: rgba(255, 228, 92, .28); color: #fff3b0; }
+
+/* Home hero: heading, lede, buttons, chips and the quote form fit on a laptop screen (1366x768, 1440x900) */
+.home-hero { padding-top: 28px; }
+.home-hero h1 { font-size: clamp(44px, min(5.4vw, 8.6vh), 84px); margin-top: 16px; }
+.home-hero .lede { font-size: 18px; margin-top: 12px; }
+.home-hero .hero-actions { margin-top: 20px; }
+@media (min-width: 901px) {
+  .home-hero .wrap { align-items: start; }
+  .home-hero .wrap > div:first-child { padding-top: 12px; }
+  .home-hero .quote-card { padding: 20px 24px; }
+  .home-hero .quote-card h2 { font-size: 28px; }
+  .home-hero .quote-card .sub { font-size: 14px; margin-top: 4px; line-height: 1.4; }
+  .home-hero .form { gap: 8px 12px; margin-top: 12px; }
+  .home-hero .form label { font-size: 13px; margin-bottom: 3px; }
+  .home-hero .form input, .home-hero .form select { padding: 8px 12px; }
+  .home-hero .form textarea { min-height: 42px; height: 42px; padding: 8px 12px; }
+  .home-hero .form > div:nth-child(3), .home-hero .form > div:nth-child(4) { grid-column: auto; }
+  .home-hero .form .btn { padding-block: 13px; }
+  .home-hero .form .fine { font-size: 12px; line-height: 1.4; }
+}
+@media (max-width: 900px) {
+  .home-hero { padding-top: 24px; }
+}
+
+/* Side by side before and after photos, and a photo inside a text section */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.pair figure, .inline-photo { margin: 0; }
+.pair img, .inline-photo img { width: 100%; border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; }
+.pair figcaption { font-weight: 600; font-size: 15px; margin-top: 6px; color: var(--gray-700); }
+.inline-photo { margin-top: 18px; max-width: 560px; }
+@media (max-width: 560px) { .pair { grid-template-columns: 1fr; } }
+
+/* Home services grid with five services: the feature card runs down three rows, the fifth card fills the last row */
+@media (min-width: 641px) {
+  .services > .card:nth-child(5):nth-last-child(2) { grid-column: 1 / span 2; }
+}
+@media (min-width: 1081px) {
+  .services > .card:nth-child(5):nth-last-child(2) ~ .feature { grid-row: 1 / span 3; }
+}
+/* A three-column grid whose last row has two cards: the last card fills the gap */
+@media (min-width: 1081px) {
+  .grid-3.fill-last > :last-child:nth-child(3n+2) { grid-column: span 2; }
+}
+.prose ul + p { margin-top: 14px; }
+
+/* Client logo (transparent PNG) */
+.logo img { height: 62px; width: auto; display: block; }
+.site-footer .logo img { height: 72px; }
+@media (max-width: 640px) { .logo img { height: 48px; } }

@@ -10,7 +10,7 @@
 <?php wp_body_open(); ?>
 <div class="topbar"><div class="wrap"><span>Free reroof quotes right across Auckland</span><span>Call or text Mike: <a href="tel:+6421903822">021 903 822</a></span></div></div>
 <header class="site-header"><div class="wrap">
-  <a class="logo" href="<?php echo rc_url(''); ?>" aria-label="The Roof Crew home"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M7 16l9-8 9 8M10 14v10h12V14" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>The Roof Crew</a>
+  <a class="logo" href="<?php echo rc_url(''); ?>" aria-label="The Roof Crew home"><img src="<?php echo rc_theme_uri(); ?>/assets/icons/logo-trc.png" alt="The Roof Crew" width="600" height="274"></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   <nav class="nav" id="nav" aria-label="Main">
     <div class="dd"><button aria-expanded="false"<?php echo rc_current( 'services' ); ?>>Services <span aria-hidden="true">▾</span></button>
