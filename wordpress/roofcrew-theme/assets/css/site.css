@@ -151,6 +151,10 @@ a.soon { cursor: help; }
 .icon { width: 44px; height: 44px; border-radius: 8px; background: var(--gray-100); color: var(--ink); display: grid; place-items: center; margin-bottom: 18px; }
 .card p { color: var(--gray-700); font-size: 16px; margin-top: 8px; }
 .card .link { display: inline-block; margin-top: 14px; font-size: 15px; }
+.card .ticks .link { margin-top: 0; }
+.card .ticks li:has(> .link) { display: flex; align-items: center; gap: 12px; padding-left: 0; }
+.card .ticks li:has(> .link)::before { position: static; flex: none; }
+.card .ticks li > .link { line-height: 1.2; padding-bottom: 2px; }
 
 /* Signs */
 .signs { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
