@@ -230,7 +230,7 @@ SERVICE_PAGES = [
          card="We reroof commercial and multi-unit properties with long-run COLORSTEEL®, and plan the work around your tenants and your business. You get one point of contact from quote to completion.",
          # Hero: the client's new build photo (Kelsey's choice for heroes). In-page photo: AI-generated (KonvertKit, Gemini
          # image model); swap for a real commercial job when Mike has one.
-         hero="newbuild-metal-tile.jpg", photo="commercial-units.jpg", reviews=["ellie", "urs", "bruce"],
+         hero="commercial-roofing-hero.jpg", photo="commercial-units.jpg", reviews=["ellie", "urs", "bruce"],
          sections=[("Commercial roofs we look after", ticks([P("Warehouses and light industrial buildings", Q_COMMERCIAL), P("Offices and retail premises", Q_COMMERCIAL),
                                                               P("Multi-unit homes, townhouses and body corporate properties", Q_COMMERCIAL), "Long-run COLORSTEEL® reroofs, with new flashings and spouting"])
                     + paras("Mike will come out, look at the building and give you a fixed, itemised quote.")),
@@ -250,7 +250,7 @@ SERVICE_PAGES = [
          lede="COLORSTEEL® is pre-painted steel roofing made for New Zealand conditions, and it's the most popular option we install. It comes in a huge range of colours and profiles, and it suits reroofs and new builds.",
          system="COLORSTEEL® long-run", system_text="Our most popular option, with a huge range of colours and profiles.",
          card="This is the long-run steel you see on homes all over New Zealand, and it's our most popular option. There's a huge range of colours and profiles, including options made for coastal areas.",
-         hero="bg-colorsteel.jpg", photo="colorsteel-installed.jpg", system_img="colorsteel-installed.jpg", reviews=["linda", "eroni", "kin"],
+         hero="colorsteel-after-new.jpg", photo="colorsteel-installed.jpg", system_img="colorsteel-installed.jpg", reviews=["linda", "eroni", "kin"],
          sections=[("Which COLORSTEEL® is right for my home?", paras("It mostly depends on how close you are to the sea, as salt is hard on steel.") + COLORSTEEL_TABLE
                     + paras("Mike will check your site and recommend the right one.")),
                    ("Popular colours", "__SWATCHES__" + paras("Gull Grey, Windsor Grey, Sandstone Grey, Thunder Grey, Karaka, Grey Friars, Ironsand and Titania. Colours look different on a screen, so we'll bring real samples to your quote.")),
