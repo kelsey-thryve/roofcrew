@@ -230,7 +230,7 @@ SERVICE_PAGES = [
          card="We reroof commercial and multi-unit properties with long-run COLORSTEEL®, and plan the work around your tenants and your business. You get one point of contact from quote to completion.",
          # Hero: the client's new build photo (Kelsey's choice for heroes). In-page photo: AI-generated (KonvertKit, Gemini
          # image model); swap for a real commercial job when Mike has one.
-         hero="commercial-roofing-hero.jpg", photo="commercial-units.jpg", reviews=["ellie", "urs", "bruce"],
+         hero="commercial-roofing-hero.jpg", photo="commercial-reroof-aerial.jpg", reviews=["ellie", "urs", "bruce"],
          sections=[("Commercial roofs we look after", ticks([P("Warehouses and light industrial buildings", Q_COMMERCIAL), P("Offices and retail premises", Q_COMMERCIAL),
                                                               P("Multi-unit homes, townhouses and body corporate properties", Q_COMMERCIAL), "Long-run COLORSTEEL® reroofs, with new flashings and spouting"])
                     + paras("Mike will come out, look at the building and give you a fixed, itemised quote.")),

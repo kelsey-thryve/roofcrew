@@ -70,7 +70,7 @@ return json_decode( <<<'JSON'
     "rc_hold": "",
     "rc_intro_heading": "Commercial roofs we look after",
     "rc_included": "",
-    "rc_photo": "commercial-units.jpg",
+    "rc_photo": "commercial-reroof-aerial.jpg",
     "rc_review": "Very pleased we chose The Roof Crew for new roofing on 2 units. No delays or dramas and highly recommend them and thier work.\nEllie, Remuera\nI had the flat iron roof of a two-bedroom unit re-roofed. This involved removing the old iron, installing insulation, fitting netting and vapor barrier and supply and fitting of a new sky light plus fitting a membrane over a bay window. Mike organized it all and it came together in a very short time. They left the site spotless. I certainly would recommend them to my friends.\nUrs, Saint Heliers\nMike from the roof crew was very professional, fairly priced and very easy to work with. He worked in seamlessly with other contractors we had on-site. We are so pleased with the final result of our new roof.\nBruce, South Head",
     "rc_icon": "commercial",
     "rc_reroof": "",
