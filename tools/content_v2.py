@@ -409,7 +409,7 @@ LOCATION_PAGES = [
          local_h="Roofing East Auckland homes", local=paras("Whether you're in Pakuranga, Botany or out at Beachlands, Mike personally runs every job alongside his trusted team of experienced roofers. "
                                                             "If your home is close to the water, we'll check the site and recommend a roof that suits the salt air."),
          # Hero: the client's COLORSTEEL reroof in East Auckland (Drive "web photos 2" / east auckland / 8. colorsteel reroof).
-         hero="loc-east-auckland.jpg", photo="bg-sunset.jpg", review=[REVIEWS["urs"], REVIEWS["ellie"], REVIEWS["blair"]], faqs=[], suburbs=EAST_SUBURBS,
+         hero="loc-east-auckland.jpg", photo="bg-sunset.jpg", photo_pos="center 88%", review=[REVIEWS["urs"], REVIEWS["ellie"], REVIEWS["blair"]], faqs=[], suburbs=EAST_SUBURBS,
          map=osm(174.83, -36.99, 175.06, -36.84)),
     dict(slug="north-shore", path="locations/north-shore/", kind="region", name="North Shore",
          blurb="Glenfield, Albany, Takapuna, Devonport and nearby.",
@@ -444,7 +444,7 @@ LOCATION_PAGES = [
          h1="Reroofing in West Auckland", lede="Free, no-pressure reroof quotes from Henderson and Massey to Titirangi and Kumeū.",
          local_h="Your West Auckland roofing crew",
          local=paras("From Te Atatū to Titirangi, Mike personally runs every job alongside his trusted team of experienced roofers. Plenty of West Auckland homes sit among trees or on steep sections, where leaves block spouting and moss builds up, so we check the roof, spouting and access and recommend what suits your site."),
-         hero="bg-local-street.jpg", photo="photo-sunset-roof.jpg",
+         hero="loc-south-auckland.jpg", photo="photo-sunset-roof.jpg",
          review=[REVIEWS["kin"], REVIEWS["nigel"], REVIEWS["bruce"]], faqs=[],
          suburbs=["Henderson", "Massey", "Te Atatū", "Titirangi", "Kumeū", "Huapai", "Glen Eden", "New Lynn", "Kelston", "Swanson", "Ranui", "Hobsonville", "West Harbour", "Green Bay", "Laingholm"],
          map=osm(174.45, -36.98, 174.72, -36.74)),

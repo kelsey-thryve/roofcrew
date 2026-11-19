@@ -119,6 +119,7 @@ a.soon { cursor: help; }
 .stars { color: var(--star); letter-spacing: 1px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .page-hero { padding-block: 72px 80px; }
+@media (min-width: 900px) { .page-hero { min-height: 527px; } }
 .page-hero .wrap { grid-template-columns: 1fr; max-width: 900px; margin-left: max(0px, calc((100% - var(--container)) / 2)); }
 .crumbs { font-size: 14px; color: #aeb8c4; }
 .crumbs a { color: #fff; }
