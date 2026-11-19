@@ -325,7 +325,7 @@ SERVICE_PAGES = [
          lede="We install new spouting, fascia and downpipes in colours that match your roof. Many people do this alongside a reroof, as the scaffolding is already up and everything is finished together.",
          home_card="New spouting and downpipes in colours that match your roof.",
          card="We install new spouting and downpipes in colours that match your roof. It's worth doing with a reroof, when the scaffolding is already up.",
-         hero="bg-sunset.jpg", photo="spouting-new.jpg", reviews=["anne", "kin", "eroni"],  # spouting-new.jpg and internal-gutter.jpg are AI-generated
+         hero="guttering-hero.jpg", photo="spouting-new.jpg", reviews=["anne", "kin", "eroni"],  # spouting-new.jpg and internal-gutter.jpg are AI-generated
          sections=[("Signs your spouting needs replacing", ticks(["Water spills over the edge when it rains", "Joints are leaking or sagging", "You can see rust or holes", "Water marks are running down your walls"])),
                    ("Internal gutter conversions", paras("Internal (box) gutters sit inside the roofline, so when they block or rust through, the water can end up inside your home. "
                                                          + P("We can convert an internal gutter to external spouting, so rainwater is carried away outside the walls.",
