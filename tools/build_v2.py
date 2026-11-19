@@ -466,7 +466,7 @@ def build_services():
     pg = Page("services/")
     S = C.SERVICES_PAGE
     materials = "".join(material_card(pg, m, m["name"], m["card"], "Learn more →") for m in C.MATERIALS)
-    body = hero_page(pg, "bg-colorsteel.jpg", "Services", S["h1"], S["intro"])
+    body = hero_page(pg, "services-hero-aerial.jpg", "Services", S["h1"], S["intro"])
     body += f'''
 <section><div class="wrap">
   <div class="head-split"><div><span class="eyebrow">What we do</span><h2>Our services</h2></div></div>

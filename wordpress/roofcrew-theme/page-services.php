@@ -3,7 +3,7 @@
 rc_meta( "Roofing Services Auckland | The Roof Crew", "Reroofing, new roofs, commercial roofing, repairs, guttering and roof inspections across Auckland, from a family-owned business. Free site visits and fixed quotes." );
 get_header(); ?>
 
-<section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo rc_theme_uri(); ?>/assets/img/bg-colorsteel.jpg')"></div>
+<section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo rc_theme_uri(); ?>/assets/img/services-hero-aerial.jpg')"></div>
 <div class="wrap"><div>
   <span class="eyebrow">Services</span><h1>Roofing services for Auckland homes</h1><p class="lede">Most of our work is full roof replacement, but we look after the rest of your roof too. We're family-owned, and Mike personally runs every job alongside his trusted team of experienced roofers.</p>
   <div class="hero-actions"><a class="btn btn-primary" href="<?php echo rc_url('quote'); ?>">Get my free quote →</a><a class="btn btn-outline-light" href="tel:+6421903822">Call or text Mike · 021 903 822</a></div>
