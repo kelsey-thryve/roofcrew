@@ -342,7 +342,7 @@ SERVICE_PAGES = [
          lede="A roof inspection tells you what condition your roof is really in. We check it properly and give you a written report with photos, so you know what needs doing and what can wait.",
          home_card="An honest look at your roof, with photos and a written report.",
          card="Not sure what shape your roof is in? We'll check it and give you a written report with photos, which is handy before buying or selling.",
-         hero="bg-local-street.jpg", photo="rusty-longrun-roof.jpg", reviews=["tanyamai", "jessica", "jenny"],
+         hero="roof-inspection-hero.jpg", photo="rusty-longrun-roof.jpg", reviews=["tanyamai", "jessica", "jenny"],
          sections=[("When an inspection is worth it", ticks(["You're buying or selling a home", "You've got a leak you can't track down", "Your roof is 30 or more years old", "There's been storm damage"])
                     + paras("An inspection costs $200 + GST and covers a full on-site inspection, photos, an honest report on your roof's condition, and quotes for the most cost-effective way forward."))],
          faq_h="", faqs=[],

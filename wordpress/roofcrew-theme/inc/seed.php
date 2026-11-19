@@ -217,7 +217,7 @@ return json_decode( <<<'JSON'
    "root": false,
    "publish": true,
    "excerpt": "Not sure what shape your roof is in? We'll check it and give you a written report with photos, which is handy before buying or selling.",
-   "image": "bg-local-street.jpg",
+   "image": "roof-inspection-hero.jpg",
    "content": "<!-- wp:html -->\n<ul class=\"ticks\"><li>You're buying or selling a home</li><li>You've got a leak you can't track down</li><li>Your roof is 30 or more years old</li><li>There's been storm damage</li></ul><p>An inspection costs $200 + GST and covers a full on-site inspection, photos, an honest report on your roof's condition, and quotes for the most cost-effective way forward.</p>\n<!-- /wp:html -->",
    "fields": {
     "rc_kind": "service",
