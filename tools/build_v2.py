@@ -564,7 +564,7 @@ def build_locations():
     L = C.LOCATIONS_PAGE
     regions = "".join(area_card(pg, r, r["blurb"]) for r in C.REGIONS)
     areas = "".join(area_card(pg, C.LOC_BY_SLUG[s], C.LOC_BY_SLUG[s]["region"]) for s in L["popular"])
-    body = hero_page(pg, "bg-local-street.jpg", "Locations", L["h1"], L["intro"])
+    body = hero_page(pg, "locations-hero.jpg", "Locations", L["h1"], L["intro"])
     body += f'''
 <section><div class="wrap">
   <span class="eyebrow">Areas we cover</span><h2 style="margin-bottom:32px">{L["find_h"]}</h2>
