@@ -645,7 +645,7 @@ def build_about():
     pg = Page("about/")
     A = C.ABOUT
     cards = "".join(f'<div class="card"><div class="icon">{ICONS[i]}</div><h3>{h}</h3><p>{t}</p></div>' for i, h, t in A["backed"])
-    body = f'''<section class="hero page-hero"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/bg-crew.jpg')"></div>
+    body = f'''<section class="hero page-hero"><div class="hero-bg" style="background-image:url('{pg.r}assets/img/about-hero-crew.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">About us</span><h1>{A["h1"]}</h1>
 <p class="lede">{A["intro"]}</p>
 <div class="hero-actions"><a class="btn btn-primary" href="#get-quote">Get my free quote →</a></div></div></div></section>

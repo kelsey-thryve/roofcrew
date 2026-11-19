@@ -3,7 +3,7 @@
 rc_meta( "About The Roof Crew | Family-Owned Auckland Roofers", "The Roof Crew is a family-owned Auckland roofing company. Mike has 30+ years in construction and has been roofing Auckland homes since 2014. Find out how we work." );
 get_header(); ?>
 
-<section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo rc_theme_uri(); ?>/assets/img/bg-crew.jpg')"></div>
+<section class="hero page-hero"><div class="hero-bg" style="background-image:url('<?php echo rc_theme_uri(); ?>/assets/img/about-hero-crew.jpg')"></div>
 <div class="wrap"><div><span class="eyebrow">About us</span><h1>Family-owned, with Mike on every job</h1>
 <p class="lede">The Roof Crew is a family-owned Auckland roofing company. Mike has 30+ years in construction and has been roofing Auckland homes since 2014. When you call us, you get Mike, and he personally runs your job alongside his trusted team of experienced roofers.</p>
 <div class="hero-actions"><a class="btn btn-primary" href="<?php echo rc_url('quote'); ?>">Get my free quote →</a></div></div></div></section>
