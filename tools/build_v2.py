@@ -601,9 +601,10 @@ def build_location(l):
     name = l["name"]
     svc = "".join(f'<article class="card"><div class="icon">{ICONS[s["icon"]]}</div><h3>{s["name"]}</h3><a {pg.link(s["path"], "link")}>{s["name"]} in {name} →</a></article>' for s in C.SERVICES_ONLY)
     photo = l.get("photo", l["hero"])
+    photo_alt = l.get("photo_alt", "Roof in " + name)
     pos_attr = f' style="object-position:{l["photo_pos"]}"' if l.get("photo_pos") else ""
     side = (f'<div class="ph-box ph-job">{l["job"]}</div>' if l.get("job")
-            else f'<div class="photo" style="min-height:360px"><img src="{pg.r}assets/img/{photo}" alt="Roof in {name}" loading="lazy"{pos_attr}></div>')
+            else f'<div class="photo" style="min-height:360px"><img src="{pg.r}assets/img/{photo}" alt="{photo_alt}" loading="lazy"{pos_attr}></div>')
     linked = any(C.LOC_BY_NAME.get(s) not in (None, l) for s in l["suburbs"])
     body = hero_page(pg, l["hero"], crumb(pg, "locations/", "Locations", name), l["h1"], l["lede"])
     body += f'''

@@ -218,7 +218,7 @@ SERVICE_PAGES = [
          faq_h="New build questions",
          faqs=[("When should I talk to you about a new build roof?", "As early as you can, ideally when you have plans. That gives us time to advise on materials and fit your build schedule."),
                ("Can you roof an unusual design?", "Yes. We just need to make sure it's done to the Building Code."),
-               ("Do you work with builders and architects?", "Yes. We work with homeowners, builders and developers, and fit in with the other trades on site. " + P("We're also happy to work from your architect's plans and specifications.", "New builds: confirm you work with architects and from architectural plans and specifications.")),
+               ("Do you work with builders and architects?", "Yes. We work with homeowners, builders and developers, and fit in with the other trades on site. We're also happy to work with your architect and from their plans and specifications."),
                ("Which roofing systems do you install on new builds?", "We specialise in long-run COLORSTEEL® and Gerard metal tile roofing systems for new homes. We service the wider Auckland region, including Franklin, Pukekohe, areas south of the Bombay Hills, East and West Auckland and as far north as Warkworth.")],
          closing="Talk to Mike about your new build roof.", pre="New build roof"),
     dict(slug="commercial-roofing", path="services/commercial-roofing/", kind="service", name="Commercial roofing", icon="commercial",
@@ -231,16 +231,15 @@ SERVICE_PAGES = [
          # Hero: the client's new build photo (Kelsey's choice for heroes). In-page photo: AI-generated (KonvertKit, Gemini
          # image model); swap for a real commercial job when Mike has one.
          hero="commercial-roofing-hero.jpg", photo="commercial-reroof-aerial.jpg", reviews=["ellie", "urs", "bruce"],
-         sections=[("Commercial roofs we look after", ticks([P("Warehouses and light industrial buildings", Q_COMMERCIAL), P("Offices and retail premises", Q_COMMERCIAL),
-                                                              P("Multi-unit homes, townhouses and body corporate properties", Q_COMMERCIAL), "Long-run COLORSTEEL® reroofs, with new flashings and spouting"])
-                    + paras("Mike will come out, look at the building and give you a fixed, itemised quote.")),
-                   ("Keeping your business running", paras(P("We plan the work around your tenants and trading hours, keep the site safe with scaffolding and edge protection, and work in stages where we can so the building stays weathertight.",
-                                                             "Commercial: do you stage jobs and work around tenants or trading hours? Any limits, such as weekend work?"))),
+         sections=[("Commercial roofs we look after", ticks(["Warehouses and light industrial buildings", "Offices and retail premises",
+                                                              "Multi-unit homes, townhouses and body corporate properties", "Long-run COLORSTEEL® reroofs, with new flashings and spouting"])
+                    + paras("There's no job too big or too small. Mike will come out, look at the building and give you a fixed, itemised quote.")),
+                   ("Keeping your business running", paras("We plan the work around your tenants and trading hours, including weekends if that suits you best, keep the site safe with scaffolding and edge protection, and work in stages so the building stays weathertight.")),
                    ("Body corporates and property managers", paras("We work with owners, property managers and body corporates, and you get one point of contact from quote to completion. "
-                                                                   + P("We can provide a written scope and quote for committee approval.", "Commercial: can you provide a written scope and quote suitable for body corporate approval?")))],
+                                                                   + "We can provide a written scope and quote for committee approval."))],
          faq_h="Commercial roofing questions",
-         faqs=[("Do you take on commercial reroofs?", "Yes. " + P("We reroof warehouses, offices, shops and multi-unit buildings with long-run COLORSTEEL®.", Q_COMMERCIAL)),
-               ("Is there a workmanship warranty on commercial jobs?", P("Yes. You get our 5-year workmanship warranty (subject to warranty requirements), plus the manufacturer's product warranty.", "Commercial: does the 5-year workmanship warranty apply to commercial jobs too?")),
+         faqs=[("Do you take on commercial reroofs?", "Yes. We reroof warehouses, offices, shops and multi-unit buildings of any size with long-run COLORSTEEL®."),
+               ("Is there a workmanship warranty on commercial jobs?", "Yes. You get our 5-year workmanship warranty (subject to warranty requirements), plus the manufacturer's product warranty."),
                ("How quickly can you come and look?", RESPOND)],
          closing="Get a price for your commercial roof.", pre="Commercial roofing"),
     dict(slug="colour-steel-roofing", path="colour-steel-roofing/", kind="material", name="COLORSTEEL® roofing", icon="layers",
@@ -328,10 +327,8 @@ SERVICE_PAGES = [
          hero="guttering-hero.jpg", photo="spouting-new.jpg", reviews=["anne", "kin", "eroni"],  # spouting-new.jpg and internal-gutter.jpg are AI-generated
          sections=[("Signs your spouting needs replacing", ticks(["Water spills over the edge when it rains", "Joints are leaking or sagging", "You can see rust or holes", "Water marks are running down your walls"])),
                    ("Internal gutter conversions", paras("Internal (box) gutters sit inside the roofline, so when they block or rust through, the water can end up inside your home. "
-                                                         + P("We can convert an internal gutter to external spouting, so rainwater is carried away outside the walls.",
-                                                             "Internal gutter conversions: confirm you do these, and what's usually involved (new fascia and spouting, roof changes, any building consent)."))),
-                   ("Internal gutter and fascia replacements", paras(P("Where a conversion isn't practical, we can replace the internal gutter and the fascia with new materials, often as part of a reroof while the scaffolding is up.",
-                                                                       "Internal gutter and fascia replacements: confirm you do these, and whether as a standalone job or only with a reroof."))
+                                                         + "We can convert an internal gutter to external spouting, so rainwater is carried away outside the walls. A building consent isn't normally needed.")),
+                   ("Internal gutter and fascia replacements", paras("Where a conversion isn't practical, we can replace the internal gutter and the fascia with new materials. We do this as a standalone job or as part of a reroof while the scaffolding is up.")
                     + '<figure class="inline-photo"><img src="__ASSETS__img/internal-gutter.jpg" alt="A new internal gutter between two roof sections" loading="lazy"></figure>')],
          faq_h="", faqs=[],
          closing="Get a quote for new spouting.", pre="Spouting or downpipes"),
@@ -394,6 +391,7 @@ REVIEWS = {
     'anne': ('Excellent job done! The roof looks great, also the new cladding to the gables and the new spouting is fantastic. Highly recommend.', 'Anne and Richard, Mellons Bay'),
     'julie': ('Thanks for the awesome roof!!! Excellent experience all around.', 'Julie and Trev, Tuakau'),
     'sandra': ('Great job by The Roof Crew. Finished our roofing project on time and in budget. Would highly recommend.', 'Sandra, Papakura'),
+    're': ("I previously contacted Mike last year for options around the roof. At that point and time it was impossible for me to do anything due to budget. This year I had no choice a new leak shown up in a different area and I was advised soon as shows up in different places it's a full roof problem. Entire process was around the 2 weeks since I contacted Mike. After contact this year and agreeing in the price scaffolding came a week later and work started 2 days after. Weather was impossible so took a bit longer unable to complete the job. Calender wise 2 weeks, days worked 2 days scaffolding and 2 days roof instalation and removal. There are certain portals promising you amazing deals and finding you the best options. I would say go directly to the companies compare prices and reviews and go from there and dont rush it your not buying a pair of shoes.", 'RE, Manurewa'),
     'nancy': ('Great job guys! I shall certainly recommend you when I can.', 'Nancy, Glenfield'),
 }
 # Which reviews show where, so each page has its own set (reviews_row in build_v2.py tops a short list up to three).
@@ -455,7 +453,7 @@ LOCATION_PAGES = [
          h1="Roofing in Franklin", lede="Free, no-pressure roof quotes from Karaka and Pukekohe to Waiuku, Tuakau and south of the Bombay Hills.",
          local_h="Your Franklin roofing crew",
          local=paras("We service the wider Auckland region, including Franklin, Pukekohe and areas south of the Bombay Hills. Mike personally runs every job alongside his trusted team of experienced roofers, "
-                     "so whether you're in town or " + P("out on a lifestyle block", Q_RURAL) + ", you get the same fixed quote and the same warranty."),
+                     "so whether you're in town or out on a rural property or lifestyle block, you get the same fixed quote and the same warranty for a new roof or a reroof."),
          # Photos: the client's Tuakau COLORSTEEL reroof (hero) and a Pukekohe reroof from the air.
          hero="loc-franklin-tuakau.jpg", photo="loc-franklin-pukekohe.jpg",
          review=[REVIEWS["julie"], REVIEWS["blair"], REVIEWS["tanyamai"]],
@@ -479,10 +477,9 @@ LOCATION_PAGES = [
          review=[REVIEWS["bruce"], REVIEWS["nigel"], REVIEWS["tanyamai"]],
          faq_h="Rodney questions",
          faqs=[("How far north do you go?", "We work as far north as Warkworth."),
-               ("Do you do new build roofs in Rodney?", P("Yes, including new builds around Silverdale, Milldale and Kumeū.", "Rodney: do you do new build roofs here (e.g. Milldale, Silverdale, Kumeū)?"))],
+               ("Do you do new build roofs in Rodney?", "Yes. We do new build roofs and reroofs around Silverdale, Milldale and Kumeū.")],
          suburbs=["Warkworth", "Matakana", "Snells Beach", "Pūhoi", "Waiwera", "Ōrewa", "Silverdale", "Red Beach", "Millwater", "Milldale", "Dairy Flat",
                   "Kumeū", "Huapai", "Riverhead", "Waimauku", "Helensville", "Parakai"],
-         suburbs_q="Rodney page: are these the right areas to list? Mike said 'as far north as Warkworth', so we stopped at Warkworth (no Wellsford). Add or remove any.",
          map=osm(174.40, -36.83, 174.85, -36.36)),
     dict(slug="pukekohe", path="roofers-in-pukekohe/", kind="area", region="South Auckland", name="Pukekohe",
          title="Roofers in Pukekohe | Reroofing & Repairs | The Roof Crew",
@@ -490,7 +487,7 @@ LOCATION_PAGES = [
          h1="Roofers in Pukekohe", lede="Free, no-pressure roof quotes across Pukekohe and the wider Franklin area.",
          local_h="Your roofing crew for Pukekohe and Franklin",
          local=paras("We make the trip down to Pukekohe for reroofs, new roofs and repairs. Whether you're in town or out on a lifestyle block, you'll get the same fixed quote and deal with Mike the whole way through."),
-         job=local_job("Pukekohe"), hero="bg-sunset.jpg",
+         photo="loc-franklin-pukekohe.jpg", photo_alt="A Pukekohe reroof by The Roof Crew, from the air", hero="bg-sunset.jpg",
          review=REVIEWS["julie"],
          faq_h="Pukekohe questions",
          faqs=[("Do you really come out to Pukekohe?", "Yes. We work right across Auckland, and Pukekohe is well within our area."),
@@ -506,7 +503,7 @@ LOCATION_PAGES = [
          local_h="A family business that's already worked in Papakura",
          local=paras("We've replaced roofs in Papakura, and we're happy to come and look at yours. If your roof keeps leaking, we'll work out whether a repair will fix it or whether it's time for a new one. "
                      + "If it's a new build around Takanini or Drury, we can help there too."),
-         job=local_job("Papakura"), hero="bg-local-street.jpg",
+         photo="loc-mangere.jpg", photo_alt="A recent South Auckland reroof by The Roof Crew", hero="bg-local-street.jpg",
          review=[REVIEWS["sandra"], REVIEWS["james"], REVIEWS["mayce"]],
          faq_h="Papakura questions",
          faqs=[("How much does a new roof cost in Papakura?", "A COLORSTEEL® or metal tile reroof on a medium-sized home usually costs about " + PH_PRICE_STD() + ", or about " + PH_PRICE_SMALL() + " for a small home. You'll get a fixed price after a free site visit."),
@@ -519,7 +516,7 @@ LOCATION_PAGES = [
          h1="Roofers in Glenfield", lede="Free, no-pressure roof quotes across Glenfield and the central North Shore.",
          local_h="Reroofing homes across Glenfield",
          local=paras("If your Glenfield home still has its original roof, it's worth getting it checked before it starts leaking. We'll look at the roof, tell you honestly how long it's got, and give you a fixed price if it's time for a new one. Many people replace the spouting at the same time, as the scaffolding is already up."),
-         job=local_job("Glenfield"), hero="bg-colorsteel.jpg",
+         photo="loc-wairau-valley.jpg", photo_alt="A recent North Shore reroof by The Roof Crew", hero="bg-colorsteel.jpg",
          review=[REVIEWS["nancy"], REVIEWS["jessica"], REVIEWS["linda"]],
          faq_h="Glenfield questions",
          faqs=[("How do I know if my roof needs replacing?", "Look for leaks that keep coming back, rust, lifting sheets or cracked tiles. If it's the original roof, it's usually near the end of its life."),
@@ -533,7 +530,7 @@ LOCATION_PAGES = [
          local_h="Straight answers on your Manukau roof",
          local=paras("A roof is a big expense, so you should know exactly what you're paying for. We'll come out, check the roof and give you an itemised, fixed price. "
                      + "There's finance available if you'd rather spread the cost."),
-         job=local_job("Manukau"), hero="bg-sunset.jpg",
+         photo="loc-south-auckland.jpg", photo_alt="A recent South Auckland reroof by The Roof Crew", hero="bg-sunset.jpg",
          review=[REVIEWS["mayce"], REVIEWS["marietta"], REVIEWS["eroni"]],
          faq_h="Manukau questions",
          faqs=[("Do you work on rental properties?", "Yes, we work with landlords and property managers too."),
@@ -546,8 +543,8 @@ LOCATION_PAGES = [
          h1="Roofers in Manurewa", lede="Free, no-pressure roof quotes across Manurewa and Wattle Downs.",
          local_h="Leak keep coming back?",
          local=paras("When a leak keeps coming back, the problem usually isn't where the water is showing. We'll find out what's actually going on and tell you whether a repair will last. If the roof is done, we'll give you a fixed price to replace it."),
-         job=local_job("Manurewa"), hero="bg-local-street.jpg",
-         review=[REVIEWS["james"], REVIEWS["blair"], P("[Review from RE, Manurewa: text still to come]", "Mike: send the text of RE's Google review (Manurewa) to show here.")],
+         photo="colorsteel-after.jpg", photo_alt="A recent COLORSTEEL® reroof by The Roof Crew", hero="bg-local-street.jpg",
+         review=[REVIEWS["re"], REVIEWS["james"], REVIEWS["blair"]],
          faq_h="Manurewa questions",
          faqs=[("How long does a new roof last?", "It depends on the product and location. As a guide, COLORSTEEL® typically lasts " + "around 30 years before perforation" + "."),
                ("Is there a good time of year to reroof?", "Not really. We can replace roofs all year in Auckland, and it's better not to wait until it's leaking.")],
@@ -559,7 +556,7 @@ LOCATION_PAGES = [
          h1="Roofers in Howick", lede="Free, no-pressure roof quotes across Howick and the eastern bays.",
          local_h="Roofs that suit a coastal home",
          local=paras("Salt in the air is hard on a roof, so what works inland may not be right near the water. If you're close to the coast around Howick, we'll check your site and recommend a product suited to it, such as COLORSTEEL® Endura® or Maxx®. We've also replaced roofs in nearby Mellons Bay."),
-         job=local_job("Howick"), hero="bg-sunset.jpg",
+         photo="loc-east-auckland.jpg", photo_alt="A recent East Auckland reroof by The Roof Crew", hero="bg-sunset.jpg",
          review=[REVIEWS["anne"], REVIEWS["linda"], REVIEWS["sarah"]],
          faq_h="Howick questions",
          faqs=[("Which roof is best near the sea?", "It depends how exposed your home is. COLORSTEEL® Maxx® is made for rugged coastlines, and Mike will recommend what suits your site."),

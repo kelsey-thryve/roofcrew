@@ -28,7 +28,7 @@ $map = rc_field( 'rc_map' ) ? rc_field( 'rc_map' ) : RC_MAP_AUCKLAND;
   <?php if ( rc_field( 'rc_job' ) ) : ?>
   <div class="ph-box ph-job"><?php echo wp_kses_post( rc_field( 'rc_job' ) ); ?></div>
   <?php else : ?>
-  <div class="photo" style="min-height:360px"><img src="<?php echo esc_url( rc_photo( 'bg-sunset.jpg' ) ); ?>" alt="Roof in <?php echo esc_attr( $title ); ?>" loading="lazy"<?php $rc_pos = rc_field( 'rc_photo_pos' ); if ( $rc_pos ) { echo ' style="object-position:' . esc_attr( $rc_pos ) . '"'; } ?>></div>
+  <div class="photo" style="min-height:360px"><img src="<?php echo esc_url( rc_photo( 'bg-sunset.jpg' ) ); ?>" alt="<?php echo esc_attr( rc_field( 'rc_photo_alt' ) ? rc_field( 'rc_photo_alt' ) : 'Roof in ' . $title ); ?>" loading="lazy"<?php $rc_pos = rc_field( 'rc_photo_pos' ); if ( $rc_pos ) { echo ' style="object-position:' . esc_attr( $rc_pos ) . '"'; } ?>></div>
   <?php endif; ?>
 </div></section>
 

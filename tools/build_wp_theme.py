@@ -154,7 +154,7 @@ def seed_locations():
         out.append(dict(slug=l["slug"], title=l["name"], root=not l["path"].startswith("locations/"), publish=True,
                         excerpt=l.get("blurb", l["lede"]), image=l["hero"], content=block_html(content),
                         fields=dict(rc_kind=l["kind"], rc_region=l.get("region", ""), rc_h1=l["h1"], rc_lede=l["lede"],
-                                    rc_intro_heading=l["local_h"], rc_job=l.get("job", ""), rc_photo=l.get("photo", ""), rc_photo_pos=l.get("photo_pos", ""),
+                                    rc_intro_heading=l["local_h"], rc_job=l.get("job", ""), rc_photo=l.get("photo", ""), rc_photo_pos=l.get("photo_pos", ""), rc_photo_alt=l.get("photo_alt", ""),
                                     rc_review=review, rc_faq_title=l.get("faq_h", ""), rc_faqs=faqs_field(l["faqs"]),
                                     rc_suburbs="\n".join(subs), rc_map=l["map"], rc_meta_title=l["title"], rc_meta_desc=l["desc"])))
     return out
